@@ -1,3 +1,18 @@
+Cleaver is a design by mog to make a more portable soldering station.
+
+Dependencies for cleaver
+
+sudo apt-get install geda-utils coreutils sed grep bash geda-gschem ghostscript poppler-utils pcb imagemagick zip bc make git srecord geda-gnetlist gerbv xvfb
+
+[gerbers](http://artifacts.meatstand.com/cleaver/gerbers.zip)
+
+[schematic](http://artifacts.meatstand.com/cleaver/schematic.png)
+
+[![the board](http://artifacts.meatstand.com/cleaver/board.png)](http://artifacts.meatstand.com/cleaver/board.png)
+
+[![build status](http://ci.meatstand.com/projects/5/status.png?ref=master)](http://ci.meatstand.com/projects/5?ref=master)
+
+
 this is a project to build a soldering iron driver for the hakko 907 5 pin style irons
 
 
