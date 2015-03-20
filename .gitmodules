@@ -1,0 +1,3 @@
+[submodule "meatstand"]
+	path = meatstand
+	url = http://dev.meatstand.com/meatstand/meatstand_common.git
