@@ -25,3 +25,20 @@ T 62000 38200 14 10 1 0 0 0 1
 @git@
 T 60800 38500 14 10 1 0 0 0 1
 This schematic is licensed GPLv3
+C 48300 46200 1 0 0 attiny85.sym
+{
+T 50400 48400 5 10 1 1 0 0 1
+refdes=U?
+T 49500 48400 5 10 1 1 0 0 1
+footprint=attiny85
+}
+C 50600 45900 1 0 0 ground.sym
+C 54500 46600 1 0 1 input-2.sym
+{
+T 54500 46800 5 10 0 0 0 6 1
+net=Vcc5:1
+T 53900 47300 5 10 0 0 0 6 1
+device=none
+T 54000 46700 5 10 1 1 0 1 1
+value=Vcc5
+}
