@@ -42,3 +42,12 @@ device=none
 T 54000 46700 5 10 1 1 0 1 1
 value=Vcc5
 }
+C 45600 46100 1 0 1 connector5-2.sym
+{
+T 44900 48600 5 10 1 1 0 0 1
+refdes=CONN?
+T 45300 48550 5 10 0 0 0 6 1
+device=CONNECTOR_5
+T 45300 48750 5 10 0 0 0 6 1
+footprint=SIP5N
+}
