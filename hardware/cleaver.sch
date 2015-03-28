@@ -259,7 +259,7 @@ T 43600 44000 5 10 0 0 0 0 1
 net=Temp:1
 T 42900 44500 5 10 0 0 0 0 1
 device=none
-T 43500 43900 5 10 1 1 0 1 1
+T 43600 43900 5 10 1 1 0 1 1
 value=Temp
 }
 C 42700 45400 1 0 0 output-2.sym
@@ -268,6 +268,14 @@ T 43600 45600 5 10 0 0 0 0 1
 net=Iron_EN:1
 T 42900 46100 5 10 0 0 0 0 1
 device=none
-T 43500 45500 5 10 1 1 0 1 1
+T 43600 45500 5 10 1 1 0 1 1
 value=Iron_EN
 }
+C 46400 44400 1 0 0 mosfet-with-diode-1.sym
+{
+T 47300 44900 5 10 0 0 0 0 1
+device=NPN_TRANSISTOR
+T 47300 44900 5 10 1 1 0 0 1
+refdes=Q?
+}
+C 46800 44100 1 0 0 ground.sym
