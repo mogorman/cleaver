@@ -31,6 +31,8 @@ T 50400 48400 5 10 1 1 0 0 1
 refdes=U1
 T 49500 48400 5 10 1 1 0 0 1
 footprint=attiny85
+T 49900 47100 5 10 1 1 0 0 1
+footprint=TSSOP8
 }
 C 50600 45900 1 0 0 ground.sym
 C 54500 46600 1 0 1 input-2.sym
@@ -125,6 +127,8 @@ T 45200 53100 5 10 0 0 0 0 1
 symversion=0.1
 T 45600 52500 5 10 1 1 0 0 1
 value=0.1uF
+T 45000 52200 5 10 0 1 0 0 1
+footprint=0805
 }
 C 44700 51800 1 270 0 ground.sym
 C 45000 51400 1 0 0 capacitor-1.sym
@@ -137,6 +141,8 @@ T 45200 51900 5 10 1 1 0 0 1
 refdes=C2
 T 45600 51700 5 10 1 1 0 0 1
 value=0.1uF
+T 45000 51400 5 10 0 1 0 0 1
+footprint=0805
 }
 C 47300 51500 1 0 1 input-2.sym
 {
