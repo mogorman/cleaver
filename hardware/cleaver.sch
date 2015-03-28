@@ -57,6 +57,8 @@ T 41900 51700 5 10 0 0 0 0 1
 device=PWRJACK
 T 41800 51700 5 10 1 1 0 0 1
 refdes=CONN2
+T 42200 51300 5 10 0 1 0 0 1
+footprint=CON__CUI_PJ-202AH
 }
 C 42500 51000 1 0 0 ground.sym
 C 42700 51400 1 0 0 output-2.sym
@@ -159,10 +161,10 @@ T 42900 48500 5 10 0 0 90 2 1
 device=VARIABLE_RESISTOR
 T 42400 48500 5 10 1 1 0 2 1
 refdes=R1
-T 43500 48500 5 10 0 0 90 2 1
-footprint=none
 T 42400 47900 5 10 1 1 0 0 1
 value=10K
+T 42000 48400 5 10 0 1 0 0 1
+footprint=POT__CTS_296U-Series
 }
 C 41900 47400 1 0 0 ground.sym
 C 42200 50000 1 90 1 input-2.sym
