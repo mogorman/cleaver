@@ -28,7 +28,7 @@ This schematic is licensed GPLv3
 C 48300 46200 1 0 0 attiny85.sym
 {
 T 50400 48400 5 10 1 1 0 0 1
-refdes=U?
+refdes=U1
 T 49500 48400 5 10 1 1 0 0 1
 footprint=attiny85
 }
@@ -45,7 +45,7 @@ value=Vcc5
 C 42700 43500 1 0 1 connector5-2.sym
 {
 T 42000 46000 5 10 1 1 0 0 1
-refdes=CONN?
+refdes=CONN1
 T 42400 45950 5 10 0 0 0 6 1
 device=CONNECTOR_5
 T 42400 46150 5 10 0 0 0 6 1
@@ -56,7 +56,7 @@ C 41800 51200 1 0 0 pwrjack-1.sym
 T 41900 51700 5 10 0 0 0 0 1
 device=PWRJACK
 T 41800 51700 5 10 1 1 0 0 1
-refdes=CONN?
+refdes=CONN2
 }
 C 42500 51000 1 0 0 ground.sym
 C 42700 51400 1 0 0 output-2.sym
@@ -82,7 +82,7 @@ C 47700 51600 1 0 0 connector3-1.sym
 T 49500 52500 5 10 0 0 0 0 1
 device=CONNECTOR_3
 T 47700 52700 5 10 1 1 0 0 1
-refdes=CONN?
+refdes=CONN3
 T 47700 51300 5 10 1 1 0 0 1
 footprint=7805
 }
@@ -120,7 +120,7 @@ C 45000 52200 1 0 0 capacitor-1.sym
 T 45200 52900 5 10 0 0 0 0 1
 device=CAPACITOR
 T 45200 52700 5 10 1 1 0 0 1
-refdes=C?
+refdes=C1
 T 45200 53100 5 10 0 0 0 0 1
 symversion=0.1
 T 45600 52500 5 10 1 1 0 0 1
@@ -134,7 +134,7 @@ device=CAPACITOR
 T 45200 52300 5 10 0 0 0 0 1
 symversion=0.1
 T 45200 51900 5 10 1 1 0 0 1
-refdes=C?
+refdes=C2
 T 45600 51700 5 10 1 1 0 0 1
 value=0.1uF
 }
@@ -152,7 +152,7 @@ C 42000 47700 1 270 1 pot-1.sym
 T 42900 48500 5 10 0 0 90 2 1
 device=VARIABLE_RESISTOR
 T 42400 48300 5 10 1 1 90 2 1
-refdes=R?
+refdes=R1
 T 43500 48500 5 10 0 0 90 2 1
 footprint=none
 T 42300 47900 5 10 1 1 0 0 1
@@ -173,7 +173,7 @@ C 58700 49000 1 0 0 lm358.sym
 T 58900 49900 5 10 1 1 0 0 1
 name=LM358
 T 60600 49900 5 10 1 1 0 0 1
-refdes=U?
+refdes=U2
 T 59600 49700 5 10 0 1 0 0 1
 footprint=lm358p
 }
@@ -211,7 +211,7 @@ C 57000 52400 1 0 0 icsp.sym
 T 57200 53200 5 10 1 1 0 0 1
 footprint=icsp
 T 58400 53200 5 10 1 1 0 0 1
-refdes=CONN?
+refdes=CONN4
 }
 C 59000 52300 1 0 0 ground.sym
 C 60600 52900 1 0 1 input-2.sym
@@ -228,7 +228,7 @@ C 44700 45300 1 270 0 resistor-1.sym
 T 45100 45000 5 10 0 0 270 0 1
 device=RESISTOR
 T 44400 44700 5 10 1 1 0 0 1
-refdes=R?
+refdes=R2
 T 44900 44600 5 10 1 1 0 0 1
 value=100K
 }
@@ -237,7 +237,7 @@ C 44700 44200 1 270 0 resistor-1.sym
 T 45100 43900 5 10 0 0 270 0 1
 device=RESISTOR
 T 44400 43600 5 10 1 1 0 0 1
-refdes=R?
+refdes=R3
 T 44900 43600 5 10 1 1 0 0 1
 value=100
 }
@@ -276,7 +276,7 @@ C 48900 42900 1 0 0 mosfet-with-diode-1.sym
 T 49800 43400 5 10 0 0 0 0 1
 device=NPN_TRANSISTOR
 T 49800 43400 5 10 1 1 0 0 1
-refdes=Q?
+refdes=Q1
 }
 C 49300 42600 1 0 0 ground.sym
 C 49400 45300 1 270 0 input-2.sym
@@ -312,7 +312,7 @@ C 58300 50600 1 270 0 resistor-1.sym
 T 58700 50300 5 10 0 0 270 0 1
 device=RESISTOR
 T 58500 50400 5 10 1 1 0 0 1
-refdes=R?
+refdes=R4
 T 58500 50000 5 10 1 1 0 0 1
 value=1K
 }
@@ -321,7 +321,7 @@ C 58100 50600 1 90 1 resistor-1.sym
 T 57700 50300 5 10 0 0 270 2 1
 device=RESISTOR
 T 57900 50400 5 10 1 1 0 6 1
-refdes=R?
+refdes=R5
 T 57400 50000 5 10 1 1 0 0 1
 value=100K
 }
@@ -374,7 +374,7 @@ C 47700 49400 1 0 0 connector4-1.sym
 T 49500 50300 5 10 0 0 0 0 1
 device=CONNECTOR_4
 T 47700 50800 5 10 1 1 0 0 1
-refdes=CONN?
+refdes=CONN5
 }
 C 50800 50400 1 0 1 input-2.sym
 {
@@ -427,7 +427,7 @@ C 48000 43300 1 0 0 resistor-1.sym
 T 48300 43700 5 10 0 0 0 0 1
 device=RESISTOR
 T 48100 43700 5 10 1 1 180 0 1
-refdes=R?
+refdes=R6
 T 48500 43700 5 10 1 1 180 0 1
 value=100
 }

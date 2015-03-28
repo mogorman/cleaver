@@ -1361,6 +1361,44 @@ Element["hidename" "oshw" "ICO1" "unknown" 2975.00mil 933.00mil -7.87mil 0.98mil
 	Pad[-82.68mil 61.02mil -76.77mil 61.02mil 6.00mil 12.00mil 18.00mil "" "460" "nopaste"]
 
 	)
+
+Element["" "icsp" "CONN4" "unknown" 3455.00mil 1833.00mil -50.00mil -50.00mil 3 100 ""]
+(
+	Pin[0.0000 0.0000 60.00mil 30.00mil 66.00mil 38.00mil "1" "1" "square"]
+	Pin[100.00mil 0.0000 60.00mil 30.00mil 66.00mil 38.00mil "2" "2" ""]
+	Pin[0.0000 100.00mil 60.00mil 30.00mil 66.00mil 38.00mil "3" "3" ""]
+	Pin[100.00mil 100.00mil 60.00mil 30.00mil 66.00mil 38.00mil "4" "4" ""]
+	Pin[0.0000 200.00mil 60.00mil 30.00mil 66.00mil 38.00mil "5" "5" ""]
+	Pin[100.00mil 200.00mil 60.00mil 30.00mil 66.00mil 38.00mil "6" "6" ""]
+	ElementLine [-50.00mil -50.00mil -50.00mil 250.00mil 10.00mil]
+	ElementLine [-50.00mil 250.00mil 150.00mil 250.00mil 10.00mil]
+	ElementLine [150.00mil 250.00mil 150.00mil -50.00mil 10.00mil]
+	ElementLine [150.00mil -50.00mil -50.00mil -50.00mil 10.00mil]
+	ElementLine [-50.00mil 50.00mil 50.00mil 50.00mil 10.00mil]
+	ElementLine [50.00mil 50.00mil 50.00mil -50.00mil 10.00mil]
+
+	)
+
+Element["" "lm358p" "U2" "unknown" 2835.00mil 1773.00mil 0.0000 -2.0160mm 0 100 ""]
+(
+	Pin[-150.00mil -150.00mil 80.00mil 0.0000 80.00mil 40.00mil "1" "1" "square"]
+	Pin[-150.00mil -50.00mil 80.00mil 0.0000 80.00mil 40.00mil "2" "2" ""]
+	Pin[-150.00mil 50.00mil 80.00mil 0.0000 80.00mil 40.00mil "3" "3" ""]
+	Pin[-150.00mil 150.00mil 80.00mil 0.0000 80.00mil 40.00mil "4" "4" ""]
+	Pin[150.00mil 150.00mil 80.00mil 0.0000 80.00mil 40.00mil "5" "5" ""]
+	Pin[150.00mil 50.00mil 80.00mil 0.0000 80.00mil 40.00mil "6" "6" ""]
+	Pin[150.00mil -50.00mil 80.00mil 0.0000 80.00mil 40.00mil "7" "7" ""]
+	Pin[150.00mil -150.00mil 80.00mil 0.0000 80.00mil 40.00mil "8" "8" ""]
+	ElementLine [200.00mil 200.00mil -200.00mil 200.00mil 10.00mil]
+	ElementLine [-200.00mil 200.00mil -200.00mil -200.00mil 10.00mil]
+	ElementLine [-200.00mil -200.00mil 200.00mil -200.00mil 10.00mil]
+	ElementLine [200.00mil -200.00mil 200.00mil 200.00mil 10.00mil]
+	ElementLine [-200.00mil -200.00mil -100.00mil -200.00mil 10.00mil]
+	ElementLine [-100.00mil -200.00mil -100.00mil -100.00mil 10.00mil]
+	ElementLine [-100.00mil -100.00mil -200.00mil -100.00mil 10.00mil]
+	ElementLine [-200.00mil -100.00mil -200.00mil -200.00mil 10.00mil]
+
+	)
 Layer(1 "component")
 (
 )
@@ -1390,4 +1428,107 @@ Layer(9 "silk")
 )
 Layer(10 "silk")
 (
+)
+NetList()
+(
+	Net("GND" "(unknown)")
+	(
+		Connect("C1-1")
+		Connect("C2-1")
+		Connect("CONN2-1")
+		Connect("CONN3-2")
+		Connect("CONN4-6")
+		Connect("CONN5-4")
+		Connect("Q1-S")
+		Connect("R1-1")
+		Connect("R3-2")
+		Connect("R4-1")
+		Connect("U1-4")
+		Connect("U2-4")
+	)
+	Net("Iron" "(unknown)")
+	(
+		Connect("CONN1-1")
+		Connect("Q1-D")
+	)
+	Net("Iron_control" "(unknown)")
+	(
+		Connect("R1-2")
+		Connect("U1-3")
+	)
+	Net("Iron_EN" "(unknown)")
+	(
+		Connect("CONN4-1")
+		Connect("R6-1")
+		Connect("U1-6")
+	)
+	Net("Reset" "(unknown)")
+	(
+		Connect("CONN4-5")
+		Connect("U1-1")
+	)
+	Net("SCL" "(unknown)")
+	(
+		Connect("CONN4-3")
+		Connect("CONN5-1")
+		Connect("U1-7")
+	)
+	Net("SDA" "(unknown)")
+	(
+		Connect("CONN4-4")
+		Connect("CONN5-2")
+		Connect("U1-5")
+	)
+	Net("Temp" "(unknown)")
+	(
+		Connect("CONN1-5")
+		Connect("U2-3")
+	)
+	Net("Temp_amped" "(unknown)")
+	(
+		Connect("U1-2")
+		Connect("U2-6")
+		Connect("U2-7")
+	)
+	Net("unnamed_net1" "(unknown)")
+	(
+		Connect("CONN1-4")
+		Connect("R2-2")
+		Connect("R3-1")
+	)
+	Net("unnamed_net2" "(unknown)")
+	(
+		Connect("R4-2")
+		Connect("R5-2")
+		Connect("U2-2")
+	)
+	Net("unnamed_net3" "(unknown)")
+	(
+		Connect("R5-1")
+		Connect("U2-1")
+		Connect("U2-5")
+	)
+	Net("unnamed_net4" "(unknown)")
+	(
+		Connect("Q1-G")
+		Connect("R6-2")
+	)
+	Net("Vcc5" "(unknown)")
+	(
+		Connect("C2-2")
+		Connect("CONN3-3")
+		Connect("CONN4-2")
+		Connect("CONN5-3")
+		Connect("R1-3")
+		Connect("R2-1")
+		Connect("U1-8")
+		Connect("U2-8")
+	)
+	Net("Vcc24" "(unknown)")
+	(
+		Connect("C1-2")
+		Connect("CONN1-2")
+		Connect("CONN2-2")
+		Connect("CONN3-1")
+	)
 )
