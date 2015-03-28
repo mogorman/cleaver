@@ -33,9 +33,9 @@ attiny85
 2 Temperature probe from iron
 3 pot for control of the iron
 4 Gnd
-5 pwm for iron, led to alert user its heating
-6 SCL for display
-7 SDA for display
+5 SDA for display
+6 pwm for iron, led to alert user its heating
+7 SCL for display
 8 Vcc, led to show its on
 
 
