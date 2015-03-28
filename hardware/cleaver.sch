@@ -49,7 +49,7 @@ refdes=CONN1
 T 42400 45950 5 10 0 0 0 6 1
 device=CONNECTOR_5
 T 42400 46150 5 10 0 0 0 6 1
-footprint=SIP5N
+footprint=JUMPER5
 }
 C 41800 51200 1 0 0 pwrjack-1.sym
 {
@@ -84,7 +84,9 @@ device=CONNECTOR_3
 T 47700 52700 5 10 1 1 0 0 1
 refdes=CONN3
 T 47700 51300 5 10 1 1 0 0 1
-footprint=7805
+value=7805
+T 48000 52400 5 10 0 1 0 0 1
+footprint=TO220
 }
 C 50800 52300 1 0 1 input-2.sym
 {
