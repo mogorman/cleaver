@@ -1399,6 +1399,51 @@ Element["" "lm358p" "U2" "unknown" 2835.00mil 1773.00mil 0.0000 -2.0160mm 0 100 
 	ElementLine [-200.00mil -100.00mil -200.00mil -200.00mil 10.00mil]
 
 	)
+
+Element["selected" "0805" "R6" "100" 175.00mil 140.00mil -31.50mil -31.50mil 0 100 "selected"]
+(
+	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "1" "1" "selected,square"]
+	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "2" "2" "selected,square"]
+	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 8.00mil]
+	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 8.00mil]
+
+	)
+
+Element["selected" "0805" "R5" "100K" 415.00mil 140.00mil -31.50mil -31.50mil 0 100 "selected"]
+(
+	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "1" "1" "selected,square"]
+	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "2" "2" "selected,square"]
+	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 8.00mil]
+	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 8.00mil]
+
+	)
+
+Element["selected" "0805" "R4" "1K" 660.00mil 140.00mil -31.50mil -31.50mil 0 100 "selected"]
+(
+	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "1" "1" "selected,square"]
+	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "2" "2" "selected,square"]
+	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 8.00mil]
+	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 8.00mil]
+
+	)
+
+Element["selected" "0805" "R3" "100" 900.00mil 140.00mil -31.50mil -31.50mil 0 100 "selected"]
+(
+	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "1" "1" "selected,square"]
+	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "2" "2" "selected,square"]
+	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 8.00mil]
+	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 8.00mil]
+
+	)
+
+Element["selected" "0805" "R2" "100K" 1145.00mil 140.00mil -31.50mil -31.50mil 0 100 "selected"]
+(
+	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "1" "1" "selected,square"]
+	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 20.00mil 57.18mil "2" "2" "selected,square"]
+	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 8.00mil]
+	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 8.00mil]
+
+	)
 Layer(1 "component")
 (
 )
@@ -1438,7 +1483,7 @@ NetList()
 		Connect("CONN2-1")
 		Connect("CONN3-2")
 		Connect("CONN4-6")
-		Connect("CONN5-4")
+		Connect("CONN5-3")
 		Connect("Q1-S")
 		Connect("R1-1")
 		Connect("R3-2")
@@ -1470,13 +1515,13 @@ NetList()
 	Net("SCL" "(unknown)")
 	(
 		Connect("CONN4-3")
-		Connect("CONN5-1")
+		Connect("CONN5-2")
 		Connect("U1-7")
 	)
 	Net("SDA" "(unknown)")
 	(
 		Connect("CONN4-4")
-		Connect("CONN5-2")
+		Connect("CONN5-1")
 		Connect("U1-5")
 	)
 	Net("Temp" "(unknown)")
@@ -1518,7 +1563,7 @@ NetList()
 		Connect("C2-2")
 		Connect("CONN3-3")
 		Connect("CONN4-2")
-		Connect("CONN5-3")
+		Connect("CONN5-4")
 		Connect("R1-3")
 		Connect("R2-1")
 		Connect("U1-8")
