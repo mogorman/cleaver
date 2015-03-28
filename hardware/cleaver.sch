@@ -27,10 +27,8 @@ T 60800 38500 14 10 1 0 0 0 1
 This schematic is licensed GPLv3
 C 48300 46200 1 0 0 attiny85.sym
 {
-T 50400 48400 5 10 1 1 0 0 1
+T 48500 48400 5 10 1 1 0 0 1
 refdes=U1
-T 49500 48400 5 10 1 1 0 0 1
-footprint=attiny85
 T 49900 47100 5 10 0 1 0 0 1
 footprint=TSSOP8
 }

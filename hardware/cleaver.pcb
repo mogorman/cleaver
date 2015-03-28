@@ -1462,6 +1462,25 @@ Element["" "0805" "C1" "0.1uF" 1625.00mil 140.00mil -31.50mil -31.50mil 0 100 ""
 	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 8.00mil]
 
 	)
+
+Element["" "TSSOP8" "U1" "unknown" 1995.00mil 1168.00mil -20.00mil -60.00mil 0 100 ""]
+(
+	Pad[-111.61mil -38.38mil -65.55mil -38.38mil 12.99mil 10.00mil 22.99mil "1" "1" "square"]
+	Pad[-111.61mil -12.79mil -65.55mil -12.79mil 12.99mil 10.00mil 22.99mil "2" "2" "square"]
+	Pad[-111.61mil 12.79mil -65.55mil 12.79mil 12.99mil 10.00mil 22.99mil "3" "3" "square"]
+	Pad[-111.61mil 38.38mil -65.55mil 38.38mil 12.99mil 10.00mil 22.99mil "4" "4" "square"]
+	Pad[65.55mil 38.38mil 111.61mil 38.38mil 12.99mil 10.00mil 22.99mil "5" "5" "square,edge2"]
+	Pad[65.55mil 12.79mil 111.61mil 12.79mil 12.99mil 10.00mil 22.99mil "6" "6" "square,edge2"]
+	Pad[65.55mil -12.79mil 111.61mil -12.79mil 12.99mil 10.00mil 22.99mil "7" "7" "square,edge2"]
+	Pad[65.55mil -38.38mil 111.61mil -38.38mil 12.99mil 10.00mil 22.99mil "8" "8" "square,edge2"]
+	ElementLine [-128.11mil -54.88mil -128.11mil 54.88mil 10.00mil]
+	ElementLine [-128.11mil 54.88mil 128.11mil 54.88mil 10.00mil]
+	ElementLine [128.11mil 54.88mil 128.11mil -54.88mil 10.00mil]
+	ElementLine [-128.11mil -54.88mil -25.00mil -54.88mil 10.00mil]
+	ElementLine [128.11mil -54.88mil 25.00mil -54.88mil 10.00mil]
+	ElementArc [0.0000 -54.88mil 25.00mil 25.00mil 0 180 10.00mil]
+
+	)
 Layer(1 "component")
 (
 )
@@ -1494,104 +1513,104 @@ Layer(10 "silk")
 )
 NetList()
 (
-	Net("GND" "(unknown)")
+	Net("unnamed_net4" "(unknown)")
 	(
-		Connect("C1-1")
-		Connect("C2-1")
-		Connect("CONN2-1")
-		Connect("CONN3-2")
-		Connect("CONN4-6")
-		Connect("CONN5-3")
-		Connect("Q1-S")
-		Connect("R1-1")
-		Connect("R3-2")
-		Connect("R4-1")
-		Connect("U1-4")
-		Connect("U2-4")
+		Connect("R6-2")
+		Connect("Q1-G")
+	)
+	Net("unnamed_net3" "(unknown)")
+	(
+		Connect("U2-1")
+		Connect("R5-1")
+		Connect("U2-5")
+	)
+	Net("unnamed_net2" "(unknown)")
+	(
+		Connect("R5-2")
+		Connect("R4-2")
+		Connect("U2-2")
+	)
+	Net("Temp" "(unknown)")
+	(
+		Connect("U2-3")
+		Connect("CONN1-5")
+	)
+	Net("unnamed_net1" "(unknown)")
+	(
+		Connect("R3-1")
+		Connect("R2-2")
+		Connect("CONN1-4")
+	)
+	Net("Vcc24" "(unknown)")
+	(
+		Connect("C1-2")
+		Connect("CONN3-1")
+		Connect("CONN2-2")
+		Connect("CONN1-2")
 	)
 	Net("Iron" "(unknown)")
 	(
-		Connect("CONN1-1")
 		Connect("Q1-D")
+		Connect("CONN1-1")
+	)
+	Net("SCL" "(unknown)")
+	(
+		Connect("CONN5-2")
+		Connect("CONN4-3")
+		Connect("U1-7")
+	)
+	Net("Vcc5" "(unknown)")
+	(
+		Connect("CONN5-4")
+		Connect("R2-1")
+		Connect("CONN4-2")
+		Connect("U2-8")
+		Connect("R1-3")
+		Connect("C2-2")
+		Connect("CONN3-3")
+		Connect("U1-8")
+	)
+	Net("Iron_EN" "(unknown)")
+	(
+		Connect("R6-1")
+		Connect("CONN4-1")
+		Connect("U1-6")
+	)
+	Net("SDA" "(unknown)")
+	(
+		Connect("CONN5-1")
+		Connect("CONN4-4")
+		Connect("U1-5")
+	)
+	Net("GND" "(unknown)")
+	(
+		Connect("CONN5-3")
+		Connect("R4-1")
+		Connect("Q1-S")
+		Connect("R3-2")
+		Connect("CONN4-6")
+		Connect("U2-4")
+		Connect("R1-1")
+		Connect("C2-1")
+		Connect("C1-1")
+		Connect("CONN3-2")
+		Connect("CONN2-1")
+		Connect("U1-4")
 	)
 	Net("Iron_control" "(unknown)")
 	(
 		Connect("R1-2")
 		Connect("U1-3")
 	)
-	Net("Iron_EN" "(unknown)")
+	Net("Temp_amped" "(unknown)")
 	(
-		Connect("CONN4-1")
-		Connect("R6-1")
-		Connect("U1-6")
+		Connect("U2-7")
+		Connect("U2-6")
+		Connect("U1-2")
 	)
 	Net("Reset" "(unknown)")
 	(
 		Connect("CONN4-5")
 		Connect("U1-1")
-	)
-	Net("SCL" "(unknown)")
-	(
-		Connect("CONN4-3")
-		Connect("CONN5-2")
-		Connect("U1-7")
-	)
-	Net("SDA" "(unknown)")
-	(
-		Connect("CONN4-4")
-		Connect("CONN5-1")
-		Connect("U1-5")
-	)
-	Net("Temp" "(unknown)")
-	(
-		Connect("CONN1-5")
-		Connect("U2-3")
-	)
-	Net("Temp_amped" "(unknown)")
-	(
-		Connect("U1-2")
-		Connect("U2-6")
-		Connect("U2-7")
-	)
-	Net("unnamed_net1" "(unknown)")
-	(
-		Connect("CONN1-4")
-		Connect("R2-2")
-		Connect("R3-1")
-	)
-	Net("unnamed_net2" "(unknown)")
-	(
-		Connect("R4-2")
-		Connect("R5-2")
-		Connect("U2-2")
-	)
-	Net("unnamed_net3" "(unknown)")
-	(
-		Connect("R5-1")
-		Connect("U2-1")
-		Connect("U2-5")
-	)
-	Net("unnamed_net4" "(unknown)")
-	(
-		Connect("Q1-G")
-		Connect("R6-2")
-	)
-	Net("Vcc5" "(unknown)")
-	(
-		Connect("C2-2")
-		Connect("CONN3-3")
-		Connect("CONN4-2")
-		Connect("CONN5-4")
-		Connect("R1-3")
-		Connect("R2-1")
-		Connect("U1-8")
-		Connect("U2-8")
-	)
-	Net("Vcc24" "(unknown)")
-	(
-		Connect("C1-2")
-		Connect("CONN1-2")
-		Connect("CONN2-2")
-		Connect("CONN3-1")
 	)
 )
