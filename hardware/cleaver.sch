@@ -31,7 +31,7 @@ T 50400 48400 5 10 1 1 0 0 1
 refdes=U1
 T 49500 48400 5 10 1 1 0 0 1
 footprint=attiny85
-T 49900 47100 5 10 1 1 0 0 1
+T 49900 47100 5 10 0 1 0 0 1
 footprint=TSSOP8
 }
 C 50600 45900 1 0 0 ground.sym
