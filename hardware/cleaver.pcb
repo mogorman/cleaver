@@ -1763,6 +1763,7 @@ Layer(1 "component")
 	Text[2170.00mil 2813.00mil 0 100 "R2" "clearline"]
 	Text[2215.00mil 3353.00mil 0 54 "2" "clearline"]
 	Text[2170.00mil 3323.00mil 0 100 "H   0" "clearline"]
+	Text[3040.00mil 2513.00mil 0 100 "@rev@" "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[1215.00mil 3928.00mil] [3580.00mil 3928.00mil] [3580.00mil 2463.00mil] [1215.00mil 2463.00mil] 
