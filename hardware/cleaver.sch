@@ -10,9 +10,9 @@ footprint=oshw
 }
 C 40300 37800 0 0 0 title-A2.sym
 T 56600 38500 14 10 1 0 0 0 1
-Spam
+Cleaver
 T 56500 38200 14 8 1 0 0 0 1
-http://dev.meatstand.com/meatstand/spam.git
+http://dev.meatstand.com/meatstand/cleaver.git
 T 57600 37900 14 10 1 0 0 0 1
 1
 T 58100 37900 14 10 1 0 0 0 1
