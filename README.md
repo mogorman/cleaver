@@ -41,3 +41,9 @@ attiny85
 
 
 red / green bi led for power / heat
+
+
+parts
+erc802 23.5 x 36mm
+attiny85
+lm38l05
