@@ -30,7 +30,7 @@ C 48300 46200 1 0 0 attiny85.sym
 T 48500 48400 5 10 1 1 0 0 1
 refdes=U1
 T 49900 47100 5 10 0 1 0 0 1
-footprint=TSSOP8
+footprint=SO8
 }
 C 50600 45900 1 0 0 ground.sym
 C 54500 46600 1 0 1 input-2.sym
