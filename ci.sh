@@ -6,13 +6,19 @@ copy_files() {
     local new_copy="$1"
     local old_copy="$2"
     local versioned=`git rev-parse --short HEAD`"_$1"
+
     if diff "$new_copy" "$old_copy" 2>/dev/null ; then
 	echo Same file nothing to do
     else
 	echo File changed make copies.
 	cp "$1" "$2"
 	cp "$1" "/home/gitlab_ci_runner/artifacts/${Project}/build/"`git rev-parse --short HEAD`_"$1"
-    fi    
+    fi
+    if [ ! -f "$2" ]; then
+	echo File changed make copies.
+	cp "$1" "$2"
+	cp "$1" "/home/gitlab_ci_runner/artifacts/${Project}/build/"`git rev-parse --short HEAD`_"$1"
+    fi
 }
 
 git submodule update --init
