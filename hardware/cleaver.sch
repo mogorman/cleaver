@@ -502,3 +502,67 @@ value=Vcc5
 }
 C 56200 45100 1 270 1 ground.sym
 C 43000 44500 1 90 0 ground.sym
+C 53200 44600 1 0 0 led-1.sym
+{
+T 54000 45200 5 10 0 0 0 0 1
+device=LED
+T 54000 45000 5 10 1 1 0 0 1
+refdes=LED1
+T 54000 45400 5 10 0 0 0 0 1
+symversion=0.1
+T 53700 44800 5 10 0 1 0 0 1
+footprint=JUMPER2
+}
+C 52300 44700 1 0 0 resistor-1.sym
+{
+T 52600 45100 5 10 0 0 0 0 1
+device=RESISTOR
+T 52500 45000 5 10 1 1 0 0 1
+refdes=R7
+T 52500 44500 5 10 1 1 0 0 1
+value=220
+T 53000 44600 5 10 0 1 0 0 1
+footprint=0805
+}
+C 54400 44600 1 90 0 ground.sym
+C 50900 44700 1 0 0 input-2.sym
+{
+T 50900 44900 5 10 0 0 0 0 1
+net=Vcc5:1
+T 51500 45400 5 10 0 0 0 0 1
+device=none
+T 51400 44800 5 10 1 1 0 7 1
+value=Vcc5
+}
+C 50900 43700 1 0 0 input-2.sym
+{
+T 50900 43900 5 10 0 0 0 0 1
+net=Iron_EN:1
+T 51500 44400 5 10 0 0 0 0 1
+device=none
+T 50700 43800 5 10 1 1 180 7 1
+value=Iron_EN
+}
+C 52300 43700 1 0 0 resistor-1.sym
+{
+T 52600 44100 5 10 0 0 0 0 1
+device=RESISTOR
+T 52500 44000 5 10 1 1 0 0 1
+refdes=R8
+T 52700 43500 5 10 1 1 0 0 1
+value=220
+T 52800 43800 5 10 0 1 0 0 1
+footprint=0805
+}
+C 53200 43600 1 0 0 led-1.sym
+{
+T 54000 44200 5 10 0 0 0 0 1
+device=LED
+T 54000 44000 5 10 1 1 0 0 1
+refdes=LED2
+T 54000 44400 5 10 0 0 0 0 1
+symversion=0.1
+T 53800 43700 5 10 0 1 0 0 1
+footprint=1206
+}
+C 54400 43600 1 90 0 ground.sym
