@@ -58,3 +58,5 @@ white	2, postive of 20v
 black	3 EARTH GROUND
 red	4 V+ of thermal
 green	5 V- of thermal
+
+laptop power supply 7 dollars
