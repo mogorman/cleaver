@@ -47,3 +47,14 @@ parts
 erc802 23.5 x 36mm
 attiny85
 lm38l05
+
+
+
+
+MALE end 
+CW 1,2,3,4,5
+blue	1, GROUND OF 20v
+white	2, postive of 20v
+black	3 EARTH GROUND
+red	4 V+ of thermal
+green	5 V- of thermal
