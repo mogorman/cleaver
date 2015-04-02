@@ -1,7 +1,6 @@
 PCBNAME=cleaver
 AUTHOR="Matthew O'Gorman <mog@rldn.net>  , Tim Heath <crashcartpro@gmail.com>"
-#REV=7.0
-STACK=+
+STACK=-
 SOLDERMASK=red
 SILKSCREEN=white
 #CUSTOMPCB=/home/mog/nonapt/pcb/src/pcb
