@@ -1628,16 +1628,16 @@ Element["" "TO251" "Q1" "unknown" 2692.00mil 3778.00mil -42.00mil -140.00mil 3 1
 
 	)
 
-Element["" "din6" "CONN1" "unknown" 4210.00mil 3203.00mil -60.00mil 35.00mil 0 100 ""]
+Element["" "din6" "CONN1" "unknown" 4255.00mil 3083.00mil -60.00mil 35.00mil 0 100 ""]
 (
 	Pin[0.0000 0.0000 60.00mil 20.00mil 66.00mil 39.00mil "GND" "2" ""]
 	Pin[4.9000mm 0.0000 60.00mil 20.00mil 66.00mil 39.00mil "Center" "8" ""]
-	Pin[0.0000 -7.5000mm 60.00mil 20.00mil 66.00mil 39.00mil "" "6" ""]
-	Pin[0.0000 7.5000mm 60.00mil 20.00mil 66.00mil 39.00mil "" "7" ""]
-	Pin[2.6000mm 5.0000mm 60.00mil 20.00mil 66.00mil 39.00mil "" "4" ""]
-	Pin[2.6000mm -5.0000mm 60.00mil 20.00mil 66.00mil 39.00mil "" "5" ""]
-	Pin[-9.6000mm 5.0000mm 60.00mil 20.00mil 66.00mil 39.00mil "" "4" ""]
-	Pin[-9.6000mm -5.0000mm 60.00mil 20.00mil 66.00mil 39.00mil "" "5" ""]
+	Pin[0.0000 -7.5000mm 60.00mil 20.00mil 66.00mil 39.00mil "V+" "6" ""]
+	Pin[0.0000 7.5000mm 60.00mil 20.00mil 66.00mil 39.00mil "T+" "7" ""]
+	Pin[2.6000mm 5.0000mm 60.00mil 20.00mil 66.00mil 39.00mil "T-" "5" ""]
+	Pin[2.6000mm -5.0000mm 60.00mil 20.00mil 66.00mil 39.00mil "V-" "4" ""]
+	Pin[-9.6000mm 5.0000mm 60.00mil 20.00mil 66.00mil 39.00mil "GND" "9" ""]
+	Pin[-9.6000mm -5.0000mm 60.00mil 20.00mil 66.00mil 39.00mil "GND" "10" ""]
 	ElementLine [-12.4000mm 10.5000mm -12.4000mm -10.5000mm 10.00mil]
 	ElementLine [6.0000mm 10.5000mm 6.0000mm -10.5000mm 10.00mil]
 	ElementLine [-12.4000mm 10.5000mm 6.0000mm 10.5000mm 10.00mil]
@@ -1654,7 +1654,10 @@ Rat[2257.50mil 3268.00mil 0 2257.50mil 3218.00mil 0  ""]
 Rat[2257.50mil 3268.00mil 0 2385.00mil 3345.00mil 0  ""]
 Rat[2385.00mil 3345.00mil 0 2872.50mil 3328.00mil 0  ""]
 Rat[2872.50mil 3328.00mil 0 2715.00mil 2828.00mil 1  ""]
-Rat[2715.00mil 2828.00mil 1 89.3082mm 1748.00mil 0  ""]
+Rat[2872.50mil 3328.00mil 0 98.4770mm 83.3082mm 1  ""]
+Rat[98.4770mm 83.3082mm 1 98.4770mm 73.3082mm 1  ""]
+Rat[98.4770mm 73.3082mm 1 112.9770mm 3083.00mil 1  ""]
+Rat[98.4770mm 73.3082mm 1 89.3082mm 1748.00mil 0  ""]
 Rat[89.3082mm 1748.00mil 0 3940.00mil 38.5844mm 0  ""]
 Rat[3940.00mil 38.5844mm 0 103.1055mm 26.9093mm 1  ""]
 Rat[103.1055mm 26.9093mm 1 3165.00mil 265.00mil 1  ""]
@@ -1668,19 +1671,17 @@ Rat[2815.00mil 2728.00mil 1 3142.50mil 3228.00mil 0  ""]
 Rat[2815.00mil 2728.00mil 1 55.4589mm 68.2470mm 0  ""]
 Rat[2815.00mil 2828.00mil 1 3142.50mil 3328.00mil 0  ""]
 Rat[2815.00mil 2828.00mil 1 54.4589mm 68.2470mm 0  ""]
-Rat[97.3340mm 76.3562mm 1 109.5340mm 76.3562mm 1  ""]
-Rat[97.3340mm 76.3562mm 1 2385.00mil 3295.00mil 0  "selected"]
+Rat[4255.00mil 85.8082mm 1 2385.00mil 3295.00mil 0  ""]
 Rat[2872.50mil 3228.00mil 0 2655.00mil 3245.00mil 0  ""]
 Rat[2655.00mil 3245.00mil 0 2655.00mil 3295.00mil 0  ""]
-Rat[97.3340mm 86.3562mm 1 109.5340mm 86.3562mm 1  ""]
-Rat[97.3340mm 86.3562mm 1 101.8758mm 38.5844mm 0  ""]
-Rat[101.8758mm 38.5844mm 0 56.9232mm 50.9814mm 0  ""]
 Rat[1120.00mil 55.3484mm 0 49.6842mm 2123.00mil 0  ""]
 Rat[49.6842mm 2123.00mil 0 2385.00mil 3245.00mil 0  ""]
 Rat[49.6842mm 55.7240mm 0 2385.00mil 3195.00mil 0  ""]
 Rat[2385.00mil 3195.00mil 0 2655.00mil 3345.00mil 0  ""]
 Rat[3165.00mil 165.00mil 1 75.5759mm 146.07mil 0  ""]
 Rat[60.2221mm 138.19mil 0 69.4799mm 146.07mil 0  ""]
+Rat[110.6770mm 83.3082mm 1 101.8758mm 38.5844mm 0  ""]
+Rat[101.8758mm 38.5844mm 0 56.9232mm 50.9814mm 0  ""]
 Rat[89.3082mm 46.1990mm 0 110.6239mm 26.9093mm 1  ""]
 Rat[89.3082mm 46.1990mm 0 2915.00mil 2828.00mil 1  ""]
 Rat[2915.00mil 2828.00mil 1 3142.50mil 3178.00mil 0  ""]
@@ -1691,7 +1692,7 @@ Rat[52.4589mm 68.2470mm 0 56.9232mm 2078.00mil 0  ""]
 Rat[110.6239mm 26.9093mm 1 73.7761mm 146.07mil 0  ""]
 Rat[651.07mil 58.3910mm 0 1570.00mil 3203.00mil 1  ""]
 Rat[1570.00mil 3203.00mil 1 2257.50mil 3168.00mil 0  ""]
-Rat[2257.50mil 3168.00mil 0 4210.00mil 3203.00mil 1  ""]
+Rat[2257.50mil 3168.00mil 0 4255.00mil 70.8082mm 1  ""]
 Layer(1 "component")
 (
 )
@@ -1784,7 +1785,9 @@ NetList()
 	(
 		Connect("C1-1")
 		Connect("C2-1")
-		Connect("CONN1-3")
+		Connect("CONN1-8")
+		Connect("CONN1-9")
+		Connect("CONN1-10")
 		Connect("CONN2-1")
 		Connect("CONN3-2")
 		Connect("CONN3-3")
@@ -1803,7 +1806,7 @@ NetList()
 	)
 	Net("Iron" "(unknown)")
 	(
-		Connect("CONN1-1")
+		Connect("CONN1-4")
 		Connect("Q1-D")
 	)
 	Net("Iron_control" "(unknown)")
@@ -1837,7 +1840,7 @@ NetList()
 	)
 	Net("Temp" "(unknown)")
 	(
-		Connect("CONN1-5")
+		Connect("CONN1-7")
 		Connect("U2-3")
 	)
 	Net("Temp_amped" "(unknown)")
@@ -1848,36 +1851,36 @@ NetList()
 	)
 	Net("unnamed_net1" "(unknown)")
 	(
-		Connect("CONN1-4")
-		Connect("R2-2")
-		Connect("R3-1")
-	)
-	Net("unnamed_net2" "(unknown)")
-	(
 		Connect("R4-2")
 		Connect("R5-2")
 		Connect("U2-2")
 	)
-	Net("unnamed_net3" "(unknown)")
+	Net("unnamed_net2" "(unknown)")
 	(
 		Connect("R5-1")
 		Connect("U2-1")
 		Connect("U2-5")
 	)
-	Net("unnamed_net4" "(unknown)")
+	Net("unnamed_net3" "(unknown)")
 	(
 		Connect("Q1-G")
 		Connect("R6-2")
 	)
-	Net("unnamed_net5" "(unknown)")
+	Net("unnamed_net4" "(unknown)")
 	(
 		Connect("LED1-1")
 		Connect("R7-2")
 	)
-	Net("unnamed_net6" "(unknown)")
+	Net("unnamed_net5" "(unknown)")
 	(
 		Connect("LED2-1")
 		Connect("R8-2")
+	)
+	Net("unnamed_net6" "(unknown)")
+	(
+		Connect("CONN1-5")
+		Connect("R2-2")
+		Connect("R3-1")
 	)
 	Net("Vcc5" "(unknown)")
 	(
@@ -1894,7 +1897,7 @@ NetList()
 	Net("Vcc24" "(unknown)")
 	(
 		Connect("C1-2")
-		Connect("CONN1-2")
+		Connect("CONN1-6")
 		Connect("CONN2-2")
 		Connect("CONN3-8")
 	)

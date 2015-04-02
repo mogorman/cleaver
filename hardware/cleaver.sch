@@ -42,15 +42,6 @@ device=none
 T 54000 46700 5 10 1 1 0 1 1
 value=Vcc5
 }
-C 42700 43500 1 0 1 connector5-2.sym
-{
-T 42000 46000 5 10 1 1 0 0 1
-refdes=CONN1
-T 42400 45950 5 10 0 0 0 6 1
-device=CONNECTOR_5
-T 42400 46150 5 10 0 0 0 6 1
-footprint=din6
-}
 C 41800 51200 1 0 0 pwrjack-1.sym
 {
 T 41900 51700 5 10 0 0 0 0 1
@@ -68,15 +59,6 @@ net=Vcc24:1
 T 42900 52100 5 10 0 0 0 0 1
 device=none
 T 43600 51500 5 10 1 1 0 1 1
-value=Vcc24
-}
-C 44100 45000 1 0 1 input-2.sym
-{
-T 44100 45200 5 10 0 0 0 6 1
-net=Vcc24:1
-T 43500 45700 5 10 0 0 0 6 1
-device=none
-T 43600 45100 5 10 1 1 0 1 1
 value=Vcc24
 }
 C 47300 52300 1 0 1 input-2.sym
@@ -200,58 +182,6 @@ T 60000 53600 5 10 0 0 0 6 1
 device=none
 T 60100 53000 5 10 1 1 0 1 1
 value=Vcc5
-}
-C 44700 45300 1 270 0 resistor-1.sym
-{
-T 45100 45000 5 10 0 0 270 0 1
-device=RESISTOR
-T 44400 44700 5 10 1 1 0 0 1
-refdes=R2
-T 44900 44600 5 10 1 1 0 0 1
-value=100K
-T 44700 45300 5 10 0 1 0 0 1
-footprint=0805
-}
-C 44700 44200 1 270 0 resistor-1.sym
-{
-T 45100 43900 5 10 0 0 270 0 1
-device=RESISTOR
-T 44400 43600 5 10 1 1 0 0 1
-refdes=R3
-T 44900 43600 5 10 1 1 0 0 1
-value=100
-T 44700 44200 5 10 0 1 0 0 1
-footprint=0805
-}
-C 44900 46700 1 90 1 input-2.sym
-{
-T 44700 46700 5 10 0 0 90 6 1
-net=Vcc5:1
-T 44200 46100 5 10 0 0 90 6 1
-device=none
-T 45000 46200 5 10 1 1 180 1 1
-value=Vcc5
-}
-C 44600 43000 1 0 0 ground.sym
-N 44800 44400 44800 44200 4
-N 44800 44300 42700 44300 4
-C 42700 43800 1 0 0 output-2.sym
-{
-T 43600 44000 5 10 0 0 0 0 1
-net=Temp:1
-T 42900 44500 5 10 0 0 0 0 1
-device=none
-T 43600 43900 5 10 1 1 0 1 1
-value=Temp
-}
-C 42700 45400 1 0 0 output-2.sym
-{
-T 43600 45600 5 10 0 0 0 0 1
-net=Iron:1
-T 42900 46100 5 10 0 0 0 0 1
-device=none
-T 43600 45500 5 10 1 1 0 1 1
-value=Iron
 }
 C 48900 42900 1 0 0 mosfet-with-diode-1.sym
 {
@@ -501,7 +431,6 @@ T 59500 46300 5 10 1 1 180 1 1
 value=Vcc5
 }
 C 56200 45100 1 270 1 ground.sym
-C 43000 44500 1 90 0 ground.sym
 C 53200 44600 1 0 0 led-1.sym
 {
 T 54000 45200 5 10 0 0 0 0 1
@@ -566,3 +495,76 @@ T 53800 43700 5 10 0 1 0 0 1
 footprint=1206
 }
 C 54400 43600 1 90 0 ground.sym
+C 42800 38600 1 0 1 connector10-2.sym
+{
+T 42100 43100 5 10 1 1 0 0 1
+refdes=CONN1
+T 42500 43050 5 10 0 0 0 6 1
+device=CONNECTOR_10
+T 42500 43250 5 10 0 0 0 6 1
+footprint=din6
+}
+C 43100 39200 1 90 0 ground.sym
+C 43100 38800 1 90 0 ground.sym
+C 43100 39600 1 90 0 ground.sym
+C 42800 40100 1 0 0 output-2.sym
+{
+T 43700 40300 5 10 0 0 0 0 1
+net=Temp:1
+T 43000 40800 5 10 0 0 0 0 1
+device=none
+T 43700 40200 5 10 1 1 0 1 1
+value=Temp
+}
+C 44200 40500 1 0 1 input-2.sym
+{
+T 44200 40700 5 10 0 0 0 6 1
+net=Vcc24:1
+T 43600 41200 5 10 0 0 0 6 1
+device=none
+T 43700 40600 5 10 1 1 0 1 1
+value=Vcc24
+}
+C 42800 41300 1 0 0 output-2.sym
+{
+T 43700 41500 5 10 0 0 0 0 1
+net=Iron:1
+T 43000 42000 5 10 0 0 0 0 1
+device=none
+T 43700 41400 5 10 1 1 0 1 1
+value=Iron
+}
+C 44800 42000 1 270 0 resistor-1.sym
+{
+T 45200 41700 5 10 0 0 270 0 1
+device=RESISTOR
+T 44800 42000 5 10 0 1 0 0 1
+footprint=0805
+T 44500 41400 5 10 1 1 0 0 1
+refdes=R2
+T 45000 41300 5 10 1 1 0 0 1
+value=100K
+}
+C 44800 40900 1 270 0 resistor-1.sym
+{
+T 45200 40600 5 10 0 0 270 0 1
+device=RESISTOR
+T 44800 40900 5 10 0 1 0 0 1
+footprint=0805
+T 44500 40300 5 10 1 1 0 0 1
+refdes=R3
+T 45000 40300 5 10 1 1 0 0 1
+value=100
+}
+C 45000 43400 1 90 1 input-2.sym
+{
+T 44800 43400 5 10 0 0 90 6 1
+net=Vcc5:1
+T 44300 42800 5 10 0 0 90 6 1
+device=none
+T 45100 42900 5 10 1 1 180 1 1
+value=Vcc5
+}
+C 44700 39700 1 0 0 ground.sym
+N 44900 41100 44900 40900 4
+N 44900 41000 42800 41000 4
