@@ -49,7 +49,7 @@ refdes=CONN1
 T 42400 45950 5 10 0 0 0 6 1
 device=CONNECTOR_5
 T 42400 46150 5 10 0 0 0 6 1
-footprint=JUMPER5
+footprint=din6
 }
 C 41800 51200 1 0 0 pwrjack-1.sym
 {
