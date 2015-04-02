@@ -1,0 +1,12 @@
+*.sch~
+*.pcb-
+hardware/*.png
+hardware/bom
+hardware/gerbers
+hardware/hackvana_gerbers
+hardware/order
+hardware/*.ps
+hardware/*.zip
+hardware/*.pdf
+hardware/xy
+
