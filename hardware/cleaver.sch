@@ -361,39 +361,6 @@ device=none
 T 55400 53000 5 10 1 1 180 7 1
 value=Iron_EN
 }
-C 51600 50800 1 0 0 connector8-1.sym
-{
-T 51700 54000 5 10 0 0 0 0 1
-device=CONNECTOR_8
-T 51700 53400 5 10 1 1 0 0 1
-refdes=CONN3
-T 51600 50600 5 10 1 1 0 0 1
-value=78L05
-T 51900 53100 5 10 0 1 0 0 1
-footprint=SO8M
-}
-C 54700 50900 1 0 1 input-2.sym
-{
-T 54700 51100 5 10 0 0 0 6 1
-net=Vcc24:1
-T 54100 51600 5 10 0 0 0 6 1
-device=none
-T 54200 51000 5 10 1 1 0 1 1
-value=Vcc24
-}
-C 53300 53000 1 0 0 output-2.sym
-{
-T 54200 53200 5 10 0 0 0 0 1
-net=Vcc5:1
-T 53500 53700 5 10 0 0 0 0 1
-device=none
-T 54200 53100 5 10 1 1 0 1 1
-value=Vcc5
-}
-C 53600 52600 1 90 0 ground.sym
-C 53600 52300 1 90 0 ground.sym
-C 53600 51400 1 90 0 ground.sym
-C 53600 51100 1 90 0 ground.sym
 C 56400 45000 1 0 0 ymfc-go802lcd.sym
 {
 T 55900 46300 5 10 0 1 0 0 1
@@ -568,3 +535,31 @@ value=Vcc5
 C 44700 39700 1 0 0 ground.sym
 N 44900 41100 44900 40900 4
 N 44900 41000 42800 41000 4
+C 50200 51900 1 180 0 connector3-2.sym
+{
+T 49500 50200 5 10 1 1 180 6 1
+refdes=U3
+T 49900 50250 5 10 0 0 180 0 1
+device=CONNECTOR_3
+T 49900 50050 5 10 0 0 180 0 1
+footprint=DPAK_STD
+}
+C 51600 50600 1 0 1 input-2.sym
+{
+T 51600 50800 5 10 0 0 0 6 1
+net=Vcc24:1
+T 51000 51300 5 10 0 0 0 6 1
+device=none
+T 51100 50700 5 10 1 1 0 1 1
+value=Vcc24
+}
+C 50500 50900 1 90 0 ground.sym
+C 50200 51400 1 0 0 output-2.sym
+{
+T 51100 51600 5 10 0 0 0 0 1
+net=Vcc5:1
+T 50400 52100 5 10 0 0 0 0 1
+device=none
+T 51100 51500 5 10 1 1 0 1 1
+value=Vcc5
+}
