@@ -1781,7 +1781,6 @@ Layer(1 "component")
 )
 Layer(2 "solder")
 (
-	Line[111.2540mm 49.2032mm 111.2540mm 49.7032mm 20.00mil 28.00mil "clearline"]
 	Line[83.6450mm 70.4272mm 83.6450mm 59.7682mm 10.00mil 28.00mil "clearline"]
 	Line[83.6450mm 59.7682mm 79.2560mm 55.3792mm 10.00mil 28.00mil "clearline"]
 	Line[71.6150mm 52.1822mm 76.0590mm 52.1822mm 10.00mil 28.00mil "clearline"]
