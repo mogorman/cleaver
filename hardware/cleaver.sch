@@ -30,7 +30,7 @@ C 48300 46200 1 0 0 attiny85.sym
 T 48500 48400 5 10 1 1 0 0 1
 refdes=U1
 T 49900 47100 5 10 0 1 0 0 1
-footprint=SO8
+footprint=SO8M
 }
 C 50600 45900 1 0 0 ground.sym
 C 54500 46600 1 0 1 input-2.sym
@@ -135,7 +135,7 @@ name=LM358
 T 60600 49900 5 10 1 1 0 0 1
 refdes=U2
 T 59600 49700 5 10 0 1 0 0 1
-footprint=SO8
+footprint=SO8M
 }
 C 42600 48100 1 0 0 output-2.sym
 {
@@ -370,7 +370,7 @@ refdes=CONN3
 T 51600 50600 5 10 1 1 0 0 1
 value=78L05
 T 51900 53100 5 10 0 1 0 0 1
-footprint=SO8
+footprint=SO8M
 }
 C 54700 50900 1 0 1 input-2.sym
 {
