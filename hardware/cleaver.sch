@@ -190,7 +190,7 @@ device=NPN_TRANSISTOR
 T 49800 43400 5 10 1 1 0 0 1
 refdes=Q1
 T 50000 43000 5 10 0 1 0 0 1
-footprint=TO251
+footprint=DPAK
 }
 C 49300 42600 1 0 0 ground.sym
 C 49400 45300 1 270 0 input-2.sym
