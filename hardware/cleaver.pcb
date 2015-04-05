@@ -9,7 +9,7 @@ Grid[1968.503937 10.00mil 8.00mil 1]
 PolyArea[200000000.000000]
 Thermal[0.500000]
 DRC[10.00mil 10.00mil 10.00mil 6.00mil 15.00mil 10.00mil]
-Flags("showdrc,nameonpcb,clearnew,snappin")
+Flags("showdrc,nameonpcb,clearnew")
 Groups("1,c:2,s:3:4:5:6:7:8")
 Styles["Signal,10.00mil,20.00mil,28.00mil,14.00mil:Power,20.00mil,28.00mil,14.00mil,10.00mil:Fat,0.0000,0.01mil,0.0000,0.0000:Skinny,0.0000,0.0000,0.0000,6.00mil"]
 
@@ -1909,6 +1909,7 @@ Layer(10 "silk")
 	Text[105.0040mm 64.5952mm 0 100 "Tim Heath" "clearline"]
 	Text[71.7540mm 64.2032mm 0 100 "This board is licensed" "clearline"]
 	Text[73.7540mm 65.7032mm 0 100 "CC-BY-SA 4.0" "clearline"]
+	Text[76.2540mm 52.7032mm 0 100 "612" "clearline"]
 )
 NetList()
 (
