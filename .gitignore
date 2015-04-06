@@ -3,6 +3,7 @@
 hardware/*.png
 hardware/bom
 hardware/gerbers
+hardware/local_gerbers
 hardware/hackvana_gerbers
 hardware/order
 hardware/*.ps
