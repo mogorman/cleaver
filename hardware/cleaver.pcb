@@ -1622,9 +1622,9 @@ Element["" "DPAK_STD" "U3" "7805" 101.1280mm 40.7520mm -11.4710mm 11.8388mm 0 10
 
 Element["" "POT__CTS_296U-Series" "R1" "10K" 94.8813mm 69.8087mm -6.4593mm -13.5610mm 0 100 ""]
 (
-	Pin[148.00mil -394.00mil 77.00mil 50.00mil 97.00mil 61.00mil "" "1" "thermal(0X,1X)"]
-	Pin[0.0000 -394.00mil 77.00mil 28.00mil 97.00mil 61.00mil "" "2" ""]
-	Pin[-148.00mil -394.00mil 77.00mil 28.00mil 97.00mil 61.00mil "" "3" ""]
+	Pin[148.00mil -394.00mil 93.00mil 50.00mil 97.00mil 61.00mil "" "1" "thermal(0X,1X)"]
+	Pin[0.0000 -394.00mil 93.00mil 28.00mil 97.00mil 61.00mil "" "2" ""]
+	Pin[-148.00mil -394.00mil 93.00mil 28.00mil 97.00mil 61.00mil "" "3" ""]
 	Pin[-217.00mil 0.0000 150.00mil 28.00mil 170.00mil 125.00mil "" "4" "hole"]
 	Pin[217.00mil 0.0000 150.00mil 28.00mil 170.00mil 125.00mil "" "5" "hole"]
 	ElementLine [251.00mil 67.50mil 251.00mil 262.00mil 10.00mil]
