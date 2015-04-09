@@ -1,4 +1,4 @@
-ARDUINO_DIR=~/nonapt/arduino-1.6.0
+ARDUINO_DIR=~/nonapt/arduino-1.6.3
 ARDUINO=$(ARDUINO_DIR)/arduino
 AVRDUDE=/usr/bin/avrdude
 AVR_GCC=/usr/bin/avr-gcc
@@ -29,12 +29,15 @@ endif
 	@mkdir -p bin
 	@md5sum application/application.ino | cmp -s build/app.md5 -; \
 	 if test $$? -ne 0; then \
-	  xvfb-run -a $(ARDUINO) \
+	  ls build; \
+	  cp ./preferences.txt build/; \
+	  echo "sketchbook.path="`pwd`"/" >> build/preferences.txt; \
+	  $(ARDUINO) \
 	   --verbose-build \
-	   --pref target_platform=avr \
+	   --preferences-file ./build/preferences.txt \
 	   --pref build.path=`pwd`/build \
-	   --pref sketchbook.path=`pwd` \
 	   --verify `pwd`/application/application.ino; \
+	  echo Ardiono $$? result; \
 	  md5sum application/application.ino > build/app.md5; \
 	  $(ARDUINO_DIR)/hardware/tools/avr/bin/avr-objcopy -O srec -R .eeprom \
 	              build/application.cpp.elf bin/application.hex; \
