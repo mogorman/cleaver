@@ -407,7 +407,7 @@ refdes=LED1
 T 54000 45400 5 10 0 0 0 0 1
 symversion=0.1
 T 53700 44800 5 10 0 1 0 0 1
-footprint=JUMPER2
+footprint=LED3
 }
 C 52300 44700 1 0 0 resistor-1.sym
 {
@@ -459,7 +459,7 @@ refdes=LED2
 T 54000 44400 5 10 0 0 0 0 1
 symversion=0.1
 T 53800 43700 5 10 0 1 0 0 1
-footprint=1206
+footprint=LED3
 }
 C 54400 43600 1 90 0 ground.sym
 C 42800 38600 1 0 1 connector10-2.sym
