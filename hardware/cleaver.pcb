@@ -1227,7 +1227,7 @@ Via[112.0660mm 38.3952mm 3.2000mm 28.00mil 26.00mil 3.2000mm "" "hole,lock"]
 Via[112.0660mm 73.3952mm 3.2000mm 28.00mil 26.00mil 3.2000mm "" "hole,lock"]
 Via[69.2540mm 51.7032mm 60.00mil 30.00mil 0.0000 38.00mil "" ""]
 Via[81.7540mm 50.7032mm 60.00mil 30.00mil 0.0000 38.00mil "" ""]
-Via[77.2540mm 1720.60mil 60.00mil 30.00mil 0.0000 38.00mil "" "selected"]
+Via[77.2540mm 1720.60mil 60.00mil 30.00mil 0.0000 38.00mil "" ""]
 
 Element["" "0805" "R6" "100" 67.7540mm 48.7032mm -1.0483mm 1.0649mm 0 100 ""]
 (
@@ -1559,14 +1559,14 @@ Element["" "0805" "C1" "0.1uF" 104.7540mm 67.7032mm -3.6891mm -0.7131mm 0 100 ""
 
 Element["onsolder" "din6" "CONN1" "unknown" 58.2540mm 55.7032mm -60.00mil -35.00mil 0 100 "auto"]
 (
-	Pin[0.0000 0.0000 60.00mil 28.00mil 66.00mil 39.00mil "GND" "2" ""]
-	Pin[4.9000mm 0.0000 70.00mil 28.00mil 76.00mil 39.00mil "Center" "8" "thermal(0X,1X)"]
-	Pin[0.0000 7.5000mm 60.00mil 28.00mil 66.00mil 39.00mil "V+" "6" ""]
-	Pin[0.0000 -7.5000mm 60.00mil 28.00mil 66.00mil 39.00mil "T+" "7" ""]
-	Pin[2.6000mm -5.0000mm 60.00mil 28.00mil 66.00mil 39.00mil "T-" "5" ""]
-	Pin[2.6000mm 5.0000mm 60.00mil 28.00mil 66.00mil 39.00mil "V-" "4" ""]
-	Pin[-9.6000mm -5.0000mm 60.00mil 28.00mil 66.00mil 39.00mil "GND" "9" "thermal(0X,1X)"]
-	Pin[-9.6000mm 5.0000mm 60.00mil 28.00mil 66.00mil 39.00mil "GND" "10" "thermal(0X,1X)"]
+	Pin[0.0000 0.0000 93.00mil 28.00mil 97.00mil 61.00mil "GND" "2" "selected"]
+	Pin[4.9000mm 0.0000 93.00mil 28.00mil 97.00mil 61.00mil "Center" "8" "thermal(0X,1X)"]
+	Pin[0.0000 7.5000mm 93.00mil 28.00mil 97.00mil 61.00mil "V+" "6" ""]
+	Pin[0.0000 -7.5000mm 93.00mil 28.00mil 97.00mil 61.00mil "T+" "7" ""]
+	Pin[2.6000mm -5.0000mm 93.00mil 28.00mil 97.00mil 61.00mil "T-" "5" ""]
+	Pin[2.6000mm 5.0000mm 93.00mil 28.00mil 97.00mil 61.00mil "V-" "4" ""]
+	Pin[-9.6000mm -5.0000mm 93.00mil 28.00mil 97.00mil 61.00mil "GND" "9" "thermal(0X,1X)"]
+	Pin[-9.6000mm 5.0000mm 93.00mil 28.00mil 97.00mil 61.00mil "GND" "10" "thermal(0X,1X)"]
 	ElementLine [-12.4000mm 10.5000mm -12.4000mm -10.5000mm 10.00mil]
 	ElementLine [6.0000mm 10.5000mm 6.0000mm -10.5000mm 10.00mil]
 	ElementLine [-12.4000mm -10.5000mm 6.0000mm -10.5000mm 10.00mil]
@@ -1595,7 +1595,7 @@ Element["" "0805" "C2" "0.1uF" 84.7540mm 2114.30mil -0.6341mm -2.4569mm 0 100 ""
 Element["onsolder" "POT__CTS_296U-Series" "R1" "10K" 95.1267mm 70.7151mm 6.4593mm -13.5610mm 2 100 "auto"]
 (
 	Pin[-148.00mil -394.00mil 93.00mil 50.00mil 97.00mil 61.00mil "" "1" "thermal(0X,1X)"]
-	Pin[0.0000 -394.00mil 93.00mil 28.00mil 97.00mil 61.00mil "" "2" ""]
+	Pin[0.0000 -394.00mil 93.00mil 28.00mil 97.00mil 61.00mil "" "2" "selected"]
 	Pin[148.00mil -394.00mil 93.00mil 28.00mil 97.00mil 61.00mil "" "3" ""]
 	Pin[217.00mil 0.0000 150.00mil 28.00mil 170.00mil 125.00mil "" "4" "hole"]
 	Pin[-217.00mil 0.0000 150.00mil 28.00mil 170.00mil 125.00mil "" "5" "hole"]
@@ -1931,121 +1931,121 @@ Layer(10 "silk")
 )
 NetList()
 (
-	Net("unnamed_net6" "(unknown)")
+	Net("GND" "(unknown)")
 	(
-		Connect("R3-1")
-		Connect("R2-2")
-		Connect("CONN1-5")
-	)
-	Net("unnamed_net5" "(unknown)")
-	(
-		Connect("LED2-1")
-		Connect("R8-2")
-	)
-	Net("unnamed_net4" "(unknown)")
-	(
-		Connect("R7-2")
-		Connect("LED1-1")
-	)
-	Net("unnamed_net3" "(unknown)")
-	(
-		Connect("R6-2")
-		Connect("Q1-G")
+		Connect("C1-1")
+		Connect("C2-1")
+		Connect("CONN1-8")
+		Connect("CONN1-9")
+		Connect("CONN1-10")
+		Connect("CONN2-1")
+		Connect("CONN4-6")
+		Connect("D1-4")
+		Connect("LED1-2")
+		Connect("LED2-2")
+		Connect("Q1-S")
+		Connect("R1-1")
+		Connect("R3-2")
+		Connect("R4-1")
+		Connect("U1-4")
+		Connect("U2-4")
+		Connect("U3-2")
 	)
 	Net("Iron" "(unknown)")
 	(
 		Connect("CONN1-4")
 		Connect("Q1-D")
 	)
-	Net("unnamed_net2" "(unknown)")
+	Net("Iron_control" "(unknown)")
 	(
-		Connect("U2-1")
-		Connect("R5-1")
-		Connect("U2-5")
+		Connect("R1-2")
+		Connect("U1-3")
+	)
+	Net("Iron_EN" "(unknown)")
+	(
+		Connect("CONN4-1")
+		Connect("R6-1")
+		Connect("R8-1")
+		Connect("U1-6")
+	)
+	Net("Reset" "(unknown)")
+	(
+		Connect("CONN4-5")
+		Connect("U1-1")
+	)
+	Net("SCL" "(unknown)")
+	(
+		Connect("CONN4-3")
+		Connect("D1-2")
+		Connect("U1-7")
+	)
+	Net("SDA" "(unknown)")
+	(
+		Connect("CONN4-4")
+		Connect("D1-3")
+		Connect("U1-5")
 	)
 	Net("Temp" "(unknown)")
 	(
 		Connect("CONN1-7")
 		Connect("U2-3")
 	)
+	Net("Temp_amped" "(unknown)")
+	(
+		Connect("U1-2")
+		Connect("U2-6")
+		Connect("U2-7")
+	)
 	Net("unnamed_net1" "(unknown)")
 	(
-		Connect("R5-2")
 		Connect("R4-2")
+		Connect("R5-2")
 		Connect("U2-2")
 	)
-	Net("Vcc24" "(unknown)")
+	Net("unnamed_net2" "(unknown)")
 	(
-		Connect("U3-1")
-		Connect("CONN1-6")
-		Connect("C1-2")
-		Connect("CONN2-2")
+		Connect("R5-1")
+		Connect("U2-1")
+		Connect("U2-5")
 	)
-	Net("SCL" "(unknown)")
+	Net("unnamed_net3" "(unknown)")
 	(
-		Connect("D1-2")
-		Connect("CONN4-3")
-		Connect("U1-7")
+		Connect("Q1-G")
+		Connect("R6-2")
+	)
+	Net("unnamed_net4" "(unknown)")
+	(
+		Connect("LED1-1")
+		Connect("R7-2")
+	)
+	Net("unnamed_net5" "(unknown)")
+	(
+		Connect("LED2-1")
+		Connect("R8-2")
+	)
+	Net("unnamed_net6" "(unknown)")
+	(
+		Connect("CONN1-5")
+		Connect("R2-2")
+		Connect("R3-1")
 	)
 	Net("Vcc5" "(unknown)")
 	(
-		Connect("U3-3")
+		Connect("C2-2")
+		Connect("CONN4-2")
+		Connect("D1-5")
+		Connect("R1-3")
 		Connect("R2-1")
 		Connect("R7-1")
-		Connect("D1-5")
-		Connect("CONN4-2")
-		Connect("U2-8")
-		Connect("R1-3")
-		Connect("C2-2")
 		Connect("U1-8")
+		Connect("U2-8")
+		Connect("U3-3")
 	)
-	Net("Iron_EN" "(unknown)")
+	Net("Vcc24" "(unknown)")
 	(
-		Connect("R8-1")
-		Connect("R6-1")
-		Connect("CONN4-1")
-		Connect("U1-6")
-	)
-	Net("SDA" "(unknown)")
-	(
-		Connect("D1-3")
-		Connect("CONN4-4")
-		Connect("U1-5")
-	)
-	Net("GND" "(unknown)")
-	(
-		Connect("U3-2")
-		Connect("R3-2")
-		Connect("CONN1-10")
-		Connect("CONN1-9")
-		Connect("CONN1-8")
-		Connect("LED2-2")
-		Connect("LED1-2")
-		Connect("D1-4")
-		Connect("R4-1")
-		Connect("Q1-S")
-		Connect("CONN4-6")
-		Connect("U2-4")
-		Connect("R1-1")
-		Connect("C2-1")
-		Connect("C1-1")
-		Connect("CONN2-1")
-		Connect("U1-4")
-	)
-	Net("Iron_control" "(unknown)")
-	(
-		Connect("R1-2")
-		Connect("U1-3")
-	)
-	Net("Temp_amped" "(unknown)")
-	(
-		Connect("U2-7")
-		Connect("U2-6")
-		Connect("U1-2")
-	)
-	Net("Reset" "(unknown)")
-	(
-		Connect("CONN4-5")
-		Connect("U1-1")
+		Connect("C1-2")
+		Connect("CONN1-6")
+		Connect("CONN2-2")
+		Connect("U3-1")
 	)
 )
