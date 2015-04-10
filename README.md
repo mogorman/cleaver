@@ -68,3 +68,4 @@ mosfet 942-IRFR3910PBF
 lm358  595-LM358PSR 
 78l05   863-NCV7805BDTRKG 
 
+arduino http://highlowtech.org/?p=1695 end 
