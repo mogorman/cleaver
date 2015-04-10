@@ -1,8 +1,8 @@
 ARDUINO_DIR=~/nonapt/arduino-1.6.3
 ARDUINO=$(ARDUINO_DIR)/arduino
-AVRDUDE=/usr/bin/avrdude
-AVR_GCC=/usr/bin/avr-gcc
-AVR_OBJCOPY=/usr/bin/avr-objcopy
+AVRDUDE=$(ARDUINO_DIR)/hardware/tools/avr/bin/avrdude
+AVR_GCC=$(ARDUINO_DIR)/hardware/tools/avr/bin/avr-gcc
+AVR_OBJCOPY=$(ARDUINO_DIR)/hardware/tools/avr/bin/avr-objcopy
 PROGRAMMER=buspirate
 PROGRAMMER_PORT=/dev/buspirate
 ARDUINO_PORT=/dev/arduino
