@@ -53,3 +53,7 @@ if [ "$New_schematic" == "0" ]; then
 else
     copy_files schematic.png ~/artifacts/${Project}/schematic.png
 fi
+make clean
+cd ../firmware
+make
+make clean
