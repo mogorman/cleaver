@@ -56,4 +56,5 @@ fi
 make clean
 cd ../firmware
 make
+copy_files bin/application.hex ~/artifacts/${Project}/application.hex
 make clean
