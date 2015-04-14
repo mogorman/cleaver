@@ -10,4 +10,5 @@ hardware/*.ps
 hardware/*.zip
 hardware/*.pdf
 hardware/xy
-
+firmware/bin
+firmware/build
