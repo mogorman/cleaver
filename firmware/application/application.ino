@@ -11,8 +11,16 @@
 #include <TinyWireM.h>
 #include <LiquidCrystal_I2C_ST7032i.h>
 
+//           ________   http://highlowtech.org pinout
+//  Reset    |1    8| Vcc+
+//  A3   D3  |2    7| D2 A1 SCK
+//  A2   D4  |3    6| D1 PWM MISO 
+//      GND  |4    5| D0 PWM AREF MOSI
+//           --------
+//
 
-#define LED 3
+
+#define LED 0
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
