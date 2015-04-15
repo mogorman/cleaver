@@ -9,7 +9,7 @@
 
 #include <TinyWireM.h>
 
-#define Write_Address 0x7c/*slave addresses with write*/
+#define DISPLAY 0x7c/*slave addresses with write*/
 #define Read_Address 0x7d/*slave addresses with read*/
 
 
@@ -32,5 +32,47 @@ void loop() {
 
 void init_display()
 {
-  
+  TinyWireM.beginTransmission(DISPLAY);
+  //ack
+  TinyWireM.send(0x80); //control byte.
+  //ack
+  TinyWireM.send(0x38);   //FUNCTION SET 8 bit,N=1,5*7dot
+  //  Check_Ack();
+  TinyWireM.send(0x80);   // control byte
+  //Check_Ack();
+  TinyWireM.send(0x39);  //FUNCTION SET 8 bit,N=1,5*7dot IS=1
+  //Check_Ack();
+  TinyWireM.send(0x80);   // control byte
+  //    Check_Ack();
+  TinyWireM.send(0x1c);   //Internal OSC frequency adjustment 183HZ    bias will be 1/4 
+  //    Check_Ack();
+  TinyWireM.send(0x80);   // control byte
+  //    Check_Ack();
+  TinyWireM.send(0x78);    //Contrast control  low byte
+  //    Check_Ack();
+  TinyWireM.send(0x80);     // control byte
+  //    Check_Ack();
+  TinyWireM.send(0x53);    //booster circuit is turn off./ICON   /Contrast control   high byte
+  //    Check_Ack();
+  TinyWireM.send(0x80);    // control byte
+  //    Check_Ack();
+  TinyWireM.send(0x6c);  //Follower control
+  //    Check_Ack();
+  TinyWireM.send(0x80);   // control byte
+  //    Check_Ack();
+  TinyWireM.send(0x0c);    //DISPLAY ON
+  //  Check_Ack();
+  TinyWireM.send(0x80);   // control byte
+  //    Check_Ack();
+  TinyWireM.send(0x01);   //CLEAR DISPLAY
+  //    Check_Ack();
+  TinyWireM.send(0x80);   // control byte
+  //    Check_Ack();
+  TinyWireM.send(0x06);   //ENTRY MODE SET  CURSOR MOVES TO RIGHT
+  //    Check_Ack();
+  TinyWireM.send(0x80);   // control byte
+  //.  Check_Ack();
+  TinyWirM.send(0x02);
+  //    Check_Ack();
+  TinyWireM.endTransmission();
 }
