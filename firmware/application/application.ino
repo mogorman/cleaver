@@ -72,8 +72,9 @@ void setup()
   Iron_PID.SetMode(AUTOMATIC);
 }
 
-void loop() {
-  
+void loop()
+{
+  get_internal_temperature();
   Input = analogRead(TEMP);
   Iron_PID.Compute();
   analogWrite(IRON,Output);
