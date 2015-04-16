@@ -68,4 +68,7 @@ mosfet 942-IRFR3910PBF
 lm358  595-LM358PSR 
 78l05   863-NCV7805BDTRKG 
 
-arduino http://highlowtech.org/?p=1695 end 
+arduino http://highlowtech.org/?p=1695 end
+pid library https://github.com/br3ttb/Arduino-PID-Library/ 
+display library http://hmario.home.xs4all.nl/arduino/LiquidCrystal_I2C_ST7032i/
+tinywirem https://github.com/adafruit/TinyWireM
