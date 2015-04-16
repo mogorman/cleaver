@@ -76,9 +76,9 @@ void loop()
 {
   get_internal_temperature();
   Input = analogRead(TEMP);
-  Iron_PID.Compute();
-  analogWrite(IRON,Output);
-
+  if(Iron_PID.Compute()) {
+    analogWrite(IRON,Output);
+  }
   Pot_value=analogRead(POT);
   Set_point = Pot_value;
   update_display();
