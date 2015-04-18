@@ -88,9 +88,9 @@ void loop()
 void update_display() {
   lcd.clear();
   lcd.setCursor(1,0);
-  lcd.print("Bye");
+  lcd.print(Pot_value);
   lcd.setCursor(1,1);
-  lcd.print("World!");
+  lcd.print(Input);
 }
 
 void init_internal_sensor() {
@@ -147,3 +147,4 @@ int get_internal_temperature() {
   }
   return (sum_temp / ( 45 - extremes_count * 2 )) + internal_offset - 273;
 }
+
