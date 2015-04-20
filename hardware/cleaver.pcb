@@ -1496,9 +1496,9 @@ Element["" "LED3" "LED1" "unknown" 70.2540mm 55.7032mm 2.5000mm 1.7700mm 1 100 "
 
 	)
 
-Element["onsolder" "LED3" "LED2" "unknown" 53.7540mm 42.7032mm 7.1590mm -0.5770mm 2 100 "auto"]
+Element["onsolder" "LED3" "LED2" "unknown" 53.7540mm 42.7032mm -3.0540mm -0.5680mm 2 100 "auto"]
 (
-	Pin[50.00mil 0.0000 65.00mil 30.00mil 71.00mil 43.00mil "1" "1" "found,square,edge2,connected"]
+	Pin[50.00mil 0.0000 65.00mil 30.00mil 71.00mil 43.00mil "1" "1" "square,edge2"]
 	Pin[-50.00mil 0.0000 65.00mil 30.00mil 71.00mil 43.00mil "2" "2" "edge2,thermal(0X,1X)"]
 	ElementArc [0.0000 0.0000 59.00mil 59.00mil 45 90 10.00mil]
 	ElementArc [0.0000 0.0000 59.00mil 59.00mil 225 90 10.00mil]
@@ -1593,7 +1593,7 @@ Element["onsolder" "POT__CTS_296U-Series" "R1" "10K" 95.1267mm 70.7151mm 6.4593m
 Element["" "0805" "R8" "220" 71.7320mm 48.4822mm -1.0003mm -2.3001mm 0 100 ""]
 (
 	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 28.00mil 57.18mil "1" "1" "square"]
-	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 28.00mil 57.18mil "2" "2" "found,square,connected"]
+	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 28.00mil 57.18mil "2" "2" "square"]
 	ElementLine [-3.93mil -27.55mil 3.93mil -27.55mil 8.00mil]
 	ElementLine [-3.93mil 27.55mil 3.93mil 27.55mil 8.00mil]
 
@@ -1676,12 +1676,12 @@ Layer(1 "component")
 	Line[75.2301mm 2123.20mil 83.6280mm 2123.20mil 10.00mil 28.00mil "clearline"]
 	Line[72.2540mm 52.7032mm 77.2540mm 52.7032mm 10.00mil 28.00mil "clearline"]
 	Line[77.2540mm 52.7032mm 77.5040mm 52.4532mm 10.00mil 28.00mil "clearline"]
-	Line[72.9039mm 48.7032mm 72.9039mm 45.1031mm 10.00mil 28.00mil "found,clearline,connected"]
-	Line[72.9039mm 45.1031mm 72.0040mm 44.2032mm 10.00mil 28.00mil "found,clearline,connected"]
-	Line[56.7540mm 36.4532mm 70.2540mm 36.4532mm 10.00mil 28.00mil "found,clearline,connected"]
-	Line[70.2540mm 36.4532mm 71.7540mm 37.9532mm 10.00mil 28.00mil "found,clearline,connected"]
-	Line[71.7540mm 37.9532mm 71.7540mm 43.9532mm 10.00mil 28.00mil "found,clearline,connected"]
-	Line[71.7540mm 43.9532mm 72.5040mm 44.7032mm 10.00mil 28.00mil "found,clearline,connected"]
+	Line[72.9039mm 48.7032mm 72.9039mm 45.1031mm 10.00mil 28.00mil "clearline"]
+	Line[72.9039mm 45.1031mm 72.0040mm 44.2032mm 10.00mil 28.00mil "clearline"]
+	Line[56.7540mm 36.4532mm 70.2540mm 36.4532mm 10.00mil 28.00mil "clearline"]
+	Line[70.2540mm 36.4532mm 71.7540mm 37.9532mm 10.00mil 28.00mil "clearline"]
+	Line[71.7540mm 37.9532mm 71.7540mm 43.9532mm 10.00mil 28.00mil "clearline"]
+	Line[71.7540mm 43.9532mm 72.5040mm 44.7032mm 10.00mil 28.00mil "clearline"]
 	Line[113.2540mm 64.2032mm 113.2540mm 56.7968mm 30.00mil 20.00mil "clearline"]
 	Line[113.2540mm 56.7968mm 112.2540mm 55.7968mm 30.00mil 20.00mil "clearline"]
 	Line[103.8541mm 67.7032mm 103.8541mm 65.8033mm 10.00mil 28.00mil ""]
@@ -1769,8 +1769,8 @@ Layer(1 "component")
 	Line[74.7540mm 67.5333mm 74.7540mm 69.7032mm 10.00mil 28.00mil "clearline"]
 	Line[74.7540mm 69.7032mm 77.2540mm 72.2032mm 10.00mil 28.00mil "clearline"]
 	Line[72.2729mm 69.2700mm 74.6872mm 69.2700mm 10.00mil 28.00mil "clearline"]
-	Line[55.0240mm 42.7032mm 55.0240mm 38.1832mm 10.00mil 28.00mil "found,clearline,connected"]
-	Line[55.0240mm 38.1832mm 56.7540mm 36.4532mm 10.00mil 28.00mil "found,clearline,connected"]
+	Line[55.0240mm 42.7032mm 55.0240mm 38.1832mm 10.00mil 28.00mil "clearline"]
+	Line[55.0240mm 38.1832mm 56.7540mm 36.4532mm 10.00mil 28.00mil "clearline"]
 	Line[67.8043mm 1571.00mil 67.8043mm 38.2535mm 30.00mil 20.00mil ""]
 	Line[67.8043mm 1565.10mil 67.8043mm 41.6529mm 30.00mil 20.00mil ""]
 	Line[55.2540mm 57.2032mm 55.2540mm 47.2032mm 30.00mil 20.00mil "clearline"]
@@ -1881,7 +1881,7 @@ Layer(8 "guide")
 Layer(9 "silk")
 (
 	Text[114.9950mm 49.1092mm 2 100 "19-24v DC Input" "clearline,onsolder"]
-	Text[66.0890mm 37.1962mm 2 122 "Heater Active" "clearline,onsolder"]
+	Text[66.7160mm 38.4502mm 2 122 "Heater Active" "clearline,onsolder"]
 )
 Layer(10 "silk")
 (
