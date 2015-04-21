@@ -58,3 +58,4 @@ cd ../firmware
 make
 copy_files bin/application.hex ~/artifacts/${Project}/application.hex
 make clean
+echo "built everything so you should see this message"
