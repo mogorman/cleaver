@@ -45,7 +45,7 @@ int internal_pos;
 
 //Specify the links and initial tuning parameters
 PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
-LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
+LiquidCrystal_I2C_ST7032i lcd(0x3C,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
 // the setup routine runs once when you press reset:
 void setup()
