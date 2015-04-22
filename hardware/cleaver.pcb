@@ -1965,7 +1965,7 @@ Layer(9 "silk")
 	Arc[112.0660mm 73.3952mm 2.0000mm 2.0000mm 40.00mil 20.00mil 90 -90 "clearline,auto,lock"]
 	Text[114.9950mm 49.1092mm 2 100 "19-24v DC Input" "clearline,onsolder"]
 	Text[66.7160mm 38.4502mm 2 122 "Heater Active" "clearline,onsolder"]
-	Text[3145.00mil 69.8002mm 2 496 "Cleaver" "clearline,onsolder"]
+	Text[81.3830mm 70.3002mm 2 496 "Cleaver" "clearline,onsolder"]
 	Text[55.4300mm 67.9192mm 2 100 "@v@" "clearline,onsolder"]
 	Text[58.5650mm 59.1412mm 2 100 "@git@" "clearline,onsolder"]
 )
