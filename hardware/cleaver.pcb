@@ -1666,6 +1666,19 @@ Element["" "DPAK" "Q1" "unknown" 70.2052mm 47.0772mm -14.0000mm -11.0000mm 0 100
 	ElementLine [-4.1430mm -198.04mil -3.1270mm -198.04mil 10.00mil]
 
 	)
+
+Element["hidename" "JUMPER2" "CONN5" "unknown" 113.1140mm 47.2282mm 50.00mil 50.00mil 1 100 ""]
+(
+	Pin[0.0000 0.0000 60.00mil 30.00mil 66.00mil 38.00mil "1" "1" "square"]
+	Pin[0.0000 -100.00mil 60.00mil 30.00mil 66.00mil 38.00mil "2" "2" "thermal(0X,1X)"]
+	ElementLine [50.00mil -150.00mil 50.00mil 50.00mil 10.00mil]
+	ElementLine [-50.00mil -150.00mil 50.00mil -150.00mil 10.00mil]
+	ElementLine [-50.00mil -150.00mil -50.00mil 50.00mil 10.00mil]
+	ElementLine [-50.00mil 50.00mil 50.00mil 50.00mil 10.00mil]
+	ElementLine [-50.00mil -50.00mil 50.00mil -50.00mil 10.00mil]
+	ElementLine [-50.00mil -50.00mil -50.00mil 50.00mil 10.00mil]
+
+	)
 Layer(1 "component")
 (
 	Line[82.7961mm 42.2599mm 82.7961mm 44.1611mm 10.00mil 28.00mil ""]
@@ -1818,11 +1831,6 @@ Layer(1 "component")
 	Line[109.7540mm 67.7032mm 110.2540mm 2645.80mil 10.00mil 28.00mil "clearline"]
 	Line[113.2540mm 64.2032mm 113.2540mm 56.7968mm 30.00mil 28.00mil "clearline"]
 	Line[113.2540mm 56.7968mm 112.2540mm 55.7968mm 10.00mil 28.00mil "clearline"]
-	Line[97.5540mm 45.1529mm 98.7037mm 45.1529mm 30.00mil 28.00mil "clearline"]
-	Line[98.7037mm 45.1529mm 104.2540mm 50.7032mm 30.00mil 28.00mil "clearline"]
-	Line[104.2540mm 50.7032mm 110.2540mm 50.7032mm 30.00mil 28.00mil "clearline"]
-	Line[110.2540mm 50.7032mm 112.2540mm 52.7032mm 30.00mil 28.00mil "clearline"]
-	Line[112.2540mm 52.7032mm 112.2540mm 55.7968mm 30.00mil 28.00mil "clearline"]
 	Line[90.2583mm 65.0713mm 90.2583mm 62.2075mm 10.00mil 28.00mil "clearline"]
 	Line[90.2583mm 62.2075mm 85.0040mm 56.9532mm 10.00mil 28.00mil "clearline"]
 	Line[90.2583mm 68.8305mm 89.8813mm 68.8305mm 10.00mil 28.00mil "clearline"]
@@ -1843,10 +1851,12 @@ Layer(1 "component")
 	Line[87.7540mm 64.2032mm 86.7540mm 63.2032mm 10.00mil 28.00mil "clearline"]
 	Line[86.7540mm 63.2032mm 80.2541mm 63.2032mm 10.00mil 28.00mil "clearline"]
 	Line[80.2541mm 63.2032mm 79.2541mm 62.2032mm 10.00mil 28.00mil "clearline"]
+	Line[113.1140mm 47.2282mm 111.8600mm 48.4822mm 30.00mil 28.00mil "clearline"]
+	Line[111.8600mm 48.4822mm 111.8600mm 56.0062mm 30.00mil 28.00mil "clearline"]
+	Line[111.8600mm 1982.80mil 4132.40mil 1982.80mil 30.00mil 28.00mil "clearline"]
+	Line[4132.40mil 1982.80mil 99.3200mm 44.7202mm 30.00mil 28.00mil "clearline"]
+	Line[99.3200mm 44.7202mm 97.4390mm 44.7202mm 30.00mil 28.00mil "clearline"]
 	Text[96.2540mm 36.2032mm 0 166 "Cleaver" "clearline"]
-	Text[102.8540mm 42.0792mm 0 100 "Copyright 2015" "clearline"]
-	Text[101.3540mm 44.0872mm 0 100 "Matthew O'Gorman" "clearline"]
-	Text[104.3540mm 46.0952mm 0 100 "Tim Heath" "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[45.8310mm 34.1602mm] [116.3160mm 34.1602mm] [116.3160mm 77.5942mm] [45.8310mm 77.5942mm] 
@@ -1969,6 +1979,10 @@ Layer(9 "silk")
 	Text[58.5650mm 59.1412mm 2 100 "@git@" "clearline,onsolder"]
 	Text[96.2540mm 68.2032mm 2 100 "FCNP" "clearline,onsolder"]
 	Text[50.2540mm 42.7032mm 2 100 "Hot!!" "clearline,onsolder"]
+	Text[107.4710mm 35.3152mm 2 100 "Copyright 2015" "clearline,onsolder"]
+	Text[107.4710mm 39.0772mm 2 100 "Tim Heath" "clearline,onsolder"]
+	Text[107.4710mm 37.1962mm 2 100 "Matt O'Gorman" "clearline,onsolder"]
+	Text[94.9310mm 35.3152mm 2 100 "CC-BY-SA 4.0" "clearline,onsolder"]
 )
 Layer(10 "silk")
 (
@@ -2030,9 +2044,6 @@ Layer(10 "silk")
 	Text[87.0480mm 56.6792mm 0 100 "This board is licensed" "clearline"]
 	Text[76.1210mm 55.3792mm 0 100 "612" "clearline"]
 	Text[89.6670mm 2310.20mil 0 100 "CC-BY-SA 4.0" "clearline"]
-	Text[102.8540mm 42.0792mm 0 100 "Copyright 2015" "clearline"]
-	Text[101.3540mm 44.0872mm 0 100 "Matthew O'Gorman" "clearline"]
-	Text[104.3540mm 46.0952mm 0 100 "Tim Heath" "clearline"]
 	Text[49.1600mm 52.8712mm 0 100 "@git@" "clearline"]
 	Text[50.5721mm 60.1412mm 0 76 "@hackvana_c@" "clearline"]
 	Text[49.1600mm 2155.60mil 0 100 "@v@" "clearline"]
@@ -2048,6 +2059,7 @@ NetList()
 		Connect("CONN1-10")
 		Connect("CONN2-1")
 		Connect("CONN4-6")
+		Connect("CONN5-2")
 		Connect("D1-4")
 		Connect("LED1-2")
 		Connect("LED2-2")
@@ -2164,6 +2176,7 @@ NetList()
 		Connect("C1-2")
 		Connect("CONN1-6")
 		Connect("CONN2-2")
+		Connect("CONN5-1")
 		Connect("U3-1")
 	)
 )
