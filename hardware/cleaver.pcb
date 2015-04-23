@@ -2120,10 +2120,10 @@ Layer(9 "silk")
 	Text[58.5650mm 59.1412mm 2 100 "@git@" "clearline,onsolder"]
 	Text[96.2540mm 68.2032mm 2 100 "FCNP" "clearline,onsolder"]
 	Text[50.2540mm 42.7032mm 2 100 "Hot!!" "clearline,onsolder"]
-	Text[97.4390mm 35.3152mm 2 100 "Copyright 2015" "clearline,onsolder"]
-	Text[97.4390mm 39.0772mm 2 100 "Tim Heath" "clearline,onsolder"]
-	Text[97.4390mm 37.1962mm 2 100 "Matt O'Gorman" "clearline,onsolder"]
-	Text[84.8990mm 35.3152mm 2 100 "CC-BY-SA 4.0" "clearline,onsolder"]
+	Text[65.7540mm 35.2032mm 2 100 "CC-BY-SA 4.0" "clearline,onsolder"]
+	Text[101.4390mm 35.3152mm 2 100 "Copyright 2015" "clearline,onsolder"]
+	Text[101.4390mm 39.0772mm 2 100 "Tim Heath" "clearline,onsolder"]
+	Text[101.4390mm 37.1962mm 2 100 "Matt O'Gorman" "clearline,onsolder"]
 )
 Layer(10 "silk")
 (
