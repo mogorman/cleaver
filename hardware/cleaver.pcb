@@ -2192,7 +2192,7 @@ Layer(10 "silk")
 	Text[76.1210mm 55.3792mm 0 144 "612" "clearline"]
 	Text[89.6670mm 2310.20mil 0 100 "CC-BY-SA 4.0" "clearline"]
 	Text[49.1600mm 52.8712mm 0 100 "@git@" "clearline"]
-	Text[46.0721mm 63.1412mm 0 76 "@hackvana_c@" "clearline"]
+	Text[50.5721mm 58.6412mm 0 76 "@hackvana_c@" "clearline"]
 	Text[49.1600mm 2155.60mil 0 100 "@v@" "clearline"]
 	Text[92.3700mm 35.3462mm 0 166 "Cleaver" "clearline"]
 )
