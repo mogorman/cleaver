@@ -2130,6 +2130,8 @@ Layer(9 "silk")
 	Text[101.4390mm 39.0772mm 2 100 "Tim Heath" "clearline,onsolder"]
 	Text[101.4390mm 37.1962mm 2 100 "Matt O'Gorman" "clearline,onsolder"]
 	Text[81.3830mm 70.3002mm 2 496 "Cleaver" "clearline,onsolder"]
+	Text[110.6060mm 47.8552mm 0 100 "+" "clearline,onsolder"]
+	Text[110.6060mm 45.3472mm 0 100 "-" "clearline,onsolder"]
 )
 Layer(10 "silk")
 (
@@ -2194,6 +2196,8 @@ Layer(10 "silk")
 	Text[50.5721mm 58.6412mm 0 76 "@hackvana_c@" "clearline"]
 	Text[49.1600mm 2155.60mil 0 100 "@v@" "clearline"]
 	Text[92.3700mm 35.3462mm 0 166 "Cleaver" "clearline"]
+	Text[110.6060mm 44.0932mm 0 100 "-" "clearline"]
+	Text[110.6060mm 46.6012mm 0 100 "+" "clearline"]
 )
 NetList()
 (
