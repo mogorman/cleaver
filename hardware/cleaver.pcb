@@ -1487,14 +1487,14 @@ Element["" "LED3" "LED1" "unknown" 70.2540mm 55.7032mm 2.5000mm 1.7700mm 1 100 "
 
 	)
 
-Element["onsolder" "LED3" "LED2" "unknown" 53.4840mm 42.7032mm 7.0000mm -0.5000mm 2 100 "auto"]
+Element["onsolder" "LED3" "LED2" "unknown" 53.4840mm 42.7032mm 6.5400mm -1.0000mm 2 100 "auto"]
 (
-	Pin[50.00mil 0.0000 65.00mil 30.00mil 71.00mil 43.00mil "1" "1" "square,edge2"]
-	Pin[-50.00mil 0.0000 65.00mil 30.00mil 71.00mil 43.00mil "2" "2" "edge2,thermal(0X,1X)"]
-	ElementArc [0.0000 0.0000 59.00mil 59.00mil 45 90 10.00mil]
+	Pin[-50.00mil 0.0000 65.00mil 30.00mil 71.00mil 43.00mil "1" "1" "square,edge2"]
+	Pin[50.00mil 0.0000 65.00mil 30.00mil 71.00mil 43.00mil "2" "2" "edge2,thermal(0X,1X)"]
 	ElementArc [0.0000 0.0000 59.00mil 59.00mil 225 90 10.00mil]
-	ElementArc [0.0000 0.0000 79.00mil 79.00mil 45 90 10.00mil]
+	ElementArc [0.0000 0.0000 59.00mil 59.00mil 45 90 10.00mil]
 	ElementArc [0.0000 0.0000 79.00mil 79.00mil 225 90 10.00mil]
+	ElementArc [0.0000 0.0000 79.00mil 79.00mil 45 90 10.00mil]
 
 	)
 
@@ -1967,10 +1967,6 @@ Layer(1 "component")
 	Line[113.1140mm 47.2282mm 113.1140mm 54.9368mm 40.00mil 28.00mil "clearline"]
 	Line[113.1140mm 54.9368mm 112.2540mm 55.7968mm 10.00mil 28.00mil "clearline"]
 	Line[101.1604mm 44.7032mm 98.0037mm 44.7032mm 40.00mil 28.00mil "clearline"]
-	Line[57.2540mm 2370.20mil 60.8540mm 2370.20mil 40.00mil 28.00mil "clearline"]
-	Line[51.7540mm 54.7032mm 51.7540mm 51.2032mm 40.00mil 28.00mil "clearline"]
-	Line[58.7540mm 44.7032mm 61.7540mm 41.7032mm 40.00mil 28.00mil "clearline"]
-	Line[54.7540mm 42.7032mm 54.7540mm 39.7032mm 10.00mil 28.00mil "clearline"]
 	Line[67.7540mm 36.2032mm 58.2540mm 36.2032mm 10.00mil 28.00mil "clearline"]
 	Line[71.2540mm 49.2032mm 71.2540mm 39.7032mm 10.00mil 28.00mil "clearline"]
 	Line[2510.00mil 59.7032mm 2510.00mil 64.2032mm 20.00mil 28.00mil "clearline"]
@@ -1980,14 +1976,17 @@ Layer(1 "component")
 	Line[54.9540mm 51.5032mm 54.9540mm 2220.60mil 20.00mil 28.00mil "clearline"]
 	Line[2510.00mil 50.7032mm 60.8540mm 50.7032mm 20.00mil 28.00mil "clearline"]
 	Line[67.7540mm 59.7032mm 67.7540mm 54.7032mm 20.00mil 28.00mil "clearline"]
+	Line[60.8040mm 60.6532mm 60.3540mm 2370.20mil 10.00mil 28.00mil "clearline"]
+	Line[60.3540mm 2370.20mil 54.2540mm 2370.20mil 40.00mil 28.00mil "clearline"]
+	Line[52.2540mm 49.7032mm 52.2540mm 58.2032mm 40.00mil 28.00mil "clearline"]
+	Line[52.2140mm 42.7032mm 52.2140mm 41.7432mm 10.00mil 28.00mil "clearline"]
+	Line[59.7540mm 36.2032mm 57.7540mm 36.2032mm 10.00mil 28.00mil "clearline"]
+	Line[52.2540mm 49.7032mm 52.2540mm 48.2032mm 40.00mil 28.00mil "clearline"]
 	Arc[2510.00mil 70.2032mm 5.5000mm 5.5000mm 40.00mil 28.00mil 0 90 "clearline"]
 	Arc[92.7540mm 72.7032mm 3.0000mm 3.0000mm 40.00mil 28.00mil 90 90 "clearline"]
 	Arc[98.2540mm 72.7032mm 2.5000mm 2.5000mm 40.00mil 28.00mil -90 90 "clearline"]
 	Arc[106.2540mm 63.2032mm 7.0000mm 7.0000mm 40.00mil 28.00mil 90 90 "clearline"]
 	Arc[101.1604mm 55.7968mm 11.0936mm 11.0936mm 40.00mil 28.00mil 180 90 "clearline"]
-	Arc[57.2540mm 54.7032mm 5.5000mm 5.5000mm 40.00mil 28.00mil 0 90 "clearline"]
-	Arc[58.7540mm 51.7032mm 275.59mil 275.59mil 40.00mil 28.00mil -90 90 "clearline"]
-	Arc[58.2540mm 39.7032mm 3.5000mm 3.5000mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[67.7540mm 39.7032mm 3.5000mm 3.5000mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[70.2540mm 49.2032mm 1.0000mm 1.0000mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[58.2540mm 51.5032mm 3.3000mm 3.3000mm 20.00mil 28.00mil -90 90 "clearline"]
@@ -2000,6 +1999,12 @@ Layer(1 "component")
 	Arc[66.7540mm 52.7032mm 1.0000mm 1.0000mm 20.00mil 28.00mil 0 90 "clearline"]
 	Arc[66.7540mm 54.7032mm 1.0000mm 1.0000mm 20.00mil 28.00mil -180 90 "clearline"]
 	Arc[71.2540mm 59.7032mm 3.5000mm 3.5000mm 20.00mil 28.00mil 0 90 "clearline"]
+	Arc[54.2540mm 58.2032mm 2.0000mm 2.0000mm 40.00mil 28.00mil 0 90 "clearline"]
+	Arc[57.7540mm 1582.80mil 4.0000mm 4.0000mm 10.00mil 28.00mil -90 90 "clearline"]
+	Arc[52.7540mm 1582.80mil 1.0000mm 1.0000mm 10.00mil 28.00mil 90 90 "clearline"]
+	Arc[52.7540mm 41.7432mm 0.5400mm 0.5400mm 10.00mil 28.00mil -90 90 "clearline"]
+	Arc[54.7540mm 48.2032mm 2.5000mm 2.5000mm 40.00mil 28.00mil -90 90 "clearline"]
+	Arc[54.7540mm 1582.80mil 5.5000mm 5.5000mm 40.00mil 28.00mil 90 90 "clearline"]
 	Text[92.3700mm 35.3462mm 0 166 "Cleaver" "clearline"]
 	Polygon("clearpoly,lock")
 	(
@@ -2186,7 +2191,7 @@ Layer(10 "silk")
 	Text[76.1210mm 55.3792mm 0 100 "612" "clearline"]
 	Text[89.6670mm 2310.20mil 0 100 "CC-BY-SA 4.0" "clearline"]
 	Text[49.1600mm 52.8712mm 0 100 "@git@" "clearline"]
-	Text[50.5721mm 60.1412mm 0 76 "@hackvana_c@" "clearline"]
+	Text[46.0721mm 63.1412mm 0 76 "@hackvana_c@" "clearline"]
 	Text[49.1600mm 2155.60mil 0 100 "@v@" "clearline"]
 	Text[92.3700mm 35.3462mm 0 166 "Cleaver" "clearline"]
 )
