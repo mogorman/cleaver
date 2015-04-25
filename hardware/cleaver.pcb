@@ -1951,7 +1951,6 @@ Layer(1 "component")
 	Arc[52.7540mm 1582.80mil 1.0000mm 1.0000mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[52.7540mm 41.7432mm 0.5400mm 0.5400mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[54.7540mm 48.2032mm 2.5000mm 2.5000mm 40.00mil 28.00mil -90 90 "clearline"]
-	Arc[54.7540mm 1582.80mil 5.5000mm 5.5000mm 40.00mil 28.00mil 90 90 "clearline"]
 	Arc[67.8043mm 46.4529mm 1.9497mm 1.9497mm 30.00mil 28.00mil -180 90 "clearline"]
 	Arc[56.7540mm 50.0032mm 1.8000mm 1.8000mm 20.00mil 28.00mil 270 90 "clearline"]
 	Arc[70.1308mm 72.2032mm 0.8768mm 0.8768mm 10.00mil 28.00mil 0 90 "clearline"]
@@ -2001,6 +2000,7 @@ Layer(1 "component")
 	Arc[78.7540mm 61.8982mm 2.8050mm 2.8050mm 10.00mil 28.00mil 0 70 "clearline"]
 	Arc[77.7946mm 2558.80mil 0.4594mm 0.4594mm 10.00mil 28.00mil -180 90 "clearline"]
 	Arc[60.8540mm 57.6032mm 6.9000mm 6.9000mm 20.00mil 28.00mil -180 90 "clearline"]
+	Arc[54.7540mm 1582.80mil 5.5000mm 5.5000mm 40.00mil 28.00mil 90 70 "clearline"]
 	Text[92.3700mm 35.3462mm 0 166 "Cleaver" "clearline"]
 	Polygon("clearpoly,lock")
 	(
