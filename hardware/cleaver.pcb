@@ -1988,7 +1988,7 @@ Element["onsolder" "" "" "" 86.8870mm 72.0475mm 0.0000 0.0000 2 100 "auto"]
 	Pad[-665.35mil -393.70mil -614.17mil -393.70mil 6.00mil 12.00mil 18.00mil "" "163" "onsolder,nopaste"]
 	Pad[-17.1000mm -9.8999mm -15.4000mm -9.8999mm 6.00mil 12.00mil 18.00mil "" "164" "onsolder,nopaste"]
 	Pad[-681.10mil -385.83mil -598.43mil -385.83mil 6.00mil 12.00mil 18.00mil "" "165" "onsolder,nopaste"]
-	Pad[-688.98mil -381.89mil -586.61mil -381.89mil 6.00mil 12.00mil 18.00mil "" "166" "onsolder,nopaste"]
+	Pad[-688.98mil -381.89mil -586.61mil -381.89mil 6.00mil 12.00mil 18.00mil "" "166" "onsolder,edge2,nopaste"]
 	Pad[-17.7000mm -377.95mil -14.7000mm -377.95mil 6.00mil 12.00mil 18.00mil "" "167" "onsolder,nopaste"]
 	Pad[-622.05mil -374.02mil -574.80mil -374.02mil 6.00mil 12.00mil 18.00mil "" "168" "onsolder,edge2,nopaste"]
 	Pad[-15.1000mm -370.08mil -14.4000mm -370.08mil 6.00mil 12.00mil 18.00mil "" "169" "onsolder,edge2,nopaste"]
@@ -2051,7 +2051,7 @@ Element["onsolder" "" "" "" 86.8870mm 72.0475mm 0.0000 0.0000 2 100 "auto"]
 	Pad[-17.4000mm -255.91mil -641.73mil -255.91mil 6.00mil 12.00mil 18.00mil "" "226" "onsolder,nopaste"]
 	Pad[-15.1000mm -259.84mil -14.7000mm -259.84mil 6.00mil 12.00mil 18.00mil "" "227" "onsolder,edge2,nopaste"]
 	Pad[-15.4000mm -255.91mil -582.68mil -255.91mil 6.00mil 12.00mil 18.00mil "" "228" "onsolder,edge2,nopaste"]
-	Pad[-681.10mil -251.97mil -15.1000mm -251.97mil 6.00mil 12.00mil 18.00mil "" "229" "onsolder,nopaste"]
+	Pad[-681.10mil -251.97mil -15.1000mm -251.97mil 6.00mil 12.00mil 18.00mil "" "229" "onsolder,edge2,nopaste"]
 	Pad[-681.10mil -248.03mil -602.36mil -248.03mil 6.00mil 12.00mil 18.00mil "" "230" "onsolder,nopaste"]
 	Pad[-677.17mil -244.09mil -637.80mil -244.09mil 6.00mil 12.00mil 18.00mil "" "231" "onsolder,nopaste"]
 	Pad[-677.17mil -240.16mil -641.73mil -240.16mil 6.00mil 12.00mil 18.00mil "" "232" "onsolder,nopaste"]
@@ -2328,7 +2328,7 @@ Layer(1 "component")
 	)
 	Polygon("clearpoly")
 	(
-		[77.7742mm 95.4280mm] [77.7627mm 3757.40mil] [3060.90mil 95.4366mm] [77.7371mm 95.4077mm] [77.7501mm 95.3977mm] 
+		[77.7742mm 95.4280mm] [77.7627mm 95.4380mm] [3060.90mil 95.4366mm] [77.7371mm 95.4077mm] [77.7501mm 95.3977mm] 
 		[77.7663mm 95.3990mm] 
 	)
 )
@@ -2336,15 +2336,15 @@ Layer(2 "solder")
 (
 	Line[86.1530mm 70.0142mm 86.1530mm 56.0062mm 10.00mil 28.00mil "clearline"]
 	Line[83.2540mm 60.7031mm 83.2540mm 66.6232mm 10.00mil 28.00mil "clearline"]
-	Line[80.2540mm 47.7032mm 72.7540mm 47.7032mm 10.00mil 28.00mil "clearline"]
-	Line[80.7540mm 61.7032mm 80.7540mm 66.6632mm 10.00mil 28.00mil "clearline"]
+	Line[80.7540mm 65.2032mm 80.7540mm 66.6632mm 10.00mil 28.00mil "clearline"]
+	Line[70.2540mm 47.7032mm 80.2540mm 47.7032mm 10.00mil 28.00mil "clearline"]
 	Arc[3195.00mil 56.0062mm 5.0000mm 5.0000mm 10.00mil 28.00mil -180 90 "clearline"]
 	Arc[83.8590mm 69.2432mm 3.0650mm 3.0650mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[83.8590mm 70.0142mm 2.2940mm 2.2940mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[72.7540mm 60.7031mm 10.5000mm 10.5000mm 10.00mil 28.00mil -180 90 "clearline"]
-	Arc[72.7540mm 50.7032mm 3.0000mm 3.0000mm 10.00mil 28.00mil 0 90 "clearline"]
-	Arc[72.7540mm 50.7032mm 3.0000mm 3.0000mm 10.00mil 28.00mil 270 90 "clearline"]
-	Arc[72.7540mm 61.7032mm 8.0000mm 8.0000mm 10.00mil 28.00mil -180 90 "clearline"]
+	Arc[70.2540mm 65.2031mm 10.5000mm 10.5000mm 10.00mil 28.00mil -180 90 "clearline"]
+	Arc[70.2540mm 51.2032mm 3.5000mm 3.5000mm 10.00mil 28.00mil 0 90 "clearline"]
+	Arc[70.2540mm 51.2032mm 3.5000mm 3.5000mm 10.00mil 28.00mil 270 90 "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[116.3160mm 77.5942mm] [45.8310mm 77.5942mm] [45.8310mm 34.1602mm] [116.3160mm 34.1602mm] 
