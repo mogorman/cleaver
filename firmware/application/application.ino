@@ -55,7 +55,7 @@ void setup()
 void loop()
 {
 	digitalWrite(IRON, HIGH);
-	delay(5000);
+	delay(1000);
 	digitalWrite(IRON, LOW);
 }
 //void setup()
