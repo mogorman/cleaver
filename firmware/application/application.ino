@@ -45,43 +45,37 @@ int internal_pos;
 
 //Specify the links and initial tuning parameters
 //PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
-//LiquidCrystal_I2C_ST7032i lcd(0x3C,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
+LiquidCrystal_I2C_ST7032i lcd(0x7C,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
 // the setup routine runs once when you press reset:
 void setup()
 {
- pinMode(IRON, OUTPUT);
-}
-void loop()
-{
-	digitalWrite(IRON, HIGH);
-	delay(1000);
-	digitalWrite(IRON, LOW);
-}
-//void setup()
-//{
-//  //  analogReference( INTERNAL2V56_NO_CAP );
+  //  analogReference( INTERNAL2V56_NO_CAP );
 //  pinMode(TEMP, INPUT);
 //  pinMode(POT, INPUT);
 //  pinMode(IRON, OUTPUT);
 //  digitalWrite(IRON, LOW);
 //  init_internal_sensor();
-//  lcd.init();
-//
+  lcd.init();
+
 //  Pot_value = 0;
-//
-//  lcd.clear(); 
-//  lcd.setCursor(1,0);
-//  lcd.print("Hello");
-//  lcd.setCursor(1,1);
-//  lcd.print("World!");
-//
+
+  lcd.clear(); 
+  lcd.setCursor(1,0);
+  lcd.print("Hello");
+  lcd.setCursor(1,1);
+  lcd.print("World!");
+
 //  Input = analogRead(TEMP);
 //  Set_point = Pot_value;
-//  //turn the PID on
+  //turn the PID on
 //  Iron_PID.SetMode(AUTOMATIC);
-//}
-//
+}
+
+void loop()
+{
+
+}
 //void loop()
 //{
 //  get_internal_temperature();
