@@ -56,6 +56,8 @@ void setup()
 {
 	delay(5000);
 	init_screen();
+	set_position(0);
+	print_string("hi");
 	pinMode(3,OUTPUT);
 	digitalWrite(3,LOW);
 }
