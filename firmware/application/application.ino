@@ -56,15 +56,16 @@ void setup()
 //  pinMode(IRON, OUTPUT);
 //  digitalWrite(IRON, LOW);
 //  init_internal_sensor();
-  lcd.init();
-
+//  lcd.init();
+    pinMode(3,OUTPUT);
+    digitalWrite(3, HIGH);
 //  Pot_value = 0;
 
-  lcd.clear(); 
-  lcd.setCursor(1,0);
-  lcd.print("Hello");
-  lcd.setCursor(1,1);
-  lcd.print("World!");
+//  lcd.clear(); 
+//  lcd.setCursor(1,0);
+//  lcd.print("Hello");
+//  lcd.setCursor(1,1);
+//  lcd.print("World!");
 
 //  Input = analogRead(TEMP);
 //  Set_point = Pot_value;

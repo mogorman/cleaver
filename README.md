@@ -29,14 +29,14 @@ internal temperature sensor for thermal compensation
 
 
 attiny85
-1 led, iron is safe / reset
+1 RED led, iron is safe / reset
 2 Temperature probe from iron
 3 pot for control of the iron
-4 Gnd
-5 SDA for display
-6 pwm for iron, led to alert user its heating
-7 SCL for display
-8 Vcc, led to show its on
+4 BLACK Gnd
+5 ORANGE SDA for display
+6 BROWN pwm for iron, led to alert user its heating
+7 YELLOW SCL for display
+8 WHITE Vcc, led to show its on
 
 
 
