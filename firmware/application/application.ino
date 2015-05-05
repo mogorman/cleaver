@@ -55,9 +55,9 @@ int internal_pos;
 void setup()
 {
 	delay(5000);
-	init_screen();
-	set_position(0);
-	print_string("hi");
+//	init_screen();
+//	set_position(0);
+//	print_string("hi");
 	pinMode(3,OUTPUT);
 	digitalWrite(3,LOW);
 }
@@ -74,14 +74,23 @@ void init_screen()
 {
 	TinyWireM.begin();
 	send(0x38);
+	delay(100);
 	send(0x39);
+	delay(100);
 	send(0x1c);
+	delay(100);
 	send(0x78);
+	delay(100);
 	send(0x53);
+	delay(100);
 	send(0x6c);
+	delay(100);
 	send(0x0c);
+	delay(100);
 	send(0x01);
+	delay(100);
 	send(0x06);
+	delay(100);
 	send(0x02);
 }
 
