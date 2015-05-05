@@ -10,7 +10,7 @@
 
 #include <TinyWireM.h>
 #include <PID_v1.h>
-#include <LiquidCrystal_I2C_ST7032i.h>
+//#include <LiquidCrystal_I2C_ST7032i.h>
 
 //           ________   http://highlowtech.org pinout
 //  Reset    |1    8| Vcc+
@@ -31,6 +31,10 @@
 // 8 Vcc, led to show its on
 //#define INTERNAL2V56_NO_CAP (6)
 
+
+#define Write_Address 0x7c/*slave addresses with write*/
+#define Read_Address 0x7d/*slave addresses with read*/
+
 #define TEMP A3
 #define POT  A2
 #define IRON  1
@@ -45,38 +49,116 @@ int internal_pos;
 
 //Specify the links and initial tuning parameters
 //PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
-LiquidCrystal_I2C_ST7032i lcd(0x7C,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
+//LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
 // the setup routine runs once when you press reset:
 void setup()
 {
-  //  analogReference( INTERNAL2V56_NO_CAP );
-//  pinMode(TEMP, INPUT);
-//  pinMode(POT, INPUT);
-//  pinMode(IRON, OUTPUT);
-//  digitalWrite(IRON, LOW);
-//  init_internal_sensor();
-//  lcd.init();
-    pinMode(3,OUTPUT);
-    digitalWrite(3, HIGH);
-//  Pot_value = 0;
-
-//  lcd.clear(); 
-//  lcd.setCursor(1,0);
-//  lcd.print("Hello");
-//  lcd.setCursor(1,1);
-//  lcd.print("World!");
-
-//  Input = analogRead(TEMP);
-//  Set_point = Pot_value;
-  //turn the PID on
-//  Iron_PID.SetMode(AUTOMATIC);
+	delay(5000);
+	init_screen();
+	pinMode(3,OUTPUT);
+	digitalWrite(3,LOW);
 }
 
 void loop()
 {
-
+	delay(1000);
+	digitalWrite(3,HIGH);
+	delay(1000);
+	digitalWrite(3,LOW);
 }
+
+void init_screen()
+{
+	TinyWireM.begin();
+	send(0x38);
+	send(0x39);
+	send(0x1c);
+	send(0x78);
+	send(0x53);
+	send(0x6c);
+	send(0x0c);
+	send(0x01);
+	send(0x06);
+	send(0x02);
+}
+
+void print_string(const char *to_buffer)
+{
+	uint8_t my_byte = 0;
+	TinyWireM.beginTransmission(Write_Address);
+	while(*to_buffer) {
+		if(*(to_buffer + 1)) {
+			TinyWireM.send(0xc0);
+			my_byte = to_buffer[0];
+			TinyWireM.send(my_byte);
+		} else {
+			TinyWireM.send(0x40);
+			my_byte = to_buffer[0];
+			TinyWireM.send(my_byte);
+		}
+		++to_buffer;
+
+	}
+	TinyWireM.endTransmission();
+}
+
+void set_position(int pos)
+{
+	if(pos) {
+		send(0x80 | 0x40);		
+	} else {
+		send(0x80 | 0x00);
+	}	
+}
+
+void send(uint8_t value)
+{
+	TinyWireM.beginTransmission(Write_Address);
+	TinyWireM.send(0x40);
+	TinyWireM.send((int)(value));
+	TinyWireM.endTransmission();
+}
+
+
+void send_command(uint8_t value)
+{
+	TinyWireM.beginTransmission(Write_Address);
+	TinyWireM.send(0x00);
+	TinyWireM.send((int)(value));
+	TinyWireM.endTransmission();
+}
+// the setup routine runs once when you press reset:
+//void setup()
+//{
+//TinyWireM.begin();
+//  //  analogReference( INTERNAL2V56_NO_CAP );
+////  pinMode(TEMP, INPUT);
+////  pinMode(POT, INPUT);
+////  pinMode(IRON, OUTPUT);
+////  digitalWrite(IRON, LOW);
+////  init_internal_sensor();
+//delay(1000);
+//pinMode(3,OUTPUT);
+//digitalWrite(3,LOW);
+////  Pot_value = 0;
+//
+////  lcd.init();
+////  lcd.clear(); 
+////  lcd.setContrast(10);
+////  lcd.setCursor(1,0);
+////  lcd.print("Hello");
+////  lcd.setCursor(1,1);
+////  lcd.print("World!");
+//
+////  Input = analogRead(TEMP);
+////  Set_point = Pot_value;
+//  //turn the PID on
+////  Iron_PID.SetMode(AUTOMATIC);
+//}
+
+
+
 //void loop()
 //{
 //  get_internal_temperature();
