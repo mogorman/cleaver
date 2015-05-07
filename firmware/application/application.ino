@@ -10,7 +10,7 @@
 
 #include <TinyWireM.h>
 #include <PID_v1.h>
-//#include <LiquidCrystal_I2C_ST7032i.h>
+#include <LiquidCrystal_I2C_ST7032i.h>
 
 //           ________   http://highlowtech.org pinout
 //  Reset    |1    8| Vcc+
@@ -49,7 +49,7 @@ int internal_pos;
 
 //Specify the links and initial tuning parameters
 //PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
-//LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
+LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
 // the setup routine runs once when you press reset:
 void setup()
@@ -60,6 +60,19 @@ void setup()
 //	print_string("hi");
 	pinMode(3,OUTPUT);
 	digitalWrite(3,LOW);
+	lcd.init();
+	lcd.clear();
+	lcd.blink();
+	lcd.setContrast(10);
+	lcd.setCursor(0,0);
+	lcd.print("Hello");
+	for(int h=0;h<20;h++){
+	  lcd.setContrast(h);
+	  delay(300);
+	}
+////  lcd.setCursor(1,1);
+////  lcd.print("World!");
+//
 }
 
 void loop()

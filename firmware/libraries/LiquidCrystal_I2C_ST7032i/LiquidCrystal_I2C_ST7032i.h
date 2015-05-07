@@ -5,11 +5,8 @@
 
 #include <inttypes.h>
 #include "Print.h" 
-#if defined(__AVR_ATtiny85__) || (__AVR_ATtiny2313__)  //  This has not neen tested
-  #include "TinyWireM.h"
-#else 
-  #include <Wire.h>
-#endif
+#include "TinyWireM.h"
+
 
 
 //======= Command/flag defenitions =======

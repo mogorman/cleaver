@@ -3,11 +3,7 @@
 #include "LiquidCrystal_I2C_ST7032i.h"
 #include <inttypes.h>
 
-#if defined (__AVR_ATtiny85__) || (__AVR_ATtiny2313__)  //  This has not been tested
-  #include "TinyWireM.h"
-#else
-  #include "Wire.h"
-#endif
+#include "TinyWireM.h"
 
 #if defined(ARDUINO) && ARDUINO >= 100
   #include "Arduino.h"
@@ -38,17 +34,8 @@
 
 // Used by backlight control functions to detect if a pin is PWM capable.
 // For other AVR types similar arrays need to be added.
-#if defined (__AVR_ATmega168__) | (__AVR_ATmega328P__) 
-  uint8_t  pwm[6]={3, 5, 6, 9, 10, 11};
-#endif
 
-#if defined (__AVR_ATmega2560__) 
-  uint8_t  pwm[13]={2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 45, 46};
-#endif
-
-#if defined (__AVR_ATtiny85__)
 uint8_t  pwm[4]={2,3,5,6};
-#endif
 
 
 LiquidCrystal_I2C_ST7032i::LiquidCrystal_I2C_ST7032i(uint8_t lcd_Addr,uint8_t lcd_cols,uint8_t lcd_rows){
@@ -88,11 +75,7 @@ void LiquidCrystal_I2C_ST7032i::init(){
 }
 
 void LiquidCrystal_I2C_ST7032i::init_priv(){
-  #if defined (__AVR_ATtiny85__) || (__AVR_ATtiny2313__)
     TinyWireM.begin();             			// This has not neen tested
-  #else
-    Wire.begin();
-  #endif
   
   _displaycontrol = LCD_DISPLAYON;
 
@@ -349,22 +332,10 @@ inline void LiquidCrystal_I2C_ST7032i::command(uint8_t value) {
 
 // write either command or data
 void LiquidCrystal_I2C_ST7032i::send(uint8_t value, uint8_t mode) {
-#if defined (__AVR_ATtiny85__) || (__AVR_ATtiny2313__)
   TinyWireM.beginTransmission(_Addr);
   TinyWireM.send((int)(mode)); 
   TinyWireM.send((int)(value));
   TinyWireM.endTransmission();
-#else
-  Wire.beginTransmission(_Addr);
-  #if defined(ARDUINO) && ARDUINO >= 100
-    Wire.write((int)(mode));
-    Wire.write((int)(value));
-  #else
-    Wire.send((int)(mode)); 
-    Wire.send((int)(value)); 
-  #endif
-  Wire.endTransmission();   
-#endif
 }
  
 
