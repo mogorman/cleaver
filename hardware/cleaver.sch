@@ -42,25 +42,6 @@ device=none
 T 54000 46700 5 10 1 1 0 1 1
 value=Vcc5
 }
-C 41800 51200 1 0 0 pwrjack-1.sym
-{
-T 41900 51700 5 10 0 0 0 0 1
-device=PWRJACK
-T 41800 51700 5 10 1 1 0 0 1
-refdes=CONN2
-T 42200 51300 5 10 0 1 0 0 1
-footprint=CON__CUI_PJ-202AH
-}
-C 42500 51000 1 0 0 ground.sym
-C 42700 51400 1 0 0 output-2.sym
-{
-T 43600 51600 5 10 0 0 0 0 1
-net=Vcc24:1
-T 42900 52100 5 10 0 0 0 0 1
-device=none
-T 43600 51500 5 10 1 1 0 1 1
-value=Vcc24
-}
 C 47300 52300 1 0 1 input-2.sym
 {
 T 47300 52500 5 10 0 0 0 6 1
@@ -648,5 +629,33 @@ net=Vcc24:1
 T 43600 51100 5 10 0 0 0 0 1
 device=none
 T 44300 50500 5 10 1 1 0 1 1
+value=Vcc24
+}
+C 41000 52300 1 0 0 connector3-1.sym
+{
+T 42800 53200 5 10 0 0 0 0 1
+device=CONNECTOR_3
+T 41000 53400 5 10 1 1 0 0 1
+refdes=CONN2
+T 41100 53000 5 10 0 1 0 0 1
+footprint=CON__CUI_PJ-202AH
+}
+C 42700 52700 1 0 0 output-2.sym
+{
+T 43600 52900 5 10 0 0 0 0 1
+net=Vcc24:1
+T 42900 53400 5 10 0 0 0 0 1
+device=none
+T 43600 52800 5 10 1 1 0 1 1
+value=Vcc24
+}
+C 43000 52900 1 90 0 ground.sym
+C 42700 52400 1 0 0 output-2.sym
+{
+T 43600 52600 5 10 0 0 0 0 1
+net=Vcc24:1
+T 42900 53100 5 10 0 0 0 0 1
+device=none
+T 43600 52500 5 10 1 1 0 1 1
 value=Vcc24
 }
