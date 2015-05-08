@@ -1414,14 +1414,14 @@ Element["hidename,onsolder" "LED3" "LED2" "unknown" 52.6520mm 68.4042mm 3.6190mm
 
 Element["onsolder" "din6" "CONN1" "unknown" 58.2540mm 55.7032mm -7.1490mm -9.9273mm 2 100 "auto"]
 (
-	Pin[0.0000 0.0000 93.00mil 28.00mil 97.00mil 61.00mil "GND" "2" ""]
-	Pin[4.9000mm 0.0000 93.00mil 28.00mil 97.00mil 61.00mil "Center" "8" "thermal(0X,1X)"]
-	Pin[0.0000 7.5000mm 93.00mil 28.00mil 97.00mil 61.00mil "V+" "6" ""]
-	Pin[0.0000 -7.5000mm 93.00mil 28.00mil 97.00mil 61.00mil "T+" "7" ""]
-	Pin[2.6000mm -5.0000mm 93.00mil 28.00mil 97.00mil 61.00mil "T-" "5" ""]
-	Pin[2.6000mm 5.0000mm 93.00mil 28.00mil 97.00mil 61.00mil "V-" "4" ""]
-	Pin[-9.6000mm -5.0000mm 93.00mil 28.00mil 97.00mil 61.00mil "GND" "9" "thermal(0X,1X)"]
-	Pin[-9.6000mm 5.0000mm 93.00mil 28.00mil 97.00mil 61.00mil "GND" "10" "thermal(0X,1X)"]
+	Pin[0.0000 0.0000 93.00mil 30.00mil 97.00mil 61.00mil "GND" "2" ""]
+	Pin[4.9000mm 0.0000 93.00mil 30.00mil 97.00mil 61.00mil "Center" "8" "thermal(0X,1X)"]
+	Pin[0.0000 7.5000mm 93.00mil 30.00mil 97.00mil 61.00mil "V+" "6" ""]
+	Pin[0.0000 -7.5000mm 93.00mil 30.00mil 97.00mil 61.00mil "T+" "7" ""]
+	Pin[2.6000mm -5.0000mm 93.00mil 30.00mil 97.00mil 61.00mil "T-" "5" ""]
+	Pin[2.6000mm 5.0000mm 93.00mil 30.00mil 97.00mil 61.00mil "V-" "4" ""]
+	Pin[-9.6000mm -5.0000mm 93.00mil 30.00mil 97.00mil 61.00mil "GND" "9" "thermal(0X,1X)"]
+	Pin[-9.6000mm 5.0000mm 93.00mil 30.00mil 97.00mil 61.00mil "GND" "10" "thermal(0X,1X)"]
 	ElementLine [-12.4000mm 10.5000mm -12.4000mm -10.5000mm 10.00mil]
 	ElementLine [6.0000mm 10.5000mm 6.0000mm -10.5000mm 10.00mil]
 	ElementLine [-12.4000mm -10.5000mm 6.0000mm -10.5000mm 10.00mil]
@@ -2065,9 +2065,9 @@ Element["onsolder" "LED3" "LED1" "unknown" 83.5710mm 51.8522mm 6.2700mm -1.0000m
 
 Element["onsolder" "POT__CTS_296U-Series" "R1" "10K" 96.2540mm 64.7032mm 31.50mil -4.9904mm 2 100 "auto"]
 (
-	Pin[-2.5000mm 7.0000mm 60.00mil 30.00mil 66.00mil 38.00mil "" "1" "thermal(1X)"]
-	Pin[0.0000 7.0000mm 60.00mil 30.00mil 66.00mil 38.00mil "" "2" ""]
-	Pin[2.5000mm 7.0000mm 60.00mil 30.00mil 66.00mil 38.00mil "" "3" ""]
+	Pin[-2.5000mm 7.0000mm 60.00mil 36.00mil 66.00mil 38.00mil "" "1" "thermal(1X)"]
+	Pin[0.0000 7.0000mm 60.00mil 36.00mil 66.00mil 38.00mil "" "2" ""]
+	Pin[2.5000mm 7.0000mm 60.00mil 36.00mil 66.00mil 38.00mil "" "3" ""]
 	Pin[217.00mil 0.0000 150.00mil 20.00mil 170.00mil 125.00mil "" "4" "hole"]
 	Pin[-217.00mil 0.0000 150.00mil 20.00mil 170.00mil 125.00mil "" "5" "hole"]
 	ElementLine [-251.00mil -262.00mil -251.00mil -67.50mil 10.00mil]
@@ -2308,8 +2308,8 @@ Layer(1 "component")
 	Arc[87.5721mm 56.7532mm 1.8850mm 1.8850mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[79.8010mm 42.4272mm 5.2780mm 5.2780mm 10.00mil 28.00mil 180 90 "clearline"]
 	Text[101.0930mm 40.4653mm 0 165 "Cleaver" "clearline"]
-	Text[102.8920mm 43.2042mm 0 100 "@v@" "clearline"]
-	Text[103.1460mm 45.0731mm 0 100 "@git@" "clearline"]
+	Text[104.0230mm 43.2042mm 0 100 "@v@" "clearline"]
+	Text[103.9000mm 45.0731mm 0 100 "@git@" "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[45.8310mm 34.1602mm] [116.3160mm 34.1602mm] [116.3160mm 77.5942mm] [45.8310mm 77.5942mm] 
