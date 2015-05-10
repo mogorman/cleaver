@@ -2035,7 +2035,7 @@ Element["" "0805" "C1" "0.1uF" 107.3541mm 66.9532mm -0.6651mm -2.7291mm 0 100 ""
 
 	)
 
-Element["onsolder" "icsp" "CONN4" "unknown" 84.2540mm 64.7032mm -50.00mil 50.00mil 3 100 "auto"]
+Element["hidename,onsolder" "icsp" "CONN4" "unknown" 84.2540mm 64.7032mm -50.00mil 50.00mil 3 100 "auto"]
 (
 	Pin[0.0000 0.0000 60.00mil 30.00mil 66.00mil 38.00mil "1" "1" "square"]
 	Pin[100.00mil 0.0000 60.00mil 30.00mil 66.00mil 38.00mil "2" "2" ""]
@@ -2315,8 +2315,8 @@ Layer(1 "component")
 	Arc[85.3170mm 51.8522mm 3.0160mm 3.0160mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[87.5721mm 56.7532mm 1.8850mm 1.8850mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[79.8010mm 42.4272mm 5.2780mm 5.2780mm 10.00mil 28.00mil 180 90 "clearline"]
-	Text[101.0930mm 40.4653mm 0 165 "Cleaver" "clearline"]
-	Text[104.0230mm 43.2042mm 0 100 "@v@" "clearline"]
+	Text[99.5850mm 40.4653mm 0 165 "Cleaver" "clearline"]
+	Text[105.1540mm 43.2042mm 0 100 "@v@" "clearline"]
 	Text[103.9000mm 45.0731mm 0 100 "@git@" "clearline"]
 	Polygon("clearpoly,lock")
 	(
