@@ -59,15 +59,6 @@ black	3 EARTH GROUND
 red	4 V+ of thermal
 green	5 V- of thermal
 
-laptop power supply 7 dollars
-
-to buy
-1206 led 859-LTST-C230EKT
-attiny85s 556-ATTINY85-20SU
-mosfet 942-IRFR3910PBF
-lm358  595-LM358PSR 
-78l05   863-NCV7805BDTRKG 
-
 arduino http://highlowtech.org/?p=1695 end
 pid library https://github.com/br3ttb/Arduino-PID-Library/ 
 display library http://hmario.home.xs4all.nl/arduino/LiquidCrystal_I2C_ST7032i/
