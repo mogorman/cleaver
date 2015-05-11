@@ -2083,7 +2083,7 @@ Element["onsolder" "POT__CTS_296U-Series" "R1" "10K" 96.2540mm 64.7032mm 31.50mi
 
 	)
 
-Element["" "0805" "R9" "10K" 88.8490mm 47.3282mm -0.5219mm 1.9319mm 0 100 ""]
+Element["" "0805" "R9" "10K" 88.8490mm 47.7052mm -0.5219mm 1.9319mm 0 100 ""]
 (
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 22.00mil 57.18mil "2" "2" "square"]
@@ -2092,7 +2092,7 @@ Element["" "0805" "R9" "10K" 88.8490mm 47.3282mm -0.5219mm 1.9319mm 0 100 ""]
 
 	)
 
-Element["" "0805" "R10" "4.7K" 86.2100mm 47.3282mm -0.9543mm 1.9129mm 0 100 ""]
+Element["" "0805" "R10" "4.7K" 86.2100mm 47.7052mm -0.9543mm 1.9129mm 0 100 ""]
 (
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
@@ -2101,7 +2101,7 @@ Element["" "0805" "R10" "4.7K" 86.2100mm 47.3282mm -0.9543mm 1.9129mm 0 100 ""]
 
 	)
 
-Element["" "0805" "R11" "4.7K" 83.5710mm 47.3282mm -3.3038mm 0.3838mm 0 100 ""]
+Element["" "0805" "R11" "4.7K" 83.5710mm 47.7052mm -3.3038mm 0.3838mm 0 100 ""]
 (
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
@@ -2221,12 +2221,9 @@ Layer(1 "component")
 	Line[72.5040mm 45.9532mm 72.5040mm 39.9222mm 10.00mil 28.00mil "clearline"]
 	Line[73.5549mm 42.4023mm 73.5549mm 40.3793mm 10.00mil 28.00mil "clearline"]
 	Line[75.6540mm 38.2802mm 79.7828mm 38.2802mm 10.00mil 28.00mil "clearline"]
-	Line[84.0040mm 43.2032mm 84.0040mm 46.2032mm 10.00mil 28.00mil "clearline"]
 	Line[83.9480mm 42.4454mm 83.9480mm 43.4462mm 10.00mil 28.00mil "clearline"]
 	Line[83.0461mm 43.7639mm 83.0461mm 42.2793mm 20.00mil 28.00mil ""]
-	Line[82.0630mm 46.5742mm 82.0630mm 43.7808mm 10.00mil 28.00mil "clearline"]
 	Line[82.0630mm 43.7808mm 82.0461mm 43.7639mm 10.00mil 28.00mil "clearline"]
-	Line[87.6330mm 1893.00mil 83.7169mm 1893.00mil 10.00mil 28.00mil "clearline"]
 	Line[100.5360mm 67.3092mm 100.5360mm 70.3252mm 10.00mil 28.00mil ""]
 	Line[82.3010mm 51.8522mm 82.3010mm 51.6142mm 10.00mil 28.00mil "clearline"]
 	Line[66.3191mm 36.0182mm 62.4590mm 36.0182mm 10.00mil 28.00mil "clearline"]
@@ -2248,6 +2245,11 @@ Layer(1 "component")
 	Line[82.0630mm 43.5582mm 82.0630mm 42.4272mm 10.00mil 28.00mil "clearline"]
 	Line[79.0461mm 43.7639mm 79.0461mm 1670.40mil 10.00mil 28.00mil "clearline"]
 	Line[79.0461mm 1670.40mil 79.0470mm 42.4272mm 10.00mil 28.00mil "clearline"]
+	Line[88.1559mm 48.6051mm 82.5859mm 48.6051mm 10.00mil 28.00mil "clearline"]
+	Line[82.0630mm 43.7808mm 82.0630mm 1893.00mil 10.00mil 28.00mil "clearline"]
+	Line[3308.90mil 43.7639mm 3308.90mil 46.3302mm 10.00mil 28.00mil "clearline"]
+	Line[3308.90mil 46.3302mm 83.5710mm 46.8053mm 10.00mil 28.00mil "clearline"]
+	Line[85.0461mm 43.9023mm 85.0461mm 45.0333mm 10.00mil 28.00mil "clearline"]
 	Arc[79.7400mm 60.9952mm 1.2080mm 1.2080mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[64.2540mm 64.0533mm 1.3501mm 1.3501mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[64.2540mm 61.2032mm 1.5000mm 1.5000mm 10.00mil 28.00mil 90 90 "clearline"]
@@ -2300,7 +2302,6 @@ Layer(1 "component")
 	Arc[86.7310mm 64.9672mm 4.2270mm 4.2270mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[78.3060mm 67.4912mm 3.1980mm 3.1980mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[78.3060mm 63.1492mm 1.1440mm 1.1440mm 10.00mil 28.00mil 0 90 "clearline"]
-	Arc[86.6883mm 44.4111mm 1.6422mm 1.6422mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[95.0040mm 51.7032mm 3.7500mm 3.7500mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[94.1320mm 58.5752mm 2.8780mm 2.8780mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[3760.00mil 70.9532mm 3.2500mm 3.2500mm 10.00mil 28.00mil 90 90 "clearline"]
@@ -2311,8 +2312,6 @@ Layer(1 "component")
 	Arc[75.6540mm 40.3793mm 2.0991mm 2.0991mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[79.7828mm 42.4454mm 4.1652mm 4.1652mm 10.00mil 28.00mil -180 90 "clearline"]
 	Arc[86.0461mm 1829.60mil 2.7079mm 2.7079mm 10.00mil 28.00mil -180 90 "clearline"]
-	Arc[83.7169mm 46.5742mm 65.12mil 65.12mil 10.00mil 28.00mil 0 90 "clearline"]
-	Arc[87.6330mm 51.7032mm 3.6210mm 3.6210mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[66.3191mm 1582.80mil 4.1849mm 4.1849mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[60.6891mm 1789.50mil 9.4351mm 9.4351mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[85.3170mm 51.8522mm 3.0160mm 3.0160mm 10.00mil 28.00mil 0 90 "clearline"]
@@ -2320,9 +2319,13 @@ Layer(1 "component")
 	Arc[79.8010mm 42.4272mm 5.2780mm 5.2780mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[80.5550mm 42.4272mm 1.5080mm 1.5080mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[80.5550mm 42.4272mm 1.5080mm 1.5080mm 10.00mil 28.00mil -180 90 "clearline"]
+	Arc[88.1559mm 51.7032mm 3.0981mm 3.0981mm 10.00mil 28.00mil 180 90 "clearline"]
+	Arc[82.5859mm 1893.00mil 0.5229mm 0.5229mm 10.00mil 28.00mil 0 90 "clearline"]
+	Arc[85.8330mm 45.0333mm 0.7869mm 0.7869mm 10.00mil 28.00mil 0 90 "clearline"]
+	Arc[85.8330mm 46.5742mm 0.7540mm 0.7540mm 10.00mil 28.00mil -180 90 "clearline"]
 	Text[99.5850mm 40.4653mm 0 165 "Cleaver" "clearline"]
-	Text[105.1540mm 43.2042mm 0 100 "@v@" "clearline"]
-	Text[103.9000mm 45.0731mm 0 100 "@git@" "clearline"]
+	Text[105.1540mm 42.8272mm 0 100 "@v@" "clearline"]
+	Text[103.9000mm 44.6961mm 0 100 "@git@" "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[45.8310mm 34.1602mm] [116.3160mm 34.1602mm] [116.3160mm 77.5942mm] [45.8310mm 77.5942mm] 
@@ -2335,17 +2338,15 @@ Layer(1 "component")
 )
 Layer(2 "solder")
 (
-	Line[98.6510mm 72.1813mm 98.6510mm 71.4562mm 10.00mil 28.00mil "clearline"]
 	Line[73.7690mm 61.9033mm 73.7690mm 62.7852mm 10.00mil 28.00mil "clearline"]
 	Line[77.0040mm 46.9532mm 77.0040mm 47.4532mm 10.00mil 28.00mil "clearline"]
 	Line[72.0040mm 52.9532mm 72.5040mm 52.9532mm 10.00mil 28.00mil "clearline"]
 	Line[87.7540mm 61.7032mm 87.2540mm 61.7032mm 10.00mil 28.00mil "clearline"]
 	Line[87.2540mm 61.7032mm 86.7940mm 62.1632mm 10.00mil 28.00mil "clearline"]
 	Line[80.5040mm 65.9132mm 80.5040mm 66.4532mm 10.00mil 28.00mil "clearline"]
+	Line[99.0280mm 72.0072mm 99.0280mm 71.4562mm 10.00mil 28.00mil "clearline"]
 	Arc[80.7540mm 59.4532mm 3.5000mm 3.5000mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[80.7540mm 62.9532mm 7.0000mm 7.0000mm 10.00mil 28.00mil -90 90 "clearline"]
-	Arc[96.2940mm 64.7032mm 9.5000mm 9.5000mm 10.00mil 28.00mil 0 90 "clearline"]
-	Arc[96.2940mm 71.7432mm 2.4600mm 2.4600mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[78.2540mm 64.7032mm 6.0000mm 6.0000mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[78.2540mm 58.7032mm 12.0000mm 12.0000mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[72.0040mm 58.7032mm 5.7500mm 5.7500mm 10.00mil 28.00mil -90 90 "clearline"]
@@ -2357,6 +2358,8 @@ Layer(2 "solder")
 	Arc[72.7540mm 59.2032mm 4.0000mm 4.0000mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[78.2540mm 59.2032mm 9.5000mm 9.5000mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[78.2540mm 66.4532mm 2.2500mm 2.2500mm 10.00mil 28.00mil 90 90 "clearline"]
+	Arc[96.5630mm 64.7032mm 9.7690mm 9.7690mm 10.00mil 28.00mil 0 90 "clearline"]
+	Arc[96.5630mm 72.0072mm 2.4650mm 2.4650mm 10.00mil 28.00mil 90 90 "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[116.3160mm 77.5942mm] [45.8310mm 77.5942mm] [45.8310mm 34.1602mm] [116.3160mm 34.1602mm] 
@@ -2644,135 +2647,135 @@ Layer(10 "silk")
 )
 NetList()
 (
-	Net("GND" "(unknown)")
+	Net("unnamed_net7" "(unknown)")
 	(
-		Connect("C1-1")
-		Connect("C2-1")
-		Connect("CONN1-8")
-		Connect("CONN1-9")
-		Connect("CONN1-10")
-		Connect("CONN2-1")
-		Connect("CONN4-6")
-		Connect("CONN5-2")
-		Connect("D1-4")
-		Connect("LED1-2")
-		Connect("LED2-2")
-		Connect("Q1-S")
-		Connect("R1-1")
-		Connect("R3-2")
-		Connect("R4-1")
-		Connect("U1-4")
-		Connect("U2-4")
-		Connect("U3-2")
-	)
-	Net("Iron" "(unknown)")
-	(
-		Connect("CONN1-4")
-		Connect("Q1-D")
-	)
-	Net("Iron_control" "(unknown)")
-	(
-		Connect("R1-2")
-		Connect("U1-3")
-	)
-	Net("Iron_EN" "(unknown)")
-	(
-		Connect("CONN4-1")
-		Connect("R6-1")
-		Connect("R8-1")
-		Connect("U1-6")
-	)
-	Net("Reset" "(unknown)")
-	(
-		Connect("CONN4-5")
-		Connect("U1-1")
-	)
-	Net("SCL" "(unknown)")
-	(
-		Connect("CONN4-3")
-		Connect("D1-2")
-		Connect("R10-1")
-		Connect("U1-7")
-	)
-	Net("SDA" "(unknown)")
-	(
-		Connect("CONN4-4")
-		Connect("D1-3")
-		Connect("R11-1")
-		Connect("U1-5")
-	)
-	Net("Temp" "(unknown)")
-	(
-		Connect("CONN1-7")
-		Connect("U2-3")
-	)
-	Net("Temp_amped" "(unknown)")
-	(
-		Connect("U1-2")
-		Connect("U2-6")
-		Connect("U2-7")
-	)
-	Net("unnamed_net1" "(unknown)")
-	(
-		Connect("R4-2")
-		Connect("R5-2")
-		Connect("U2-2")
-	)
-	Net("unnamed_net2" "(unknown)")
-	(
-		Connect("R5-1")
-		Connect("U2-1")
-		Connect("U2-5")
-	)
-	Net("unnamed_net3" "(unknown)")
-	(
-		Connect("Q1-G")
-		Connect("R6-2")
-	)
-	Net("unnamed_net4" "(unknown)")
-	(
-		Connect("D1-1")
-		Connect("R9-1")
-	)
-	Net("unnamed_net5" "(unknown)")
-	(
-		Connect("LED1-1")
-		Connect("R7-2")
+		Connect("R3-1")
+		Connect("R2-2")
+		Connect("CONN1-5")
 	)
 	Net("unnamed_net6" "(unknown)")
 	(
 		Connect("LED2-1")
 		Connect("R8-2")
 	)
-	Net("unnamed_net7" "(unknown)")
+	Net("unnamed_net5" "(unknown)")
 	(
-		Connect("CONN1-5")
-		Connect("R2-2")
-		Connect("R3-1")
+		Connect("R7-2")
+		Connect("LED1-1")
 	)
-	Net("Vcc5" "(unknown)")
+	Net("unnamed_net4" "(unknown)")
 	(
-		Connect("C2-2")
-		Connect("CONN4-2")
-		Connect("D1-5")
-		Connect("D1-8")
-		Connect("R1-3")
-		Connect("R2-1")
-		Connect("R7-1")
-		Connect("R9-2")
-		Connect("R10-2")
-		Connect("R11-2")
-		Connect("U1-8")
-		Connect("U2-8")
-		Connect("U3-3")
+		Connect("R9-1")
+		Connect("D1-1")
+	)
+	Net("unnamed_net3" "(unknown)")
+	(
+		Connect("R6-2")
+		Connect("Q1-G")
+	)
+	Net("Iron" "(unknown)")
+	(
+		Connect("CONN1-4")
+		Connect("Q1-D")
+	)
+	Net("unnamed_net2" "(unknown)")
+	(
+		Connect("U2-1")
+		Connect("R5-1")
+		Connect("U2-5")
+	)
+	Net("Temp" "(unknown)")
+	(
+		Connect("CONN1-7")
+		Connect("U2-3")
+	)
+	Net("unnamed_net1" "(unknown)")
+	(
+		Connect("R5-2")
+		Connect("R4-2")
+		Connect("U2-2")
 	)
 	Net("Vcc24" "(unknown)")
 	(
-		Connect("C1-2")
-		Connect("CONN1-6")
-		Connect("CONN2-2")
 		Connect("CONN2-3")
+		Connect("CONN2-2")
 		Connect("CONN5-1")
 		Connect("U3-1")
+		Connect("CONN1-6")
+		Connect("C1-2")
+	)
+	Net("SCL" "(unknown)")
+	(
+		Connect("R10-1")
+		Connect("D1-2")
+		Connect("CONN4-3")
+		Connect("U1-7")
+	)
+	Net("Vcc5" "(unknown)")
+	(
+		Connect("R11-2")
+		Connect("R10-2")
+		Connect("R9-2")
+		Connect("U3-3")
+		Connect("R2-1")
+		Connect("R7-1")
+		Connect("D1-8")
+		Connect("D1-5")
+		Connect("CONN4-2")
+		Connect("U2-8")
+		Connect("R1-3")
+		Connect("C2-2")
+		Connect("U1-8")
+	)
+	Net("Iron_EN" "(unknown)")
+	(
+		Connect("R8-1")
+		Connect("R6-1")
+		Connect("CONN4-1")
+		Connect("U1-6")
+	)
+	Net("SDA" "(unknown)")
+	(
+		Connect("R11-1")
+		Connect("D1-3")
+		Connect("CONN4-4")
+		Connect("U1-5")
+	)
+	Net("GND" "(unknown)")
+	(
+		Connect("CONN2-1")
+		Connect("CONN5-2")
+		Connect("U3-2")
+		Connect("R3-2")
+		Connect("CONN1-10")
+		Connect("CONN1-9")
+		Connect("CONN1-8")
+		Connect("LED2-2")
+		Connect("LED1-2")
+		Connect("D1-4")
+		Connect("R4-1")
+		Connect("Q1-S")
+		Connect("CONN4-6")
+		Connect("U2-4")
+		Connect("R1-1")
+		Connect("C2-1")
+		Connect("C1-1")
+		Connect("U1-4")
+	)
+	Net("Iron_control" "(unknown)")
+	(
+		Connect("R1-2")
+		Connect("U1-3")
+	)
+	Net("Temp_amped" "(unknown)")
+	(
+		Connect("U2-7")
+		Connect("U2-6")
+		Connect("U1-2")
+	)
+	Net("Reset" "(unknown)")
+	(
+		Connect("CONN4-5")
+		Connect("U1-1")
 	)
 )
