@@ -640,25 +640,6 @@ refdes=CONN2
 T 41100 53000 5 10 0 1 0 0 1
 footprint=CON__CUI_PJ-202AH
 }
-C 42700 52700 1 0 0 output-2.sym
-{
-T 43600 52900 5 10 0 0 0 0 1
-net=Vcc24:1
-T 42900 53400 5 10 0 0 0 0 1
-device=none
-T 43600 52800 5 10 1 1 0 1 1
-value=Vcc24
-}
-C 43000 52900 1 90 0 ground.sym
-C 42700 52400 1 0 0 output-2.sym
-{
-T 43600 52600 5 10 0 0 0 0 1
-net=Vcc24:1
-T 42900 53100 5 10 0 0 0 0 1
-device=none
-T 43600 52500 5 10 1 1 0 1 1
-value=Vcc24
-}
 C 59600 45100 1 0 1 input-2.sym
 {
 T 59600 45300 5 10 0 0 0 6 1
@@ -668,3 +649,14 @@ device=none
 T 59500 45200 5 10 1 1 180 1 1
 value=Vcc5
 }
+C 42700 53000 1 0 0 output-2.sym
+{
+T 43600 53200 5 10 0 0 0 0 1
+net=Vcc24:1
+T 42900 53700 5 10 0 0 0 0 1
+device=none
+T 43600 53100 5 10 1 1 0 1 1
+value=Vcc24
+}
+C 43000 52300 1 90 0 ground.sym
+C 43000 52600 1 90 0 ground.sym
