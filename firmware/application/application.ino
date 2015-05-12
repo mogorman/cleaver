@@ -46,7 +46,7 @@ int Pot_value;
 int internal_offset;
 int internal_readings[45];
 int internal_pos;
-
+int blinky;
 //Specify the links and initial tuning parameters
 //PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
 
@@ -55,29 +55,31 @@ LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8
 /* // the setup routine runs once when you press reset: */
 void setup()
 {
-	delay(5000);
-//	init_screen();
-//	set_position(0);
-//	print_string("hi");
-	pinMode(1,OUTPUT);
-	digitalWrite(1,LOW);
-	lcd.init();
-	lcd.clear();
-	lcd.blink();
-	lcd.setContrast(29);
-	lcd.setCursor(0,0);
-	lcd.print("Hello");
-////  lcd.setCursor(1,1);
-////  lcd.print("World!");
-//
+  delay(2000);
+  pinMode(IRON,OUTPUT);
+  pinMode(POT,INPUT);
+  digitalWrite(IRON,HIGH);
+  blinky = 1;
+  lcd.init();
+  lcd.clear();
+  //  lcd.blink();
+  lcd.setContrast(29);
+  lcd.setCursor(0,0);
+  lcd.print("Bye bye");
 }
 
 void loop()
 {
-	delay(1000);
-	digitalWrite(1,HIGH);
-	delay(1000);
-	digitalWrite(1,LOW);
+  int data = 0;
+  data = analogRead(POT);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Read:");
+  lcd.setCursor(1,1);
+  lcd.print(data);
+  delay(10000);
+  digitalWrite(IRON, blinky);
+  blinky = ( blinky ) ? 0 : 1;
 }
 
 /* void init_screen() */
