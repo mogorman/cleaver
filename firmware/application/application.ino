@@ -12,12 +12,12 @@
 #include <PID_v1.h>
 #include <LiquidCrystal_I2C_ST7032i.h>
 
-//           ________   http://highlowtech.org pinout
-//  Reset    |1    8| Vcc+
-//  A3   D3  |2    7| D2 A1 SCK SCL
-//  A2   D4  |3    6| D1 PWM MISO 
-//      GND  |4    5| D0 PWM AREF MOSI SDA
-//           --------
+//                ________   http://highlowtech.org pinout
+//  Reset PB5     |1    8| Vcc+
+//  A3    PB3 D3  |2    7| D2 PB2 A1 SCK SCL 
+//  A2    PB4 D4  |3    6| D1 PB1 PWM MISO 
+//        GND     |4    5| D0 PB0 PWM AREF MOSI SDA
+//                --------
 //
 
 // attiny85
@@ -49,27 +49,24 @@ int internal_pos;
 
 //Specify the links and initial tuning parameters
 //PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
+
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
-// the setup routine runs once when you press reset:
+/* // the setup routine runs once when you press reset: */
 void setup()
 {
 	delay(5000);
 //	init_screen();
 //	set_position(0);
 //	print_string("hi");
-	pinMode(3,OUTPUT);
-	digitalWrite(3,LOW);
+	pinMode(1,OUTPUT);
+	digitalWrite(1,LOW);
 	lcd.init();
 	lcd.clear();
 	lcd.blink();
-	lcd.setContrast(10);
+	lcd.setContrast(29);
 	lcd.setCursor(0,0);
 	lcd.print("Hello");
-	for(int h=0;h<20;h++){
-	  lcd.setContrast(h);
-	  delay(300);
-	}
 ////  lcd.setCursor(1,1);
 ////  lcd.print("World!");
 //
@@ -78,80 +75,80 @@ void setup()
 void loop()
 {
 	delay(1000);
-	digitalWrite(3,HIGH);
+	digitalWrite(1,HIGH);
 	delay(1000);
-	digitalWrite(3,LOW);
+	digitalWrite(1,LOW);
 }
 
-void init_screen()
-{
-	TinyWireM.begin();
-	send(0x38);
-	delay(100);
-	send(0x39);
-	delay(100);
-	send(0x1c);
-	delay(100);
-	send(0x78);
-	delay(100);
-	send(0x53);
-	delay(100);
-	send(0x6c);
-	delay(100);
-	send(0x0c);
-	delay(100);
-	send(0x01);
-	delay(100);
-	send(0x06);
-	delay(100);
-	send(0x02);
-}
+/* void init_screen() */
+/* { */
+/* 	TinyWireM.begin(); */
+/* 	send(0x38); */
+/* 	delay(100); */
+/* 	send(0x39); */
+/* 	delay(100); */
+/* 	send(0x1c); */
+/* 	delay(100); */
+/* 	send(0x78); */
+/* 	delay(100); */
+/* 	send(0x53); */
+/* 	delay(100); */
+/* 	send(0x6c); */
+/* 	delay(100); */
+/* 	send(0x0c); */
+/* 	delay(100); */
+/* 	send(0x01); */
+/* 	delay(100); */
+/* 	send(0x06); */
+/* 	delay(100); */
+/* 	send(0x02); */
+/* } */
 
-void print_string(const char *to_buffer)
-{
-	uint8_t my_byte = 0;
-	TinyWireM.beginTransmission(Write_Address);
-	while(*to_buffer) {
-		if(*(to_buffer + 1)) {
-			TinyWireM.send(0xc0);
-			my_byte = to_buffer[0];
-			TinyWireM.send(my_byte);
-		} else {
-			TinyWireM.send(0x40);
-			my_byte = to_buffer[0];
-			TinyWireM.send(my_byte);
-		}
-		++to_buffer;
+/* void print_string(const char *to_buffer) */
+/* { */
+/* 	uint8_t my_byte = 0; */
+/* 	TinyWireM.beginTransmission(Write_Address); */
+/* 	while(*to_buffer) { */
+/* 		if(*(to_buffer + 1)) { */
+/* 			TinyWireM.send(0xc0); */
+/* 			my_byte = to_buffer[0]; */
+/* 			TinyWireM.send(my_byte); */
+/* 		} else { */
+/* 			TinyWireM.send(0x40); */
+/* 			my_byte = to_buffer[0]; */
+/* 			TinyWireM.send(my_byte); */
+/* 		} */
+/* 		++to_buffer; */
 
-	}
-	TinyWireM.endTransmission();
-}
+/* 	} */
+/* 	TinyWireM.endTransmission(); */
+/* } */
 
-void set_position(int pos)
-{
-	if(pos) {
-		send(0x80 | 0x40);		
-	} else {
-		send(0x80 | 0x00);
-	}	
-}
+/* void set_position(int pos) */
+/* { */
+/* 	if(pos) { */
+/* 		send(0x80 | 0x40);		 */
+/* 	} else { */
+/* 		send(0x80 | 0x00); */
+/* 	}	 */
+/* } */
 
-void send(uint8_t value)
-{
-	TinyWireM.beginTransmission(Write_Address);
-	TinyWireM.send(0x40);
-	TinyWireM.send((int)(value));
-	TinyWireM.endTransmission();
-}
+/* void send(uint8_t value) */
+/* { */
+/* 	TinyWireM.beginTransmission(Write_Address); */
+/* 	TinyWireM.send(0x40); */
+/* 	TinyWireM.send((int)(value)); */
+/* 	TinyWireM.endTransmission(); */
+/* } */
 
 
-void send_command(uint8_t value)
-{
-	TinyWireM.beginTransmission(Write_Address);
-	TinyWireM.send(0x00);
-	TinyWireM.send((int)(value));
-	TinyWireM.endTransmission();
-}
+/* void send_command(uint8_t value) */
+/* { */
+/* 	TinyWireM.beginTransmission(Write_Address); */
+/* 	TinyWireM.send(0x00); */
+/* 	TinyWireM.send((int)(value)); */
+/* 	TinyWireM.endTransmission(); */
+/* } */
 // the setup routine runs once when you press reset:
 //void setup()
 //{
