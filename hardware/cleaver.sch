@@ -31,6 +31,8 @@ T 48500 48400 5 10 1 1 0 0 1
 refdes=U1
 T 49900 47100 5 10 0 1 0 0 1
 footprint=SO8M
+T 52000 49100 5 10 0 1 0 0 1
+manufacturer-part=556-attiny85-20su
 }
 C 50600 45900 1 0 0 ground.sym
 C 54500 46600 1 0 1 input-2.sym
@@ -64,6 +66,8 @@ T 45600 52500 5 10 1 1 0 0 1
 value=0.1uF
 T 45000 52200 5 10 0 1 0 0 1
 footprint=0805
+T 45400 52300 5 10 0 1 0 0 1
+manufacturer-part=77-VJ0805V104MXBPBC
 }
 C 44700 51800 1 270 0 ground.sym
 C 45000 51400 1 0 0 capacitor-1.sym
@@ -78,6 +82,8 @@ T 45600 51700 5 10 1 1 0 0 1
 value=0.1uF
 T 45000 51400 5 10 0 1 0 0 1
 footprint=0805
+T 45400 51500 5 10 0 1 0 0 1
+manufacturer-part=77-VJ0805V104MXBPBC
 }
 C 47300 51500 1 0 1 input-2.sym
 {
@@ -98,6 +104,8 @@ T 42400 47900 5 10 1 1 0 0 1
 value=10K
 T 42000 48400 5 10 0 1 0 0 1
 footprint=POT__CTS_296U-Series
+T 42100 48200 5 10 0 1 0 0 1
+manufacturer-part=688-RK09K1130A8G
 }
 C 41900 47400 1 0 0 ground.sym
 C 42200 50000 1 90 1 input-2.sym
@@ -117,6 +125,8 @@ T 60600 49900 5 10 1 1 0 0 1
 refdes=U2
 T 59600 49700 5 10 0 1 0 0 1
 footprint=SO8M
+T 60300 49300 5 10 0 1 0 0 1
+manufacturer-part=595-lm358psr
 }
 C 42600 48100 1 0 0 output-2.sym
 {
@@ -172,6 +182,8 @@ T 49800 43400 5 10 1 1 0 0 1
 refdes=Q1
 T 50000 43000 5 10 0 1 0 0 1
 footprint=DPAK
+T 49600 43500 5 10 0 1 0 0 1
+manufacturer-part=942-IRFR3910PBF
 }
 C 49300 42600 1 0 0 ground.sym
 C 49400 45300 1 270 0 input-2.sym
@@ -212,6 +224,8 @@ T 58500 50000 5 10 1 1 0 0 1
 value=1K
 T 58300 50600 5 10 0 1 0 0 1
 footprint=0805
+T 53800 51000 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-1.0K-E3
 }
 C 58100 50600 1 90 1 resistor-1.sym
 {
@@ -223,6 +237,8 @@ T 57400 50000 5 10 1 1 0 0 1
 value=100K
 T 58100 50600 5 10 0 1 0 0 1
 footprint=0805
+T 58000 50000 5 10 0 1 0 0 1
+manufactuerer-part=71-CRCW0805-100K-E3
 }
 N 58700 49700 58000 49700 4
 N 58000 50600 58000 51100 4
@@ -296,6 +312,8 @@ T 48500 43700 5 10 1 1 180 0 1
 value=100
 T 48000 43300 5 10 0 1 0 0 1
 footprint=0805
+T 48300 43400 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-100-E3
 }
 C 48300 47100 1 0 1 output-2.sym
 {
@@ -350,6 +368,8 @@ T 56700 47100 5 10 1 1 0 0 1
 refdes=D1
 T 56700 45000 5 10 1 1 0 0 1
 label=8x2 COG
+T 57600 45000 5 10 0 1 0 0 1
+manufacturer-part=ERC802FS-1
 }
 C 62500 46400 1 0 1 input-2.sym
 {
@@ -400,6 +420,8 @@ T 52500 44500 5 10 1 1 0 0 1
 value=220
 T 53000 44600 5 10 0 1 0 0 1
 footprint=0805
+T 52900 44900 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-220-E3
 }
 C 54400 44600 1 90 0 ground.sym
 C 50900 44700 1 0 0 input-2.sym
@@ -430,6 +452,8 @@ T 52700 43500 5 10 1 1 0 0 1
 value=220
 T 52800 43800 5 10 0 1 0 0 1
 footprint=0805
+T 52800 43800 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-220-E3
 }
 C 53200 43600 1 0 0 led-1.sym
 {
@@ -451,6 +475,8 @@ T 42500 43050 5 10 0 0 0 6 1
 device=CONNECTOR_10
 T 42500 43250 5 10 0 0 0 6 1
 footprint=din6
+T 42400 41900 5 10 0 1 0 0 1
+manufacturer-part=KDJ01-6
 }
 C 43100 39200 1 90 0 ground.sym
 C 43100 38800 1 90 0 ground.sym
@@ -492,6 +518,8 @@ T 44500 41400 5 10 1 1 0 0 1
 refdes=R2
 T 45000 41300 5 10 1 1 0 0 1
 value=100K
+T 44800 41700 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-100K-E3
 }
 C 44800 40900 1 270 0 resistor-1.sym
 {
@@ -503,6 +531,8 @@ T 44500 40300 5 10 1 1 0 0 1
 refdes=R3
 T 45000 40300 5 10 1 1 0 0 1
 value=100
+T 45100 40300 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-100-E3
 }
 C 45000 43400 1 90 1 input-2.sym
 {
@@ -526,6 +556,8 @@ T 49900 50050 5 10 0 0 180 0 1
 footprint=DPAK_STD
 T 49500 51900 5 10 1 1 0 0 1
 value=7805
+T 49900 51100 5 10 0 1 0 0 1
+manufacturer-part=863-ncv7805bdtrkg
 }
 C 51600 50600 1 0 1 input-2.sym
 {
@@ -565,6 +597,8 @@ T 59000 47200 5 10 1 1 180 0 1
 value=10K
 T 58200 46800 5 10 0 1 90 0 1
 footprint=0805
+T 58200 46800 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-10K-E3
 }
 N 61100 46500 58200 46500 4
 N 61100 46700 58200 46700 4
@@ -584,9 +618,11 @@ device=RESISTOR
 T 61300 47600 5 10 1 1 180 0 1
 refdes=R10
 T 61700 47600 5 10 1 1 180 0 1
-value=4.7K
+value=10K
 T 60900 47200 5 10 0 1 90 0 1
 footprint=0805
+T 60900 47200 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-10K-E3
 }
 C 63200 45900 1 0 1 input-2.sym
 {
@@ -604,9 +640,11 @@ device=RESISTOR
 T 61300 46300 5 10 1 1 180 0 1
 refdes=R11
 T 61700 46300 5 10 1 1 180 0 1
-value=4.7K
+value=10K
 T 60900 45900 5 10 0 1 90 0 1
 footprint=0805
+T 60900 45900 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-10K-E3
 }
 N 60800 46700 60800 47300 4
 N 60800 47300 60900 47300 4
@@ -639,6 +677,8 @@ T 41000 53400 5 10 1 1 0 0 1
 refdes=CONN2
 T 41100 53000 5 10 0 1 0 0 1
 footprint=CON__CUI_PJ-202AH
+T 41200 52200 5 10 0 1 0 0 1
+manufacturer-part=806-KLDX-0202-B
 }
 C 59600 45100 1 0 1 input-2.sym
 {
