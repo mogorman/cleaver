@@ -58,6 +58,7 @@ void setup()
   delay(2000);
   pinMode(IRON,OUTPUT);
   pinMode(POT,INPUT);
+  pinMode(TEMP,INPUT);
   digitalWrite(IRON,HIGH);
   blinky = 1;
   lcd.init();
@@ -71,15 +72,23 @@ void setup()
 void loop()
 {
   int data = 0;
+  int temperature = 0;
   data = analogRead(POT);
+  temperature = analogRead(TEMP);
   lcd.clear();
   lcd.setCursor(0,0);
-  lcd.print("Read:");
+  lcd.print(temperature);
   lcd.setCursor(1,1);
   lcd.print(data);
-  delay(10000);
-  digitalWrite(IRON, blinky);
-  blinky = ( blinky ) ? 0 : 1;
+  delay(1000);
+      //    digitalWrite(IRON, blinky);
+    //    blinky = ( blinky ) ? 0 : 1;
+
+  if(!data) {
+    digitalWrite(IRON, LOW);
+  } else {
+    digitalWrite(IRON, HIGH);
+  }
 }
 
 /* void init_screen() */
