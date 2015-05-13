@@ -79,11 +79,21 @@ void loop()
   int temperature = 0;
   data = analogRead(POT);
   temperature = analogRead(TEMP);
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print(temperature);
-  lcd.setCursor(1,1);
-  lcd.print(data);
+  //  lcd.clear();
+  if(blinky == 1) {
+    lcd.setCursor(0,0);
+    lcd.print(temperature);
+    lcd.print("    ");
+    lcd.setCursor(1,1);
+    lcd.print(data);
+    lcd.print("    ");
+  }
+
+  if(blinky ==512) {
+    blinky = 1;
+  } else {
+    blinky++;
+  }
   //  delay(1000);
       //    digitalWrite(IRON, blinky);
     //    blinky = ( blinky ) ? 0 : 1;
