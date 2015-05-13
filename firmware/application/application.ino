@@ -48,7 +48,7 @@ int internal_readings[45];
 int internal_pos;
 int blinky;
 //Specify the links and initial tuning parameters
-//PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
+PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
@@ -67,6 +67,10 @@ void setup()
   lcd.setContrast(29);
   lcd.setCursor(0,0);
   lcd.print("Bye bye");
+  delay(10000);
+  Set_point = 300;
+  //turn the PID on
+  Iron_PID.SetMode(AUTOMATIC);;
 }
 
 void loop()
@@ -80,14 +84,20 @@ void loop()
   lcd.print(temperature);
   lcd.setCursor(1,1);
   lcd.print(data);
-  delay(1000);
+  //  delay(1000);
       //    digitalWrite(IRON, blinky);
     //    blinky = ( blinky ) ? 0 : 1;
-
+  Input = temperature;
+  if(Iron_PID.Compute()) {
+    analogWrite(IRON,Output);
+  }
+//  Set_point = Pot_value;
   if(!data) {
-    digitalWrite(IRON, LOW);
+    //    digitalWrite(IRON, LOW);
+    Set_point = 0;
   } else {
-    digitalWrite(IRON, HIGH);
+    //    digitalWrite(IRON, HIGH);
+    Set_point  = 300;
   }
 }
 
