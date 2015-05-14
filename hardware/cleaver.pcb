@@ -2017,7 +2017,7 @@ Element["" "SO8M" "U2" "unknown" 69.5344mm 2625.00mil 3.8196mm 4.2791mm 2 100 ""
 
 	)
 
-Element["" "0805" "R8" "220" 54.1650mm 63.9162mm 1.7497mm -0.7000mm 0 100 ""]
+Element["" "0805" "R8" "220" 54.1650mm 63.9162mm -0.7503mm -3.2000mm 0 100 ""]
 (
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 20.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 20.00mil 57.18mil "2" "2" "square"]
@@ -2026,7 +2026,7 @@ Element["" "0805" "R8" "220" 54.1650mm 63.9162mm 1.7497mm -0.7000mm 0 100 ""]
 
 	)
 
-Element["" "0805" "C1" "0.1uF" 106.4039mm 48.7032mm 1.8549mm -0.7131mm 0 100 ""]
+Element["" "0805" "C1" "0.1uF" 106.4039mm 48.7032mm -1.3951mm -2.9631mm 0 100 ""]
 (
 	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 28.00mil 57.18mil "1" "1" "square"]
 	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 28.00mil 57.18mil "2" "2" "square"]
@@ -2110,7 +2110,7 @@ Element["" "0805" "R11" "4.7K" 83.5710mm 47.7052mm -3.3038mm 0.3838mm 0 100 ""]
 
 	)
 
-Element["" "DPAK_STD" "U3" "7805" 100.1120mm 45.2520mm -0.4710mm 10.8388mm 0 100 ""]
+Element["" "DPAK_STD" "U3" "7805" 100.1120mm 45.2520mm -3.4710mm -1.6612mm 0 100 ""]
 (
 	Pad[-4.8740mm 313.04mil -4.8740mm 391.78mil 236.22mil 39.37mil 275.59mil "" "2" "square,edge2"]
 	Pad[-7.1739mm 1.4508mm -7.1739mm 131.93mil 62.99mil 39.37mil 102.36mil "" "3" "square"]
@@ -2142,7 +2142,7 @@ Element["" "ymfc-go802lcd-connector" "D1" "unknown" 82.5460mm 41.4140mm -4.2981m
 
 	)
 
-Element["" "0805" "C2" "0.1uF" 111.4039mm 2645.80mil -3.3704mm -1.2049mm 0 100 ""]
+Element["" "0805" "C2" "0.1uF" 111.4039mm 2645.80mil -4.1204mm -0.7049mm 0 100 ""]
 (
 	Pad[-35.43mil -3.93mil -35.43mil 3.93mil 51.18mil 28.00mil 57.18mil "1" "1" "square"]
 	Pad[35.43mil -3.93mil 35.43mil 3.93mil 51.18mil 28.00mil 57.18mil "2" "2" "square"]
@@ -2330,6 +2330,7 @@ Layer(1 "component")
 	Text[92.3350mm 35.2153mm 0 165 "Cleaver" "clearline"]
 	Text[97.9040mm 37.8272mm 0 100 "@v@" "clearline"]
 	Text[96.9000mm 39.6961mm 0 100 "@git@" "clearline"]
+	Text[54.2540mm 73.9532mm 0 121 "http://meatstand.com/cleaver" "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[45.8310mm 34.1602mm] [116.3160mm 34.1602mm] [116.3160mm 77.5942mm] [45.8310mm 77.5942mm] 
@@ -2535,7 +2536,6 @@ Layer(10 "silk")
 	Text[81.1370mm 59.1412mm 0 100 "IC" "clearline"]
 	Text[76.7480mm 55.3792mm 0 144 "612" "clearline"]
 	Text[68.7540mm 67.9532mm 1 100 "wha" "clearline"]
-	Text[65.5040mm 74.9532mm 0 100 "http://meatstand.com/cleaver" "clearline"]
 	Text[90.2940mm 60.7621mm 0 100 "CC-BY-SA 4.0" "clearline"]
 	Text[88.6750mm 59.0122mm 0 100 "This board is licensed" "clearline"]
 	Text[47.0201mm 54.9151mm 0 76 "@hackvana_c@" "clearline"]
