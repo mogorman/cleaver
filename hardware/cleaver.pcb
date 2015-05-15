@@ -2320,7 +2320,7 @@ Layer(1 "component")
 	Arc[86.2100mm 54.3522mm 3.5320mm 3.5320mm 10.00mil 28.00mil 0 90 "clearline"]
 	Text[92.3350mm 35.2153mm 0 165 "Cleaver" "clearline"]
 	Text[97.9040mm 37.8272mm 0 100 "@v@" "clearline"]
-	Text[96.9000mm 39.6961mm 0 100 "@git@" "clearline"]
+	Text[94.6380mm 39.6961mm 0 100 "@git@" "clearline"]
 	Text[92.2420mm 62.7852mm 0 210 "Beta" "clearline"]
 	Polygon("clearpoly,lock")
 	(
