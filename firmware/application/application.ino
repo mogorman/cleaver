@@ -55,11 +55,11 @@ LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8
 /* // the setup routine runs once when you press reset: */
 void setup()
 {
-  delay(2000);
+  //  delay(2000);
   pinMode(IRON,OUTPUT);
   pinMode(POT,INPUT);
   pinMode(TEMP,INPUT);
-  digitalWrite(IRON,HIGH);
+  digitalWrite(IRON,LOW);
   update_display = 1;
   lcd.init();
   lcd.clear();
@@ -67,7 +67,7 @@ void setup()
   lcd.setContrast(29);
   lcd.setCursor(0,0);
   lcd.print("Bye bye");
-  delay(10000);
+  delay(1000);
   Set_point = 300;
   //turn the PID on
   Iron_PID.SetMode(AUTOMATIC);;
@@ -82,9 +82,11 @@ void loop()
   //  lcd.clear();
   if(update_display == 1) {
     lcd.setCursor(0,0);
+    lcd.print("T:");
     lcd.print(temperature);
     lcd.print("    ");
-    lcd.setCursor(1,1);
+    lcd.setCursor(0,1);
+    lcd.print("A:");
     lcd.print(data);
     lcd.print("    ");
   }
