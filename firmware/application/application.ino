@@ -46,7 +46,7 @@ int Pot_value;
 int internal_offset;
 int internal_readings[45];
 int internal_pos;
-int blinky;
+int update_display;
 //Specify the links and initial tuning parameters
 PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
 
@@ -60,7 +60,7 @@ void setup()
   pinMode(POT,INPUT);
   pinMode(TEMP,INPUT);
   digitalWrite(IRON,HIGH);
-  blinky = 1;
+  update_display = 1;
   lcd.init();
   lcd.clear();
   //  lcd.blink();
@@ -80,7 +80,7 @@ void loop()
   data = analogRead(POT);
   temperature = analogRead(TEMP);
   //  lcd.clear();
-  if(blinky == 1) {
+  if(update_display == 1) {
     lcd.setCursor(0,0);
     lcd.print(temperature);
     lcd.print("    ");
@@ -89,25 +89,21 @@ void loop()
     lcd.print("    ");
   }
 
-  if(blinky ==512) {
-    blinky = 1;
+  if(update_display == 512) {
+    update_display = 1;
   } else {
-    blinky++;
+    update_display++;
   }
-  //  delay(1000);
-      //    digitalWrite(IRON, blinky);
-    //    blinky = ( blinky ) ? 0 : 1;
   Input = temperature;
   if(Iron_PID.Compute()) {
     analogWrite(IRON,Output);
   }
-//  Set_point = Pot_value;
-  if(!data) {
-    //    digitalWrite(IRON, LOW);
+  if(data == 0) {
     Set_point = 0;
+  } else if (data == 1023) {
+    Set_point  = temperature;
   } else {
-    //    digitalWrite(IRON, HIGH);
-    Set_point  = 300;
+    Set_point = 1023;
   }
 }
 
