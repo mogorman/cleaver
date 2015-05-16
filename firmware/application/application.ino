@@ -102,7 +102,7 @@ void loop()
   }
   if(data == 0) {
     Set_point = 0;
-  } else if (data == 1023) {
+  } else if (data > 800) {
     Set_point  = temperature;
   } else {
     Set_point = 1023;
