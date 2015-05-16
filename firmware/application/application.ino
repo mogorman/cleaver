@@ -86,7 +86,7 @@ void loop()
     lcd.print(temperature);
     lcd.print("    ");
     lcd.setCursor(0,1);
-    lcd.print("A:");
+    lcd.print("P:");
     lcd.print(data);
     lcd.print("    ");
   }
