@@ -44,6 +44,9 @@ endif
 	fi
 
 app: compile_app
+ifeq (buspirate,$(PROGRAMMER))
+		@echo "#" > $(PROGRAMMER_PORT)
+endif
 	$(AVRDUDE) -pt85 -c $(PROGRAMMER) -P $(PROGRAMMER_PORT) -U flash:w:./bin/application.hex:s
 
 clean:
