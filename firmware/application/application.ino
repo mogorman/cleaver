@@ -84,11 +84,11 @@ void loop()
     lcd.setCursor(0,0);
     lcd.print("T:");
     lcd.print(temperature);
-    lcd.print("    ");
+    lcd.print("   ");
     lcd.setCursor(0,1);
     lcd.print("P:");
     lcd.print(data);
-    lcd.print("    ");
+    lcd.print("   ");
   }
 
   if(update_display == 512) {
