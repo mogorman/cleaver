@@ -2320,11 +2320,6 @@ Layer(1 "component")
 	(
 		[45.8310mm 34.1602mm] [116.3160mm 34.1602mm] [116.3160mm 77.5942mm] [45.8310mm 77.5942mm] 
 	)
-	Polygon("clearpoly")
-	(
-		[77.7742mm 95.4280mm] [77.7627mm 95.4380mm] [3060.90mil 95.4366mm] [77.7371mm 95.4077mm] [77.7501mm 95.3977mm] 
-		[77.7663mm 95.3990mm] 
-	)
 )
 Layer(2 "solder")
 (
@@ -2530,14 +2525,14 @@ Layer(10 "silk")
 		[96.4984mm 70.6468mm] [96.5162mm 2780.90mil] [96.6539mm 70.5676mm] [96.7873mm 2774.30mil] [96.9150mm 70.3392mm] 
 		[97.0362mm 70.1886mm] [97.1502mm 70.0199mm] [97.2559mm 69.8386mm] [97.3519mm 2742.10mil] [97.4378mm 69.4566mm] 
 		[97.5122mm 69.2666mm] [97.5744mm 2719.80mil] [97.6232mm 68.9115mm] [97.6575mm 68.7571mm] [97.6768mm 68.6245mm] 
-		[97.6795mm 2697.60mil] [97.6651mm 68.4449mm] [3843.80mil 68.4078mm] [97.5810mm 68.4129mm] [3840.50mil 68.4015mm] 
+		[97.6795mm 68.5190mm] [97.6651mm 68.4449mm] [3843.80mil 68.4078mm] [97.5810mm 68.4129mm] [3840.50mil 68.4015mm] 
 		[97.5358mm 2692.10mil] [97.5419mm 2691.00mil] [97.5670mm 68.3146mm] [97.6018mm 2689.10mil] [97.6432mm 68.3090mm] 
 		[97.6890mm 68.3243mm] [97.7354mm 68.3415mm] [97.7804mm 68.3532mm] [97.8210mm 68.3509mm] [97.8546mm 68.3281mm] 
 		[97.9567mm 68.1937mm] [98.0336mm 68.0202mm] [98.1020mm 67.8396mm] [98.1797mm 67.6831mm] [98.2158mm 67.6412mm] 
 		[98.2528mm 67.5937mm] [98.2887mm 2659.10mil] [98.2361mm 67.5826mm] [98.0253mm 67.6448mm] [97.7756mm 67.6577mm] 
 		[97.5162mm 2663.30mil] [97.2757mm 67.6405mm] [3827.30mil 67.6296mm] [97.1680mm 67.6212mm] [97.1342mm 67.6176mm] 
-		[97.1076mm 67.6219mm] [97.0822mm 2662.80mil] [97.0540mm 67.6613mm] [97.0171mm 67.7017mm] [3817.60mil 67.7591mm] 
-		[96.9224mm 67.6222mm] [3813.30mil 67.5127mm] [96.7763mm 67.4281mm] [3806.30mil 67.3664mm] [96.5714mm 2650.60mil] 
+		[97.1076mm 67.6219mm] [97.0822mm 2662.80mil] [97.0540mm 67.6613mm] [97.0171mm 67.7017mm] [96.9670mm 67.7591mm] 
+		[96.9224mm 67.6222mm] [3813.30mil 67.5127mm] [96.7763mm 67.4281mm] [96.6800mm 67.3664mm] [96.5714mm 2650.60mil] 
 		[96.4530mm 67.3021mm] [96.3268mm 2649.40mil] [96.1957mm 67.3011mm] [96.0621mm 67.3189mm] [3776.70mil 2651.40mil] 
 		[95.7964mm 67.3791mm] [95.6694mm 67.4170mm] [95.5495mm 67.4571mm] [95.4393mm 67.4970mm] [95.3407mm 67.5348mm] 
 		[95.2569mm 67.5675mm] [95.4337mm 67.4264mm] [95.6097mm 67.3037mm] [95.7857mm 67.2041mm] [95.9618mm 67.1330mm] 
@@ -2554,7 +2549,7 @@ Layer(10 "silk")
 	(
 		[94.4769mm 68.1858mm] [94.3336mm 68.3596mm] [94.2318mm 68.5168mm] [94.1675mm 68.6583mm] [94.1373mm 2708.10mil] 
 		[94.1368mm 68.8993mm] [94.1624mm 69.0001mm] [94.2104mm 69.0893mm] [94.2767mm 69.1677mm] [94.3575mm 69.2366mm] 
-		[94.4489mm 69.2966mm] [94.5470mm 69.3479mm] [3726.30mil 69.3931mm] [94.7484mm 69.4319mm] [3734.00mil 69.4655mm] 
+		[94.4489mm 69.2966mm] [94.5470mm 69.3479mm] [94.6480mm 69.3931mm] [94.7484mm 69.4319mm] [3734.00mil 69.4655mm] 
 		[94.9303mm 69.4952mm] [95.0047mm 69.5216mm] [95.1995mm 69.4807mm] [95.3544mm 69.4236mm] [95.4718mm 69.3519mm] 
 		[95.5541mm 69.2686mm] [95.6036mm 69.1754mm] [95.6229mm 69.0746mm] [95.6145mm 68.9681mm] [95.5808mm 68.8579mm] 
 		[95.5241mm 68.7464mm] [95.4469mm 68.6362mm] [95.3519mm 68.5285mm] [95.2414mm 68.4258mm] [95.1177mm 68.3306mm] 
@@ -2597,7 +2592,7 @@ Layer(10 "silk")
 		[94.9450mm 2669.40mil] [94.9526mm 2668.60mil] [94.9534mm 67.7464mm] [94.9178mm 2664.90mil] [94.8503mm 2661.90mil] 
 		[94.7687mm 67.5434mm] [94.6747mm 67.4835mm] [94.5706mm 67.4337mm] [94.5383mm 67.4098mm] [94.5267mm 67.3593mm] 
 		[94.5256mm 67.3072mm] [94.5376mm 67.2754mm] [94.5625mm 67.2638mm] [94.5996mm 67.2727mm] [94.6371mm 2649.10mil] 
-		[94.6643mm 67.2958mm] [94.6953mm 67.1731mm] [3727.60mil 67.0387mm] [94.6417mm 66.9057mm] [94.5980mm 66.7883mm] 
+		[94.6643mm 67.2958mm] [94.6953mm 67.1731mm] [94.6810mm 67.0387mm] [94.6417mm 66.9057mm] [94.5980mm 66.7883mm] 
 		[94.5711mm 66.6997mm] [94.5813mm 66.6539mm] [94.6496mm 66.6644mm] [94.7966mm 66.7449mm] [95.1754mm 67.0098mm] 
 		[95.6016mm 2648.90mil] [95.5444mm 2650.10mil] [95.4792mm 67.3166mm] [95.4073mm 67.2994mm] [3753.20mil 67.2640mm] 
 		[3750.10mil 67.2148mm] [95.1731mm 67.1558mm] [95.0949mm 67.0913mm] [95.0194mm 67.0245mm] [94.9490mm 66.9603mm] 
@@ -2607,7 +2602,7 @@ Layer(10 "silk")
 		[94.9150mm 67.4614mm] [94.8871mm 67.4568mm] [94.8452mm 67.4436mm] [94.7997mm 67.4253mm] [94.7609mm 67.4063mm] 
 		[94.7139mm 67.3824mm] [3726.50mil 67.3565mm] [94.6143mm 67.3410mm] [3724.20mil 67.3367mm] [94.5891mm 67.3438mm] 
 		[94.5927mm 2652.10mil] [3724.60mil 67.3890mm] [94.6244mm 67.3936mm] [3726.40mil 67.3999mm] [94.6933mm 67.4233mm] 
-		[3730.20mil 67.4589mm] [94.8061mm 2657.60mil] [94.8647mm 67.5506mm] [94.9176mm 67.5976mm] [94.9587mm 67.6395mm] 
+		[3730.20mil 67.4589mm] [94.8061mm 67.5030mm] [94.8647mm 67.5506mm] [94.9176mm 67.5976mm] [94.9587mm 67.6395mm] 
 		[94.9828mm 67.6720mm] [95.0682mm 67.6542mm] [95.0570mm 67.6958mm] [95.0570mm 67.7609mm] [95.0636mm 67.8353mm] 
 		[95.0720mm 67.9054mm] [95.0766mm 67.9572mm] [95.0728mm 67.9775mm] [95.0555mm 67.9516mm] 
 	)
@@ -2638,135 +2633,135 @@ Layer(10 "silk")
 )
 NetList()
 (
-	Net("GND" "(unknown)")
+	Net("unnamed_net7" "(unknown)")
 	(
-		Connect("C1-1")
-		Connect("C2-1")
-		Connect("CONN1-8")
-		Connect("CONN1-9")
-		Connect("CONN1-10")
-		Connect("CONN2-2")
-		Connect("CONN2-3")
-		Connect("CONN4-6")
-		Connect("CONN5-2")
-		Connect("D1-4")
-		Connect("LED1-2")
-		Connect("LED2-2")
-		Connect("Q1-S")
-		Connect("R1-1")
-		Connect("R3-2")
-		Connect("R4-1")
-		Connect("U1-4")
-		Connect("U2-4")
-		Connect("U3-2")
-	)
-	Net("Iron" "(unknown)")
-	(
-		Connect("CONN1-4")
-		Connect("Q1-D")
-	)
-	Net("Iron_control" "(unknown)")
-	(
-		Connect("R1-2")
-		Connect("U1-3")
-	)
-	Net("Iron_EN" "(unknown)")
-	(
-		Connect("CONN4-1")
-		Connect("R6-1")
-		Connect("R8-1")
-		Connect("U1-6")
-	)
-	Net("Reset" "(unknown)")
-	(
-		Connect("CONN4-5")
-		Connect("U1-1")
-	)
-	Net("SCL" "(unknown)")
-	(
-		Connect("CONN4-3")
-		Connect("D1-2")
-		Connect("R10-1")
-		Connect("U1-7")
-	)
-	Net("SDA" "(unknown)")
-	(
-		Connect("CONN4-4")
-		Connect("D1-3")
-		Connect("R11-1")
-		Connect("U1-5")
-	)
-	Net("Temp" "(unknown)")
-	(
-		Connect("CONN1-7")
-		Connect("U2-3")
-	)
-	Net("Temp_amped" "(unknown)")
-	(
-		Connect("U1-2")
-		Connect("U2-6")
-		Connect("U2-7")
-	)
-	Net("unnamed_net1" "(unknown)")
-	(
-		Connect("R4-2")
-		Connect("R5-2")
-		Connect("U2-2")
-	)
-	Net("unnamed_net2" "(unknown)")
-	(
-		Connect("R5-1")
-		Connect("U2-1")
-		Connect("U2-5")
-	)
-	Net("unnamed_net3" "(unknown)")
-	(
-		Connect("Q1-G")
-		Connect("R6-2")
-	)
-	Net("unnamed_net4" "(unknown)")
-	(
-		Connect("D1-1")
-		Connect("R9-1")
-	)
-	Net("unnamed_net5" "(unknown)")
-	(
-		Connect("LED1-1")
-		Connect("R7-2")
+		Connect("R3-1")
+		Connect("R2-2")
+		Connect("CONN1-5")
 	)
 	Net("unnamed_net6" "(unknown)")
 	(
 		Connect("LED2-1")
 		Connect("R8-2")
 	)
-	Net("unnamed_net7" "(unknown)")
+	Net("unnamed_net5" "(unknown)")
 	(
-		Connect("CONN1-5")
-		Connect("R2-2")
-		Connect("R3-1")
+		Connect("R7-2")
+		Connect("LED1-1")
 	)
-	Net("Vcc5" "(unknown)")
+	Net("unnamed_net4" "(unknown)")
 	(
-		Connect("C2-2")
-		Connect("CONN4-2")
-		Connect("D1-5")
-		Connect("D1-8")
-		Connect("R1-3")
-		Connect("R2-1")
-		Connect("R7-1")
-		Connect("R9-2")
-		Connect("R10-2")
-		Connect("R11-2")
-		Connect("U1-8")
-		Connect("U2-8")
-		Connect("U3-3")
+		Connect("R9-1")
+		Connect("D1-1")
+	)
+	Net("unnamed_net3" "(unknown)")
+	(
+		Connect("R6-2")
+		Connect("Q1-G")
+	)
+	Net("Iron" "(unknown)")
+	(
+		Connect("CONN1-4")
+		Connect("Q1-D")
+	)
+	Net("unnamed_net2" "(unknown)")
+	(
+		Connect("U2-1")
+		Connect("R5-1")
+		Connect("U2-5")
+	)
+	Net("Temp" "(unknown)")
+	(
+		Connect("CONN1-7")
+		Connect("U2-3")
+	)
+	Net("unnamed_net1" "(unknown)")
+	(
+		Connect("R5-2")
+		Connect("R4-2")
+		Connect("U2-2")
 	)
 	Net("Vcc24" "(unknown)")
 	(
-		Connect("C1-2")
-		Connect("CONN1-6")
 		Connect("CONN2-1")
 		Connect("CONN5-1")
 		Connect("U3-1")
+		Connect("CONN1-6")
+		Connect("C1-2")
+	)
+	Net("SCL" "(unknown)")
+	(
+		Connect("R10-1")
+		Connect("D1-2")
+		Connect("CONN4-3")
+		Connect("U1-7")
+	)
+	Net("Vcc5" "(unknown)")
+	(
+		Connect("R11-2")
+		Connect("R10-2")
+		Connect("R9-2")
+		Connect("U3-3")
+		Connect("R2-1")
+		Connect("R7-1")
+		Connect("D1-8")
+		Connect("D1-5")
+		Connect("CONN4-2")
+		Connect("U2-8")
+		Connect("R1-3")
+		Connect("C2-2")
+		Connect("U1-8")
+	)
+	Net("Iron_EN" "(unknown)")
+	(
+		Connect("R8-1")
+		Connect("R6-1")
+		Connect("CONN4-1")
+		Connect("U1-6")
+	)
+	Net("SDA" "(unknown)")
+	(
+		Connect("R11-1")
+		Connect("D1-3")
+		Connect("CONN4-4")
+		Connect("U1-5")
+	)
+	Net("GND" "(unknown)")
+	(
+		Connect("CONN2-3")
+		Connect("CONN2-2")
+		Connect("CONN5-2")
+		Connect("U3-2")
+		Connect("R3-2")
+		Connect("CONN1-10")
+		Connect("CONN1-9")
+		Connect("CONN1-8")
+		Connect("LED2-2")
+		Connect("LED1-2")
+		Connect("D1-4")
+		Connect("R4-1")
+		Connect("Q1-S")
+		Connect("CONN4-6")
+		Connect("U2-4")
+		Connect("R1-1")
+		Connect("C2-1")
+		Connect("C1-1")
+		Connect("U1-4")
+	)
+	Net("Iron_control" "(unknown)")
+	(
+		Connect("R1-2")
+		Connect("U1-3")
+	)
+	Net("Temp_amped" "(unknown)")
+	(
+		Connect("U2-7")
+		Connect("U2-6")
+		Connect("U1-2")
+	)
+	Net("Reset" "(unknown)")
+	(
+		Connect("CONN4-5")
+		Connect("U1-1")
 	)
 )
