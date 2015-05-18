@@ -89,14 +89,14 @@ void loop()
     //  lcd.clear();
   if(update_display == 1) {
 
-user_input = analogRead(POT);
+  user_input = analogRead(POT);
+  user_input = 1023 - user_input;
   if(iron_state) {
     digitalWrite(IRON, LOW);
-    delay(05);
-  }
-  temperature = analogRead(TEMP);
-  if(iron_state) {
+    temperature = analogRead(TEMP);
     digitalWrite(IRON, HIGH);
+  } else {
+    temperature = analogRead(TEMP);
   }
 
   if(user_input < 50) {
@@ -126,7 +126,7 @@ user_input = analogRead(POT);
     lcd.print(offset);
   }
 
-  if(update_display == 512) {
+  if(update_display == 1024) {
     update_display = 1;
   } else {
     update_display++;
