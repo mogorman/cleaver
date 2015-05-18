@@ -49,6 +49,18 @@ ifeq (buspirate,$(PROGRAMMER))
 endif
 	$(AVRDUDE) -pt85 -c $(PROGRAMMER) -P $(PROGRAMMER_PORT) -U flash:w:./bin/application.hex:s
 
+
+on:
+ifeq (buspirate,$(PROGRAMMER))
+	@echo "m2" > $(PROGRAMMER_PORT)
+	@echo "W" > $(PROGRAMMER_PORT)
+endif
+
+off:
+ifeq (buspirate,$(PROGRAMMER))
+	@echo "#" > $(PROGRAMMER_PORT)
+endif
+
 clean:
 	@rm -rf build
 	@rm -rf bin

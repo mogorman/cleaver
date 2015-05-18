@@ -126,7 +126,7 @@ void loop()
     lcd.print(offset);
   }
 
-  if(update_display == 1024) {
+  if(update_display == 8192) {
     update_display = 1;
   } else {
     update_display++;
