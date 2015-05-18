@@ -47,8 +47,13 @@ int internal_offset;
 int internal_readings[45];
 int internal_pos;
 int update_display;
+int lock;
+int iron_state;
+int point;
+int offset;
+int temperature;
 //Specify the links and initial tuning parameters
-PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
+//PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
@@ -61,6 +66,11 @@ void setup()
   pinMode(TEMP,INPUT);
   digitalWrite(IRON,LOW);
   update_display = 1;
+  lock = 0;
+  point = 0;
+  offset = 0;
+  iron_state = 0;
+  temperature = 0;
   lcd.init();
   lcd.clear();
   //  lcd.blink();
@@ -68,27 +78,52 @@ void setup()
   lcd.setCursor(0,0);
   lcd.print("Bye bye");
   delay(1000);
-  Set_point = 300;
   //turn the PID on
-  Iron_PID.SetMode(AUTOMATIC);;
+//  Iron_PID.SetMode(AUTOMATIC);;
 }
 
 void loop()
 {
-  int data = 0;
-  int temperature = 0;
-  data = analogRead(POT);
-  temperature = analogRead(TEMP);
-  //  lcd.clear();
+  int user_input = 0;
+
+    //  lcd.clear();
   if(update_display == 1) {
+
+user_input = analogRead(POT);
+  if(iron_state) {
+    digitalWrite(IRON, LOW);
+    delay(05);
+  }
+  temperature = analogRead(TEMP);
+  if(iron_state) {
+    digitalWrite(IRON, HIGH);
+  }
+
+  if(user_input < 50) {
+    point = 0;
+    lock = 0;
+  } else if (user_input > 800) {
+    if(!lock) {
+    point  = temperature;
+    lock = 1;
+   }
+  } else {
+    point = 1023;
+    lock = 0;
+  }
+
+
+
     lcd.setCursor(0,0);
     lcd.print("T:");
     lcd.print(temperature);
     lcd.print("   ");
     lcd.setCursor(0,1);
-    lcd.print("P:");
-    lcd.print(data);
-    lcd.print("   ");
+    lcd.print("        ");
+    lcd.setCursor(0,1);
+    lcd.print(point);
+    lcd.print(" ");
+    lcd.print(offset);
   }
 
   if(update_display == 512) {
@@ -96,17 +131,21 @@ void loop()
   } else {
     update_display++;
   }
-  Input = temperature;
-  if(Iron_PID.Compute()) {
-    analogWrite(IRON,Output);
+  offset = point - temperature;
+
+  if( offset > 0 && iron_state == 0) {
+    digitalWrite(IRON, HIGH);
+    iron_state = 1;
+  } else if (iron_state == 1) {
+    digitalWrite(IRON, LOW);
+    iron_state = 0;
   }
-  if(data == 0) {
-    Set_point = 0;
-  } else if (data > 800) {
-    Set_point  = temperature;
-  } else {
-    Set_point = 1023;
-  }
+
+ // Input = temperature;
+ // if(Iron_PID.Compute()) {
+ //   analogWrite(IRON,Output);
+ // }
+
 }
 
 /* void init_screen() */
