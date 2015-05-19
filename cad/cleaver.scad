@@ -25,14 +25,14 @@ module led(x,y,z)
 module din_5(x,y,z)
 {
 	translate([x,0,z]) {
-		cube(21,13.2,19.5);
+		cube([21,13.2,19.5]);
 	}
 }
 
 module dc_jack(x,y,z)
 {
 	translate([x,y,z]) {
-		cube(9,15.2,11);
+		cube([9,15.2,11]);
 	}
 }
 
@@ -42,7 +42,7 @@ module pcb()
 	color("red")board(43,70,thickness);
 	color("green")led(33.8,6.5,thickness);
 	color("black")din_5(9.5,0,thickness);
-	color("black")dc_jack(20-4.5,70-(15.2/2),thickness);
+	color("black")dc_jack((43/2)-4.5,70-15.2,thickness);
 
 }
 
