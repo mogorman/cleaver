@@ -32,7 +32,7 @@ endif
 	  ls build; \
 	  cp ./preferences.txt build/; \
 	  echo "sketchbook.path="`pwd`"/" >> build/preferences.txt; \
-	  $(ARDUINO) \
+	  xvfb-run $(ARDUINO) \
 	   --verbose-build \
 	   --preferences-file ./build/preferences.txt \
 	   --pref build.path=`pwd`/build \
