@@ -53,19 +53,41 @@ module pot(x,y,z)
 module display(x,y,z)
 {
 	translate([x,y,z]) {
-		color("lime")cube([23.5,36,4.1]);
+		translate([(23.5-17.5),0,0])color("lime")cube([17.5,36,4.1]);
+		color("black")cube([(23.5-17.5),36,4.1]);
 	}
+}
+
+module dpak3(x,y,z)
+{
+	color("black")
+	translate([x,y,-4.5]) {
+		cube([10.3,14.7,4.5]);
+	}
+
+}
+
+
+module dpak3_turn(x,y,z)
+{
+	color("black")
+	translate([x,y,-4.5]) {
+		cube([14.7,10.3,4.5]);
+		}
+
 }
 
 module cleaver()
 {
 	thickness=1.6;
 	color("red")board(43,70,thickness);
-	led(33.8,70-6.5,thickness);
-	din_5(9.5,70-13.2,thickness);
-	dc_jack((43/2)-4.5,-3.5,thickness);
-	pot(33,20,thickness);
+	led(34,70-6.5,thickness);
+	din_5(10.8,70-13.2,thickness);
+	dc_jack(16.9,-3.5,thickness);
+	pot(30,20,thickness);
 	display(0,14, thickness);
+	dpak3(3.8,46.4,thickness);
+	dpak3_turn(10.9,16.9,thickness);
 }
 
 cleaver();
