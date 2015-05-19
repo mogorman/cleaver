@@ -9,9 +9,8 @@
 #define __AVR_ATtiny85__ 1
 
 #include <TinyWireM.h>
-#include <PID_v1.h>
+//#include <PID_v1.h>
 #include <LiquidCrystal_I2C_ST7032i.h>
-
 //                ________   http://highlowtech.org pinout
 //  Reset PB5     |1    8| Vcc+
 //  A3    PB3 D3  |2    7| D2 PB2 A1 SCK SCL 
@@ -52,6 +51,11 @@ int iron_state;
 int point;
 int offset;
 int temperature;
+int minutes;
+int seconds;
+int ms;
+int start;
+int stop;
 //Specify the links and initial tuning parameters
 //PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
 
@@ -71,6 +75,11 @@ void setup()
   offset = 0;
   iron_state = 0;
   temperature = 0;
+  minutes = 0;
+  seconds = 0;
+  start = 0;
+  stop = 0;
+  ms = 0;
   lcd.init();
   lcd.clear();
   //  lcd.blink();
@@ -88,7 +97,17 @@ void loop()
 
     //  lcd.clear();
   if(update_display == 1) {
-
+  stop = millis();
+  ms += stop - start;
+  if( ms > 1000) {
+     seconds += (ms/1000);
+     ms = ms % 1000;
+  }
+  if(seconds == 60) {
+     seconds = 0;
+     minutes++;
+  }
+  start = millis(); 
   user_input = analogRead(POT);
   user_input = 1023 - user_input;
   if(iron_state) {
@@ -115,18 +134,21 @@ void loop()
 
 
     lcd.setCursor(0,0);
-    lcd.print("T:");
     lcd.print(temperature);
-    lcd.print("   ");
+    lcd.print(" ");
+    lcd.print(minutes);
+    lcd.print(":");
+    lcd.print(seconds);
+    lcd.print("     ");
     lcd.setCursor(0,1);
     lcd.print("        ");
     lcd.setCursor(0,1);
     lcd.print(point);
     lcd.print(" ");
-    lcd.print(offset);
+    lcd.print(ms);
   }
 
-  if(update_display == 8192) {
+  if(update_display == 131071) {
     update_display = 1;
   } else {
     update_display++;

@@ -58,6 +58,7 @@ endif
 
 off:
 ifeq (buspirate,$(PROGRAMMER))
+	@echo "#" > $(PROGRAMMER_PORT)
 	@echo "C" > $(PROGRAMMER_PORT)
 	@echo "a" > $(PROGRAMMER_PORT)
 	@sleep 1
