@@ -19,7 +19,7 @@ module board(xdim, ydim) {
 
 module pcb()
 {
-	board(43,70);
+	color("red")board(43,70);
 }
 
 pcb();
