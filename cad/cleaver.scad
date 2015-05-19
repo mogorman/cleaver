@@ -18,19 +18,23 @@ module board(xdim, ydim,zdim) {
 
 module led(x,y,z)
 {
-	translate([x,y,z])cylinder(d=5, h=5);
-	translate([x,y,z+5])sphere(d=5);
+	color("green"){
+		translate([x,y,z])cylinder(d=5, h=5);
+		translate([x,y,z+5])sphere(d=5);
+	}
 }
 
 module din_5(x,y,z)
 {
-	translate([x,0,z]) {
+	color("black")
+	translate([x,y,z]) {
 		cube([21,13.2,19.5]);
 	}
 }
 
 module dc_jack(x,y,z)
 {
+	color("black")
 	translate([x,y,z]) {
 		cube([9,15.2,11]);
 	}
@@ -38,9 +42,18 @@ module dc_jack(x,y,z)
 
 module pot(x,y,z)
 {
+	color("grey") {
+		translate([x,y,z]) {
+			cube([9.8,11,6.8]);
+			translate([9.8/2,11/2,0])cylinder(15,d=9);
+		}
+	}
+}
+
+module display(x,y,z)
+{
 	translate([x,y,z]) {
-		cube([9.8,11,6.8]);
-		translate([9.8/2,11/2,0])cylinder(15,d=9);
+		color("lime")cube([23.5,36,4.1]);
 	}
 }
 
@@ -48,11 +61,11 @@ module cleaver()
 {
 	thickness=1.6;
 	color("red")board(43,70,thickness);
-	color("green")led(33.8,6.5,thickness);
-	color("black")din_5(9.5,0,thickness);
-	color("black")dc_jack((43/2)-4.5,70-(15.2-3.5),thickness);
-	color("grey")pot(33,20,thickness);
-
+	led(33.8,70-6.5,thickness);
+	din_5(9.5,70-13.2,thickness);
+	dc_jack((43/2)-4.5,-3.5,thickness);
+	pot(33,20,thickness);
+	display(0,14, thickness);
 }
 
 cleaver();
