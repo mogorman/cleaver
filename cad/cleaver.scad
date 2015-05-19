@@ -36,14 +36,23 @@ module dc_jack(x,y,z)
 	}
 }
 
-module pcb()
+module pot(x,y,z)
+{
+	translate([x,y,z]) {
+		cube([9.8,11,6.8]);
+		translate([9.8/2,11/2,0])cylinder(15,d=9);
+	}
+}
+
+module cleaver()
 {
 	thickness=1.6;
 	color("red")board(43,70,thickness);
 	color("green")led(33.8,6.5,thickness);
 	color("black")din_5(9.5,0,thickness);
 	color("black")dc_jack((43/2)-4.5,70-(15.2-3.5),thickness);
+	color("grey")pot(33,20,thickness);
 
 }
 
-pcb();
+cleaver();
