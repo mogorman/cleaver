@@ -42,7 +42,7 @@ module pcb()
 	color("red")board(43,70,thickness);
 	color("green")led(33.8,6.5,thickness);
 	color("black")din_5(9.5,0,thickness);
-	color("black")dc_jack((43/2)-4.5,70-15.2,thickness);
+	color("black")dc_jack((43/2)-4.5,70-(15.2-3.5),thickness);
 
 }
 
