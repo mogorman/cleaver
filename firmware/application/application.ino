@@ -68,7 +68,7 @@ void setup()
   pinMode(IRON,OUTPUT);
   pinMode(POT,INPUT);
   pinMode(TEMP,INPUT);
-  digitalWrite(IRON,LOW);
+  digitalWrite(IRON,HIGH);
   update_display = 1;
   lock = 0;
   point = 0;
@@ -93,6 +93,7 @@ void setup()
 
 void loop()
 {
+while(1);
   int user_input = 0;
 
     //  lcd.clear();
@@ -148,7 +149,7 @@ void loop()
     lcd.print(ms);
   }
 
-  if(update_display == 131071) {
+  if(update_display == 262143) {
     update_display = 1;
   } else {
     update_display++;
