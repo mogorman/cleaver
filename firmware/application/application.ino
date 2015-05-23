@@ -148,8 +148,9 @@ void loop()
     lcd.print(ms);
   }
 
-  if(update_display == 262143) {
+  if(update_display == 255) {
     update_display = 1;
+    delay(500);
   } else {
     update_display++;
   }
