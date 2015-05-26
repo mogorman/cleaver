@@ -53,7 +53,6 @@ device=none
 T 46800 52400 5 10 1 1 0 1 1
 value=Vcc24
 }
-C 44700 52600 1 270 0 ground.sym
 C 45000 52200 1 0 0 capacitor-1.sym
 {
 T 45200 52900 5 10 0 0 0 0 1
@@ -478,9 +477,6 @@ footprint=din6
 T 42400 41900 5 10 0 1 0 0 1
 manufacturer-part=KDJ01-6
 }
-C 43100 39200 1 90 0 ground.sym
-C 43100 38800 1 90 0 ground.sym
-C 43100 39600 1 90 0 ground.sym
 C 42800 40100 1 0 0 output-2.sym
 {
 T 43700 40300 5 10 0 0 0 0 1
@@ -700,3 +696,22 @@ value=Vcc24
 }
 C 43000 52300 1 90 0 ground.sym
 C 43000 52600 1 90 0 ground.sym
+C 43100 38900 1 0 0 resistor-1.sym
+{
+T 43400 39300 5 10 0 0 0 0 1
+device=RESISTOR
+T 43100 38900 5 10 0 1 90 0 1
+footprint=0805
+T 43400 38800 5 10 1 1 180 0 1
+refdes=R12
+T 43700 39300 5 10 1 1 180 0 1
+value=1M
+T 43700 39200 5 10 0 1 90 0 1
+manufacturer-part=71-CRCW0805-100-E3
+}
+C 44300 38800 1 90 0 ground.sym
+N 43100 39000 42800 39000 4
+N 42800 39400 42900 39400 4
+N 42900 39000 42900 39800 4
+N 42800 39800 42900 39800 4
+C 44700 52600 1 270 0 ground.sym
