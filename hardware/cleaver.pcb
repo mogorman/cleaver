@@ -1277,7 +1277,7 @@ Element["hidename,onsolder" "LED3" "LED2" "unknown" 52.6520mm 68.4042mm 3.6190mm
 Element["onsolder" "din6" "CONN1" "unknown" 58.2540mm 55.7032mm -7.1490mm -9.9273mm 2 100 "auto"]
 (
 	Pin[0.0000 0.0000 93.00mil 30.00mil 97.00mil 61.00mil "GND" "2" ""]
-	Pin[4.9000mm 0.0000 93.00mil 1.1620mm 97.00mil 61.00mil "Center" "8" ""]
+	Pin[4.9000mm 0.0000 93.00mil 1.1620mm 97.00mil 61.00mil "Center" "8" "thermal(0X,1X)"]
 	Pin[0.0000 7.5000mm 93.00mil 30.00mil 97.00mil 61.00mil "V+" "6" ""]
 	Pin[0.0000 -7.5000mm 93.00mil 30.00mil 97.00mil 61.00mil "T+" "7" ""]
 	Pin[2.6000mm -5.0000mm 93.00mil 30.00mil 97.00mil 61.00mil "T-" "5" ""]
@@ -2365,7 +2365,7 @@ Layer(1 "component")
 	Arc[72.5040mm 48.6698mm 4.2834mm 4.2834mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[1994.90mil 68.3113mm 2.5000mm 2.5000mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[1951.60mil 62.4613mm 1.6500mm 1.6500mm 10.00mil 28.00mil 90 90 "clearline"]
-	Arc[1951.60mil 65.5113mm 1.4000mm 1.4000mm 10.00mil 28.00mil -90 90 "found,clearline"]
+	Arc[1951.60mil 65.5113mm 1.4000mm 1.4000mm 10.00mil 28.00mil -90 90 "clearline"]
 	Text[92.3350mm 1356.90mil 0 165 "Cleaver" "clearline"]
 	Text[97.9040mm 37.0772mm 0 100 "@v@" "clearline"]
 	Text[94.8880mm 38.9461mm 0 100 "@git@" "clearline"]
@@ -2392,8 +2392,6 @@ Layer(2 "solder")
 	Line[77.7540mm 58.9532mm 77.5040mm 58.9532mm 10.00mil 28.00mil "clearline"]
 	Line[66.6060mm 58.8512mm 66.6060mm 59.1012mm 10.00mil 28.00mil "clearline"]
 	Line[79.7470mm 72.2102mm 80.2540mm 72.2102mm 10.00mil 28.00mil "clearline"]
-	Line[63.9040mm 55.7032mm 63.9040mm 60.5532mm 25.00mil 0.9112mm "clearline"]
-	Line[54.9040mm 66.2032mm 58.5040mm 66.2032mm 25.00mil 0.9112mm "clearline"]
 	Line[53.9220mm 68.4042mm 53.9220mm 70.2598mm 0.4540mm 28.00mil ""]
 	Arc[113.1140mm 55.3382mm 8.1100mm 8.1100mm 50.00mil 28.00mil -90 90 "clearline"]
 	Arc[77.6010mm 62.7852mm 3.8320mm 3.8320mm 10.00mil 28.00mil -90 90 "clearline"]
@@ -2409,8 +2407,6 @@ Layer(2 "solder")
 	Arc[80.2470mm 69.7032mm 2.5070mm 2.5070mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[96.0040mm 74.2032mm 2.5000mm 2.5000mm 10.00mil 28.00mil -180 90 "clearline"]
 	Arc[87.2940mm 69.7032mm 2.0000mm 2.0000mm 10.00mil 28.00mil 0 90 "clearline"]
-	Arc[58.2540mm 60.5532mm 5.6500mm 5.6500mm 25.00mil 0.9112mm 90 90 "clearline"]
-	Arc[54.9040mm 60.7032mm 5.5000mm 5.5000mm 25.00mil 0.9112mm 0 90 "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[116.3160mm 77.5942mm] [45.8310mm 77.5942mm] [45.8310mm 34.1602mm] [116.3160mm 34.1602mm] 
@@ -2700,6 +2696,7 @@ NetList()
 	(
 		Connect("C1-1")
 		Connect("C2-1")
+		Connect("CONN1-8")
 		Connect("CONN2-2")
 		Connect("CONN2-3")
 		Connect("CONN4-6")
@@ -2803,7 +2800,6 @@ NetList()
 	)
 	Net("unnamed_net8" "(unknown)")
 	(
-		Connect("CONN1-8")
 		Connect("CONN1-9")
 		Connect("CONN1-10")
 		Connect("R12-1")
