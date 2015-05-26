@@ -1231,8 +1231,9 @@ Via[78.0040mm 51.4532mm 40.00mil 44.00mil 0.0000 20.00mil "" ""]
 Via[67.4706mm 66.8113mm 40.00mil 28.00mil 0.0000 20.00mil "" "thermal(0X,1X)"]
 Via[103.4706mm 64.5613mm 40.00mil 28.00mil 0.0000 20.00mil "" "thermal(0X,1X)"]
 Via[106.2206mm 47.3113mm 40.00mil 28.00mil 0.0000 20.00mil "" "thermal(0X,1X)"]
-Via[73.9706mm 36.0613mm 40.00mil 28.00mil 0.0000 20.00mil "" "thermal(0X,1X)"]
+Via[93.6706mm 41.7113mm 40.00mil 28.00mil 0.0000 20.00mil "" "thermal(0X,1X)"]
 Via[48.5206mm 42.4113mm 40.00mil 28.00mil 0.0000 20.00mil "" "thermal(0X,1X)"]
+Via[68.8206mm 42.4113mm 40.00mil 28.00mil 0.0000 20.00mil "" "thermal(0X,1X)"]
 
 Element["onsolder" "CON__CUI_PJ-202AH" "CONN2" "unknown" 118.7760mm 55.6222mm -4.3470mm -3.9982mm 2 100 "auto"]
 (
@@ -2382,7 +2383,6 @@ Layer(1 "component")
 )
 Layer(2 "solder")
 (
-	Line[91.8650mm 42.0502mm 65.4750mm 42.0502mm 60.00mil 28.00mil "clearline"]
 	Line[78.6700mm 67.3092mm 82.8170mm 67.3092mm 10.00mil 28.00mil "clearline"]
 	Line[70.7530mm 58.7042mm 70.7530mm 59.3922mm 10.00mil 28.00mil "clearline"]
 	Line[80.2470mm 72.2102mm 79.9650mm 72.2102mm 10.00mil 28.00mil "clearline"]
@@ -2394,12 +2394,11 @@ Layer(2 "solder")
 	Line[66.6060mm 58.8512mm 66.6060mm 59.1012mm 10.00mil 28.00mil "clearline"]
 	Line[79.7470mm 72.2102mm 80.2540mm 72.2102mm 10.00mil 28.00mil "clearline"]
 	Line[53.9220mm 68.4042mm 53.9220mm 70.2598mm 0.4540mm 28.00mil ""]
+	Line[3701.60mil 44.8613mm 59.3706mm 44.8613mm 60.00mil 28.00mil "clearline"]
+	Line[51.6706mm 51.8613mm 51.6706mm 57.1113mm 60.00mil 28.00mil "clearline"]
 	Arc[113.1140mm 55.3382mm 8.1100mm 8.1100mm 50.00mil 28.00mil -90 90 "clearline"]
 	Arc[77.6010mm 62.7852mm 3.8320mm 3.8320mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[77.6010mm 64.3562mm 5.4030mm 5.4030mm 10.00mil 28.00mil -180 90 "clearline"]
-	Arc[58.2540mm 56.4752mm 6.7280mm 6.7280mm 60.00mil 28.00mil 0 90 "clearline"]
-	Arc[65.5740mm 56.0982mm 14.0480mm 14.0480mm 60.00mil 28.00mil -90 90 "clearline"]
-	Arc[91.8650mm 55.2452mm 13.1950mm 13.1950mm 60.00mil 28.00mil 180 90 "clearline"]
 	Arc[78.6700mm 59.3922mm 7.9170mm 7.9170mm 10.00mil 28.00mil 0 90 "clearline"]
 	Arc[73.8350mm 51.4532mm 4.1690mm 4.1690mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[73.8350mm 58.7042mm 3.0820mm 3.0820mm 10.00mil 28.00mil -90 90 "clearline"]
@@ -2408,6 +2407,9 @@ Layer(2 "solder")
 	Arc[80.2470mm 69.7032mm 2.5070mm 2.5070mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[96.0040mm 74.2032mm 2.5000mm 2.5000mm 10.00mil 28.00mil -180 90 "clearline"]
 	Arc[87.2940mm 69.7032mm 2.0000mm 2.0000mm 10.00mil 28.00mil 0 90 "clearline"]
+	Arc[58.2540mm 56.6198mm 6.5834mm 6.5834mm 60.00mil 28.00mil 0 90 "clearline"]
+	Arc[59.3706mm 52.5613mm 7.7000mm 7.7000mm 60.00mil 28.00mil -90 90 "clearline"]
+	Arc[3701.60mil 55.7113mm 10.8500mm 10.8500mm 60.00mil 28.00mil -180 90 "clearline"]
 	Polygon("clearpoly,lock")
 	(
 		[116.3160mm 77.5942mm] [45.8310mm 77.5942mm] [45.8310mm 34.1602mm] [116.3160mm 34.1602mm] 
@@ -2574,7 +2576,7 @@ Layer(10 "silk")
 	Text[47.0201mm 54.9151mm 0 76 "@hackvana_c@" "clearline"]
 	Text[68.2540mm 72.9532mm 1 100 "wha" "clearline"]
 	Text[76.4980mm 60.6291mm 0 144 "612" "clearline"]
-	Text[82.0040mm 71.4532mm 0 100 "http://meatstand.com/cleaver" "clearline"]
+	Text[81.6540mm 71.1032mm 0 100 "http://meatstand.com/cleaver" "clearline"]
 	Text[77.5040mm 40.9532mm 0 100 "Hurry go now!" "clearline"]
 	Polygon("clearpoly,auto")
 	(
