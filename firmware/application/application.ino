@@ -150,7 +150,7 @@ void loop()
 
   if(update_display == 255) {
     update_display = 1;
-    delay(500);
+    delay(2000);
   } else {
     update_display++;
   }
