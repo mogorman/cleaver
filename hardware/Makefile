@@ -4,7 +4,7 @@ STACK=-
 SOLDERMASK=red
 SILKSCREEN=white
 #CUSTOMPCB=/home/mog/nonapt/pcb/src/pcb
-#CUSTOMPCB_ARGS=--photo-mask-colour $(SOLDERMASK) --photo-silk-colour $(SILKSCREEN)
+CUSTOMPCB_ARGS=--photo-mask-colour $(SOLDERMASK) --photo-silk-colour $(SILKSCREEN)
 all: dummy
 
 dummy:
