@@ -46,6 +46,7 @@ endif
 app: compile_app
 ifeq (buspirate,$(PROGRAMMER))
 		@echo "#" > $(PROGRAMMER_PORT)
+		@echo -ne "$(printf '\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x0F')" > $(PROGRAMMER_PORT)
 endif
 	$(AVRDUDE) -pt85 -c $(PROGRAMMER) -P $(PROGRAMMER_PORT) -U flash:w:./bin/application.hex:s
 
@@ -59,6 +60,7 @@ endif
 off:
 ifeq (buspirate,$(PROGRAMMER))
 	@echo "#" > $(PROGRAMMER_PORT)
+	@echo -ne "$(printf '\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x0F')" > $(PROGRAMMER_PORT)
 	@echo "C" > $(PROGRAMMER_PORT)
 	@echo "a" > $(PROGRAMMER_PORT)
 	@sleep 1
