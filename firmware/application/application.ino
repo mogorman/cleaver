@@ -30,10 +30,6 @@
 // 8 Vcc, led to show its on
 //#define INTERNAL2V56_NO_CAP (6)
 
-
-#define Write_Address 0x7c/*slave addresses with write*/
-#define Read_Address 0x7d/*slave addresses with read*/
-
 #define TEMP A3
 #define POT  A2
 #define IRON  1
@@ -88,6 +84,8 @@ void setup()
   lcd.print("Bye bye");
   delay(1000);
   //turn the PID on
+  digitalWrite(IRON, HIGH);
+  while(1);
 //  Iron_PID.SetMode(AUTOMATIC);;
 }
 
