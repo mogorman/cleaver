@@ -84,8 +84,6 @@ void setup()
   lcd.print("Bye bye");
   delay(1000);
   //turn the PID on
-  digitalWrite(IRON, HIGH);
-  while(1);
 //  Iron_PID.SetMode(AUTOMATIC);;
 }
 
