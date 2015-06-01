@@ -28,6 +28,7 @@
 // 7 SCL for display
 // 8 Vcc, led to show its on
 //#define INTERNAL2V56_NO_CAP (6)
+#define BUFF_LENGTH 4
 
 #define TEMP A3
 #define POT  A2
@@ -50,6 +51,8 @@ int user_input;
 int ms;
 int start;
 int stop;
+int readings[BUFF_LENGTH];
+int position;
 //Specify the links and initial tuning parameters
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
@@ -65,6 +68,7 @@ void setup()
   digitalWrite(IRON,LOW);
   update_display = 1;
 
+  position = 0;
   temperature = analogRead(TEMP);
   user_input = analogRead(POT);
   user_input = 1023 - user_input;
@@ -75,7 +79,6 @@ void setup()
   ms = 0;
   lcd.init();
   lcd.clear();
-  //  lcd.blink();
   lcd.setContrast(29);
   //if the pot is at 0 and the iron is unplugged
   if(user_input < 50 && (temperature > 750 && temperature < 800 )) {
@@ -86,37 +89,16 @@ void setup()
     delay(5000);
   }
   if (temperature > 750 && temperature < 800 ) {
-    delay(1000);
-    do {
-      temp = temperature - analogRead(TEMP);
-      if(update_display == 60 && stop == 0) {
-	lcd.setCursor(0,0);
-	lcd.print("  PLUG  ");
-	lcd.setCursor(0,1);
-	lcd.print("IRON IN ");
-	update_display = 0;
-	stop = 1;
-      } else if (update_display == 60 && stop == 1) {
-	lcd.clear();
-	update_display = 0;
-	stop = 0;
-      }
-      delay(10);
-      update_display++;
-    }
-    while (temp < 25);    
+    plug_in_iron();
   }
   stop = 0;
   update_display = 0;
-  //  lcd.command(0b00011000);
   lcd.command(0b00110100);
-  //turn the PID on
-  // Iron_PID.SetMode(AUTOMATIC);
-  //  Iron_PID.SetSampleTime(250);
 }
 
 void loop()
 {
+  int i;
   stop = millis();
   ms += stop - start;
   if( ms > 100) {
@@ -132,23 +114,41 @@ void loop()
   //  lcd.clear();
   if(update_display) {
     temperature = analogRead(TEMP);
+    readings[position] = temperature;
+    position++;
+    if(position == BUFF_LENGTH)
+      position = 0;
+    for(i = 0; i < BUFF_LENGTH; i++) {
+      if (readings[i] > 750 && readings[i] < 800) {
+	continue;
+      } else {
+	break;
+      }
+    }
+    if(i == BUFF_LENGTH) {
+      lcd.clear();
+      lcd.command(0b00111000);
+      digitalWrite(IRON, LOW);
+      plug_in_iron();
+      lcd.command(0b00110100);
+    }
     if((temperature - user_input) > 0) {
       digitalWrite(IRON, LOW);
     } else {
-      digitalWrite(IRON,HIGH);
+      digitalWrite(IRON, HIGH);
     }
     
     update_display = 0;
     user_input = analogRead(POT);
     user_input = 1023 - user_input;
-    if(user_input >750)
+    if(user_input > 750)
       user_input = 750;
     if(user_input < 50)
       user_input = 0;
     lcd.clear();
-    lcd.setCursor(0,0);
+    lcd.setCursor(0, 0);
     if(!user_input) {
-      lcd.print("Off");
+      lcd.print("OFF");
     } else {
       lcd.print(user_input);
     }
@@ -158,3 +158,26 @@ void loop()
   }
 }
 
+void plug_in_iron() {
+  int temp;
+  stop = 1;
+  update_display = 60;
+  do {
+    temp = temperature - analogRead(TEMP);
+    if(update_display == 60 && stop == 0) {
+      lcd.setCursor(0,0);
+      lcd.print("  PLUG  ");
+      lcd.setCursor(0,1);
+      lcd.print("IRON IN ");
+      update_display = 0;
+      stop = 1;
+    } else if (update_display == 60 && stop == 1) {
+      lcd.clear();
+      update_display = 0;
+      stop = 0;
+    }
+    delay(10);
+    update_display++;
+  }
+  while (temp < 25);
+}
