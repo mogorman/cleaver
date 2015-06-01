@@ -9,7 +9,6 @@
 #define __AVR_ATtiny85__ 1
 
 #include <TinyWireM.h>
-#include <PID_v1.h>
 #include <LiquidCrystal_I2C_ST7032i.h>
 //                ________   http://highlowtech.org pinout
 //  Reset PB5     |1    8| Vcc+
@@ -43,32 +42,21 @@
 #endif
 
 //Define Variables we'll be connecting to
-double Set_point, Input, Output;
-int Pot_value;
-
-int internal_offset;
-int internal_readings[45];
-int internal_pos;
 int update_display;
-int lock;
-int iron_state;
-int point;
-int offset;
 int temperature;
 int minutes;
-int quarter_seconds;
+int tenth_seconds;
+int user_input;
 int ms;
 int start;
 int stop;
 //Specify the links and initial tuning parameters
-PID Iron_PID(&Input, &Output, &Set_point,2,5,1, DIRECT);
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
 /* // the setup routine runs once when you press reset: */
 void setup()
 {
-  int user_input;
   int temp;
   //  delay(2000);
   pinMode(IRON,OUTPUT);
@@ -77,16 +65,11 @@ void setup()
   digitalWrite(IRON,LOW);
   update_display = 1;
 
-  lock = 0;
-  point = 0;
-  offset = 0;
-  iron_state = 0;
-  internal_pos = 0;
   temperature = analogRead(TEMP);
   user_input = analogRead(POT);
   user_input = 1023 - user_input;
   minutes = 0;
-  quarter_seconds = 0;
+  tenth_seconds = 0;
   start = 0;
   stop = 0;
   ms = 0;
@@ -125,90 +108,53 @@ void setup()
   }
   stop = 0;
   update_display = 0;
+  //  lcd.command(0b00011000);
+  lcd.command(0b00110100);
   //turn the PID on
-  Iron_PID.SetMode(AUTOMATIC);;
+  // Iron_PID.SetMode(AUTOMATIC);
+  //  Iron_PID.SetSampleTime(250);
 }
 
 void loop()
 {
-  int user_input = 0;
   stop = millis();
   ms += stop - start;
-  if( ms > 250) {
-    quarter_seconds += (ms/250);
-    ms = ms % 250;
-    update_display = 0;
+  if( ms > 100) {
+    tenth_seconds += (ms/100);
+    ms = ms % 100;
+    update_display = 1;
   } 
-  if(quarter_seconds ==240) {
-    quarter_seconds = 0;
+  if(tenth_seconds == 600) {
+    tenth_seconds = 0;
     minutes++;
   }
   start = millis();
   //  lcd.clear();
-  if(!update_display) {
-    update_display = 1;
+  if(update_display) {
+    temperature = analogRead(TEMP);
+    if((temperature - user_input) > 0) {
+      digitalWrite(IRON, LOW);
+    } else {
+      digitalWrite(IRON,HIGH);
+    }
+    
+    update_display = 0;
     user_input = analogRead(POT);
     user_input = 1023 - user_input;
-    if(iron_state) {
-      //      digitalWrite(IRON, LOW);
-      //      temperature = analogRead(TEMP);
-      //      digitalWrite(IRON, HIGH);
-    } else {
-      //      temperature = analogRead(TEMP);
-    }
-    if(user_input < 50) {
-      point = 0;
-      lock = 0;
-    } else if (user_input > 800) {
-      if(!lock) {
-	point  = temperature;
-	lock = 1;
-      }
-    } else {
-      point = 1023;
-      lock = 0;
-    }
-
+    if(user_input >750)
+      user_input = 750;
+    if(user_input < 50)
+      user_input = 0;
+    lcd.clear();
     lcd.setCursor(0,0);
+    if(!user_input) {
+      lcd.print("Off");
+    } else {
+      lcd.print(user_input);
+    }
+    lcd.print("  ");
     lcd.print(temperature);
-    lcd.print("|");
-    lcd.print(minutes);
-    lcd.print(":");
-    lcd.print(quarter_seconds/4);
-    lcd.print("     ");
-    lcd.setCursor(0,1);
-    lcd.print("        ");
-    lcd.setCursor(0,1);
-    lcd.print(point);
-    lcd.print(" ");
-    lcd.print(user_input);
+
   }
-
-
-  offset = point - temperature;
-
-  // if( offset > 0 && iron_state == 0) {
-  //   //    digitalWrite(IRON, HIGH);
-  //   iron_state = 1;
-  // } else if (iron_state == 1) {
-  //   digitalWrite(IRON, LOW);
-  //   iron_state = 0;
-  // }
-
- //Input = temperature;
-  if(Iron_PID.Compute()) {
-    //  analogWrite(IRON,Output);
-    internal_pos = Output;
-  }
-
-
-  if(minutes % 2) {
-    //    analogWrite(IRON, 255);
-    digitalWrite(IRON,LOW);
-  } else {
-    //    analogWrite(IRON, 0);
-    digitalWrite(IRON,HIGH);
-  }
-  
 }
 
