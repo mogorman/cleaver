@@ -68,6 +68,8 @@ LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8
 /* // the setup routine runs once when you press reset: */
 void setup()
 {
+  int user_input;
+  int temp;
   //  delay(2000);
   pinMode(IRON,OUTPUT);
   pinMode(POT,INPUT);
@@ -79,7 +81,9 @@ void setup()
   point = 0;
   offset = 0;
   iron_state = 0;
-  temperature = 0;
+  temperature = analogRead(TEMP);
+  user_input = analogRead(POT);
+  user_input = 1023 - user_input;
   minutes = 0;
   seconds = 0;
   start = 0;
@@ -89,11 +93,29 @@ void setup()
   lcd.clear();
   //  lcd.blink();
   lcd.setContrast(29);
-  lcd.setCursor(0,0);
-  lcd.print(GIT);
-  lcd.setCursor(0,1);
-  lcd.print(TIME);  
-  delay(5000);
+  //if the pot is at 0 and the iron is unplugged
+  if(user_input < 50 && (temperature > 750 && temperature < 800 )) {
+    lcd.setCursor(0,0);
+    lcd.print(GIT);
+    lcd.setCursor(0,1);
+    lcd.print(TIME);  
+    delay(5000);
+  }
+  if (temperature > 750 && temperature < 800 ) {
+    delay(1000);
+    temp = temperature - analogRead(TEMP);
+    if(temp< 25) {
+      lcd.setCursor(0,0);
+      lcd.print("  PLUG  ");
+      lcd.setCursor(0,1);
+      lcd.print("IRON IN ");
+    }
+    while (temp < 25) {
+      temp = temperature - analogRead(TEMP);
+      delay(10);
+    }
+    
+  }
   //turn the PID on
 //  Iron_PID.SetMode(AUTOMATIC);;
 }
