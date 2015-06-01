@@ -7,6 +7,7 @@ PROGRAMMER=buspirate
 PROGRAMMER_PORT=/dev/buspirate
 ARDUINO_PORT=/dev/arduino
 GIT=`git rev-parse --short HEAD`
+HEXTIME=`printf "%x\n" $(shell date +%s)`
 
 all: check_submodule compile_app
 
@@ -35,7 +36,7 @@ endif
 	  ls build; \
 	  cp ./preferences.txt build/; \
 	  echo "sketchbook.path="`pwd`"/" >> build/preferences.txt; \
-	  echo "#define GIT \""$(GIT)"\"" | cat -  application/application.ino > build/application/application.ino; \
+	  echo "#define GIT \""$(GIT)"\"\n#define TIME \""$(HEXTIME)"\"" | cat -  application/application.ino > build/application/application.ino; \
 	  xvfb-run $(ARDUINO) \
 	   --verbose-build \
 	   --preferences-file ./build/preferences.txt \

@@ -38,6 +38,10 @@
 #define GIT "not git"
 #endif
 
+#ifndef TIME
+#define TIME "no time"
+#endif
+
 //Define Variables we'll be connecting to
 double Set_point, Input, Output;
 int Pot_value;
@@ -46,7 +50,6 @@ int internal_offset;
 int internal_readings[45];
 int internal_pos;
 int update_display;
-int update_display2;
 int lock;
 int iron_state;
 int point;
@@ -71,7 +74,7 @@ void setup()
   pinMode(TEMP,INPUT);
   digitalWrite(IRON,LOW);
   update_display = 1;
-  update_display2 = 1;
+
   lock = 0;
   point = 0;
   offset = 0;
@@ -88,7 +91,9 @@ void setup()
   lcd.setContrast(29);
   lcd.setCursor(0,0);
   lcd.print(GIT);
-  delay(1000);
+  lcd.setCursor(0,1);
+  lcd.print(TIME);  
+  delay(5000);
   //turn the PID on
 //  Iron_PID.SetMode(AUTOMATIC);;
 }
@@ -101,14 +106,16 @@ void loop()
   if( ms > 1000) {
     seconds += (ms/1000);
     ms = ms % 1000;
-  }
+    update_display =1;
+  } 
   if(seconds == 60) {
     seconds = 0;
     minutes++;
   }
   start = millis();
   //  lcd.clear();
-  if(update_display == 1 && update_display2 == 1) {
+  if(update_display) {
+    update_display = 0;
     user_input = analogRead(POT);
     user_input = 1023 - user_input;
     if(iron_state) {
@@ -146,17 +153,7 @@ void loop()
     lcd.print(stop);
   }
 
-  if(update_display2 == 1024) {
-    if(update_display == 1024) {
-      update_display = 1;
-      update_display2 = 1;
-    } else {
-      update_display++;
-      update_display2 = 1;
-    }
-  } else {
-    update_display2++;
-  }
+
   offset = point - temperature;
 
   if( offset > 0 && iron_state == 0) {
