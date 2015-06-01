@@ -42,10 +42,8 @@ endif
 	   --preferences-file ./build/preferences.txt \
 	   --pref build.path=`pwd`/build/build \
 	   --verify `pwd`/build/application/application.ino; \
-	  echo Ardiono $$? result; \
-	  md5sum application/application.ino > build/app.md5; \
-	  $(AVR_OBJCOPY) -O srec -R .eeprom \
-	              build/build/application.cpp.elf bin/application.hex; \
+	md5sum application/application.ino > build/app.md5; \
+	$(AVR_OBJCOPY) -O srec -R .eeprom build/build/application.cpp.elf bin/application.hex; \
 	fi
 
 app: compile_app
