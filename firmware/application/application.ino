@@ -34,6 +34,10 @@
 #define POT  A2
 #define IRON  1
 
+#ifndef GIT
+#define GIT "not git"
+#endif
+
 //Define Variables we'll be connecting to
 double Set_point, Input, Output;
 int Pot_value;
@@ -42,6 +46,7 @@ int internal_offset;
 int internal_readings[45];
 int internal_pos;
 int update_display;
+int update_display2;
 int lock;
 int iron_state;
 int point;
@@ -66,6 +71,7 @@ void setup()
   pinMode(TEMP,INPUT);
   digitalWrite(IRON,LOW);
   update_display = 1;
+  update_display2 = 1;
   lock = 0;
   point = 0;
   offset = 0;
@@ -81,7 +87,7 @@ void setup()
   //  lcd.blink();
   lcd.setContrast(29);
   lcd.setCursor(0,0);
-  lcd.print("Bye bye");
+  lcd.print(GIT);
   delay(1000);
   //turn the PID on
 //  Iron_PID.SetMode(AUTOMATIC);;
@@ -90,48 +96,44 @@ void setup()
 void loop()
 {
   int user_input = 0;
-
-    //  lcd.clear();
-  if(update_display == 1) {
   stop = millis();
   ms += stop - start;
   if( ms > 1000) {
-     seconds += (ms/1000);
-     ms = ms % 1000;
+    seconds += (ms/1000);
+    ms = ms % 1000;
   }
   if(seconds == 60) {
-     seconds = 0;
-     minutes++;
+    seconds = 0;
+    minutes++;
   }
-  start = millis(); 
-  user_input = analogRead(POT);
-  user_input = 1023 - user_input;
-  if(iron_state) {
-    digitalWrite(IRON, LOW);
-    temperature = analogRead(TEMP);
-    digitalWrite(IRON, HIGH);
-  } else {
-    temperature = analogRead(TEMP);
-  }
-
-  if(user_input < 50) {
-    point = 0;
-    lock = 0;
-  } else if (user_input > 800) {
-    if(!lock) {
-    point  = temperature;
-    lock = 1;
-   }
-  } else {
-    point = 1023;
-    lock = 0;
-  }
-
-
+  start = millis();
+  //  lcd.clear();
+  if(update_display == 1 && update_display2 == 1) {
+    user_input = analogRead(POT);
+    user_input = 1023 - user_input;
+    if(iron_state) {
+      digitalWrite(IRON, LOW);
+      temperature = analogRead(TEMP);
+      digitalWrite(IRON, HIGH);
+    } else {
+      temperature = analogRead(TEMP);
+    }
+    if(user_input < 50) {
+      point = 0;
+      lock = 0;
+    } else if (user_input > 800) {
+      if(!lock) {
+	point  = temperature;
+	lock = 1;
+      }
+    } else {
+      point = 1023;
+      lock = 0;
+    }
 
     lcd.setCursor(0,0);
     lcd.print(temperature);
-    lcd.print(" ");
+    lcd.print("|");
     lcd.print(minutes);
     lcd.print(":");
     lcd.print(seconds);
@@ -141,14 +143,19 @@ void loop()
     lcd.setCursor(0,1);
     lcd.print(point);
     lcd.print(" ");
-    lcd.print(ms);
+    lcd.print(stop);
   }
 
-  if(update_display == 255) {
-    update_display = 1;
-    delay(2000);
+  if(update_display2 == 1024) {
+    if(update_display == 1024) {
+      update_display = 1;
+      update_display2 = 1;
+    } else {
+      update_display++;
+      update_display2 = 1;
+    }
   } else {
-    update_display++;
+    update_display2++;
   }
   offset = point - temperature;
 

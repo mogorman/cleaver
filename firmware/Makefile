@@ -6,6 +6,7 @@ AVR_OBJCOPY=$(ARDUINO_DIR)/hardware/tools/avr/bin/avr-objcopy
 PROGRAMMER=buspirate
 PROGRAMMER_PORT=/dev/buspirate
 ARDUINO_PORT=/dev/arduino
+GIT=`git rev-parse --short HEAD`
 
 all: check_submodule compile_app
 
@@ -26,21 +27,24 @@ ifeq ("$(wildcard ./bin/application.hex )", "")
 	@rm -f ./build/app.md5
 endif
 	@mkdir -p build
+	@mkdir -p build/application
+	@mkdir -p build/build
 	@mkdir -p bin
 	@md5sum application/application.ino | cmp -s build/app.md5 -; \
 	 if test $$? -ne 0; then \
 	  ls build; \
 	  cp ./preferences.txt build/; \
 	  echo "sketchbook.path="`pwd`"/" >> build/preferences.txt; \
+	  echo "#define GIT \""$(GIT)"\"" | cat -  application/application.ino > build/application/application.ino; \
 	  xvfb-run $(ARDUINO) \
 	   --verbose-build \
 	   --preferences-file ./build/preferences.txt \
-	   --pref build.path=`pwd`/build \
-	   --verify `pwd`/application/application.ino; \
+	   --pref build.path=`pwd`/build/build \
+	   --verify `pwd`/build/application/application.ino; \
 	  echo Ardiono $$? result; \
 	  md5sum application/application.ino > build/app.md5; \
 	  $(AVR_OBJCOPY) -O srec -R .eeprom \
-	              build/application.cpp.elf bin/application.hex; \
+	              build/build/application.cpp.elf bin/application.hex; \
 	fi
 
 app: compile_app
@@ -67,6 +71,10 @@ ifeq (buspirate,$(PROGRAMMER))
 	@echo "@" > $(PROGRAMMER_PORT)
 	@echo "#" > $(PROGRAMMER_PORT)
 endif
+
+fuses:
+	echo $(GIT)
+#	$(AVRDUDE) -pt85 -c $(PROGRAMMER) -P $(PROGRAMMER_PORT) -U lfuse:w:0xe2:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m 
 
 clean:
 	@rm -rf build
