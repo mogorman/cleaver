@@ -33,7 +33,7 @@
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
 
-#define TIMEOUT 6000
+#define TIME_OUT 4000 //about ten minutes
 
 #define TEMP A3
 #define POT  A2
@@ -50,7 +50,7 @@
 //Define Variables we'll be connecting to
 uint8_t update_display;
 
-uint8_t minutes;
+//uint8_t minutes;
 uint16_t tenth_seconds;
 uint16_t ms;
 unsigned long start;
@@ -97,7 +97,7 @@ void setup()
   lcd.command(0x34); //one column mode
   start = 0;
   ms = 0;
-  minutes = 0;
+  //  minutes = 0;
   tenth_seconds = 0;
 }
 
@@ -114,18 +114,18 @@ void loop()
     ms = ms % 100;
     update_display = 1;
   } 
-  if(tenth_seconds == 600) {
-    tenth_seconds = 0;
-    minutes++;
-  }
+  //  if(tenth_seconds == 600) {
+  //    tenth_seconds = 0;
+    //    minutes++;
+  //  }
   start = millis();
 #ifdef SAFE_IRON
-  if (minutes == 10 ) {
+  if (tenth_seconds > TIME_OUT ) {
     lcd.command(0x38); //two row mode
     digitalWrite(IRON, LOW);
     time_out(analogRead(POT));
     lcd.command(0x34); //one row mode
-    minutes = 0;
+    tenth_seconds = 0;
   }
 #endif
   if(update_display) {
@@ -174,14 +174,15 @@ void loop()
     } else if(user_input == 750) {
       lcd.print("MAX");
     } else {
-      lcd.print(user_input);
+      //      lcd.print(user_input);
       if(user_input < 100) {
 	lcd.print(" ");
       }
     }
     lcd.print("  ");
     //    lcd.print(temperature);
-    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
+    //    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
+    lcd.print(tenth_seconds);
     update_display = 0;
   }
 }
@@ -204,7 +205,8 @@ void plug_in_iron(int16_t temperature) {
     update_display++;
   }
   while (temp < 25);
-  minutes = 0;
+  //  minutes = 0;
+  tenth_seconds = 0;
 }
 
 
