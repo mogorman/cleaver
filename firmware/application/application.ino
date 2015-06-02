@@ -43,16 +43,16 @@
 #endif
 
 //Define Variables we'll be connecting to
-int update_display;
-int temperature;
-int minutes;
-int tenth_seconds;
-int user_input;
-int ms;
-int start;
-int stop;
-int readings[BUFF_LENGTH];
-int position;
+uint8_t update_display;
+int16_t temperature;
+uint8_t minutes;
+uint16_t tenth_seconds;
+int16_t user_input;
+uint16_t ms;
+unsigned long start;
+unsigned long  stop;
+uint16_t readings[BUFF_LENGTH];
+uint8_t position;
 //Specify the links and initial tuning parameters
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
@@ -66,17 +66,14 @@ void setup()
   pinMode(POT,INPUT);
   pinMode(TEMP,INPUT);
   digitalWrite(IRON,LOW);
-  update_display = 1;
 
+  update_display = 0;
   position = 0;
+
   temperature = analogRead(TEMP);
   user_input = analogRead(POT);
   user_input = 1023 - user_input;
-  minutes = 0;
-  tenth_seconds = 0;
-  start = 0;
-  stop = 0;
-  ms = 0;
+  
   lcd.init();
   lcd.clear();
   lcd.setContrast(29);
@@ -91,14 +88,17 @@ void setup()
   if (temperature > 750 && temperature < 800 ) {
     plug_in_iron();
   }
-  stop = 0;
-  update_display = 0;
-  lcd.command(0b00110100);
+  lcd.command(0x34); //one column mode
+  start = 0;
+  ms = 0;
+  minutes = 0;
+  tenth_seconds = 0;
 }
 
 void loop()
 {
-  int i;
+ 
+  uint8_t i;
   stop = millis();
   ms += stop - start;
   if( ms > 100) {
@@ -114,6 +114,15 @@ void loop()
   //  lcd.clear();
   if(update_display) {
     temperature = analogRead(TEMP);
+
+    user_input = analogRead(POT);
+    user_input = 1023 - user_input;
+    
+    if(user_input > 750)
+      user_input = 750;
+    if(user_input < 50)
+      user_input = 0;
+
     readings[position] = temperature;
     position++;
     if(position == BUFF_LENGTH)
@@ -127,34 +136,37 @@ void loop()
     }
     if(i == BUFF_LENGTH) {
       lcd.clear();
-      lcd.command(0b00111000);
+      //      lcd.command(0b0011 1000); //two row mode
+      lcd.command(0x38); //two row mode
       digitalWrite(IRON, LOW);
       plug_in_iron();
-      lcd.command(0b00110100);
+      //lcd.command(0b00110100);
+      lcd.command(0x34); //one row mode
     }
     if((temperature - user_input) > 0) {
+      update_display = 4;
       digitalWrite(IRON, LOW);
     } else {
+      update_display = 5;
       digitalWrite(IRON, HIGH);
     }
     
-    update_display = 0;
-    user_input = analogRead(POT);
-    user_input = 1023 - user_input;
-    if(user_input > 750)
-      user_input = 750;
-    if(user_input < 50)
-      user_input = 0;
-    lcd.clear();
+    
     lcd.setCursor(0, 0);
     if(!user_input) {
       lcd.print("OFF");
+    } else if(user_input == 750) {
+      lcd.print("MAX");
     } else {
       lcd.print(user_input);
+      if(user_input < 100) {
+	lcd.print(" ");
+      }
     }
-    lcd.print("  ");
+    lcd.print(" ");
+    //    lcd.print(update_display);
     lcd.print(temperature);
-
+    update_display = 0;
   }
 }
 
@@ -166,9 +178,9 @@ void plug_in_iron() {
     temp = temperature - analogRead(TEMP);
     if(update_display == 60 && stop == 0) {
       lcd.setCursor(0,0);
-      lcd.print("  PLUG  ");
+      lcd.print("--PLUG-~");
       lcd.setCursor(0,1);
-      lcd.print("IRON IN ");
+      lcd.print("IRON IN!");
       update_display = 0;
       stop = 1;
     } else if (update_display == 60 && stop == 1) {
