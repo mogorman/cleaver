@@ -204,14 +204,15 @@ void loop()
 }
 
 void plug_in_iron(int16_t temperature) {
-  uint16_t temp;
+  int16_t temp;
   update_display = 60;
   do {
     temp = temperature - analogRead(TEMP);
     if(update_display == 60) {
       lcd.setCursor(0,0);
       lcd.print("--PLUG-~");
-      //      lcd.print(analogRead(TEMP));
+      //lcd.print(temp);
+      //delay(2000);
       lcd.setCursor(0,1);
       lcd.print("IRON IN!");
     } else if (update_display == 120) {
@@ -257,15 +258,13 @@ void time_out(uint16_t last_input) {
 void initialize()
 {
   lcd.setCursor(0,0);
-  lcd.print(" config");
+  lcd.print(" Zeroing");
   lcd.setCursor(0,1);
   lcd.print("the iron");
   delay(1000);
   lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("set knob");
-  lcd.setCursor(0,1);
-  
+  plug_in_iron(770);
+
   lcd.setCursor(0,0);
   lcd.print(analogRead(TEMP));
   lcd.setCursor(0,1);
