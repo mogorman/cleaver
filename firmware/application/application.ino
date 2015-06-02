@@ -180,4 +180,5 @@ void plug_in_iron() {
     update_display++;
   }
   while (temp < 25);
+  minutes = 0;
 }
