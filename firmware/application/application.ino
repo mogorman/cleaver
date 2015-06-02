@@ -30,6 +30,11 @@
 //#define INTERNAL2V56_NO_CAP (6)
 #define BUFF_LENGTH 4
 
+//UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
+#define SAFE_IRON 1
+
+#define TIMEOUT 6000
+
 #define TEMP A3
 #define POT  A2
 #define IRON  1
@@ -44,10 +49,9 @@
 
 //Define Variables we'll be connecting to
 uint8_t update_display;
-int16_t temperature;
+
 uint8_t minutes;
 uint16_t tenth_seconds;
-int16_t user_input;
 uint16_t ms;
 unsigned long start;
 unsigned long  stop;
@@ -61,6 +65,8 @@ LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8
 void setup()
 {
   int temp;
+  int16_t user_input;
+  int16_t temperature;
   //  delay(2000);
   pinMode(IRON,OUTPUT);
   pinMode(POT,INPUT);
@@ -86,7 +92,7 @@ void setup()
     delay(5000);
   }
   if (temperature > 750 && temperature < 800 ) {
-    plug_in_iron();
+    plug_in_iron(temperature);
   }
   lcd.command(0x34); //one column mode
   start = 0;
@@ -99,6 +105,8 @@ void loop()
 {
  
   uint8_t i;
+  int16_t user_input;
+  int16_t temperature;
   stop = millis();
   ms += stop - start;
   if( ms > 100) {
@@ -111,7 +119,15 @@ void loop()
     minutes++;
   }
   start = millis();
-  //  lcd.clear();
+#ifdef SAFE_IRON
+  if (minutes == 10 ) {
+    lcd.command(0x38); //two row mode
+    digitalWrite(IRON, LOW);
+    time_out(analogRead(POT));
+    lcd.command(0x34); //one row mode
+    minutes = 0;
+  }
+#endif
   if(update_display) {
     temperature = analogRead(TEMP);
 
@@ -139,7 +155,7 @@ void loop()
       //      lcd.command(0b0011 1000); //two row mode
       lcd.command(0x38); //two row mode
       digitalWrite(IRON, LOW);
-      plug_in_iron();
+      plug_in_iron(temperature);
       //lcd.command(0b00110100);
       lcd.command(0x34); //one row mode
     }
@@ -163,34 +179,58 @@ void loop()
 	lcd.print(" ");
       }
     }
-    lcd.print(" ");
-    //    lcd.print(update_display);
-    lcd.print(temperature);
+    lcd.print("  ");
+    //    lcd.print(temperature);
+    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
     update_display = 0;
   }
 }
 
-void plug_in_iron() {
-  int temp;
-  stop = 1;
+void plug_in_iron(int16_t temperature) {
+  int16_t temp;
   update_display = 60;
   do {
     temp = temperature - analogRead(TEMP);
-    if(update_display == 60 && stop == 0) {
+    if(update_display == 60) {
       lcd.setCursor(0,0);
       lcd.print("--PLUG-~");
       lcd.setCursor(0,1);
       lcd.print("IRON IN!");
-      update_display = 0;
-      stop = 1;
-    } else if (update_display == 60 && stop == 1) {
+    } else if (update_display == 120) {
       lcd.clear();
       update_display = 0;
-      stop = 0;
     }
     delay(10);
     update_display++;
   }
   while (temp < 25);
   minutes = 0;
+}
+
+
+void time_out(uint16_t last_input) {
+  int16_t temp;
+  update_display = 60;
+  do {
+    temp = last_input - analogRead(POT);
+    if(update_display == 60) {
+      lcd.setCursor(0,0);
+      lcd.print("  Auto  ");
+      lcd.setCursor(0,1);
+      lcd.print("Shutoff");
+    } else if (update_display == 120) {
+      lcd.clear();
+    } else if (update_display == 180) {
+      lcd.setCursor(0,0);
+      lcd.print("  Move  ");
+      lcd.setCursor(0,1);
+      lcd.print("  Knob  ");
+    } else if (update_display == 240) {
+      lcd.clear();
+      update_display = 0;
+    }
+    delay(10);
+    update_display++;
+  }
+  while (temp < 25);
 }
