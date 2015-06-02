@@ -92,6 +92,8 @@ void setup()
     lcd.setCursor(0,1);
     lcd.print(TIME);  
     delay(5000);
+  } else if(user_input > 1000 && (temperature > 750 && temperature < 800 )) {
+    initialize();
   }
   if (temperature > 750 && temperature < 800 ) {
     plug_in_iron(temperature);
@@ -252,7 +254,126 @@ void time_out(uint16_t last_input) {
   while (temp < 25);
 }
 
+void initialize()
+{
+  lcd.setCursor(0,0);
+  lcd.print(" config");
+  lcd.setCursor(0,1);
+  lcd.print("the iron");
+  delay(1000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(analogRead(TEMP));
+  lcd.setCursor(0,1);
+  
+  // // Set prescaler to 64 -> ADC clock 150khz
+  //   ADCSRA &= ~(1<<ADPS0);
+  //   ADCSRA |=  (1<<ADPS1); 
+  //   ADCSRA |=  (1<<ADPS2);
+
+  //   // ADC Voltage reference selection, internal 1.1v
+  //   ADMUX &= ~(1<<REFS0);   //0
+  //   ADMUX |= (1<<REFS1);    //1
+  //   ADMUX |= (1<<REFS2);    //0
+    
+  //   // ADC Channel 2 (Table 17-4. Page 138)
+  //   ADMUX &= ~(1<<MUX0); // 0
+  //   ADMUX |=  (1<<MUX1); // 1
+
+  //   // Disable digital input of pin PB4 (ADC channel2)
+  //   DIDR0 |= (1<<ADC2D);
+
+  //   // Turn ADC on & start first conversion
+  //   ADCSRA |= ((1<<ADEN)|(1<<ADSC));
+  //   delay(1000);
+    
+  while(1) {
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print(readTemp());
+    delay(200);
+  }
+  while(1);
+}
+
+
+
+uint16_t probe_temperature() {
+    // turn on transistor to power probe
+    DDRB  |= (1 << PIN0);
+    PORTB |= (1 << PIN0);
+
+    // allow to settle
+    _delay_us(100);
+
+    ADMUX  = 0;
+    ADMUX  |= (1 << REFS1); // internal 1.1V voltage reference
+    ADMUX  |= (1 << MUX1);  // select PIN4 as target
+    ADCSRA |= (1 << ADPS2); // Set prescaler 16 - 64Khz at 1Mhz
+
+    // wait for band gap voltage to settle
+    _delay_us(70);
+
+    ADCSRA |= (1 << ADEN); // enable ADC
+    ADCSRA |= (1 << ADSC); // start conversion
+
+    // wait for conversion
+    while(ADCSRA & (1 << ADSC)) {}
+
+    // turn off probe
+    DDRB  &= ~(1 << PIN0);
+    PORTB &= ~(1 << PIN0);
+
+    // read value
+    uint16_t value = ADCW;
+    return value;
+}
+
+
+
+long readTemp() { 
+  // Read temperature sensor against 1.1V reference
+  #if defined(__AVR_ATmega32U4__)
+    ADMUX = _BV(REFS1) | _BV(REFS0) | _BV(MUX2) | _BV(MUX1) | _BV(MUX0);
+    ADCSRB = _BV(MUX5); // the MUX5 bit is in the ADCSRB register
+  #elif defined (__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
+    ADMUX = _BV(REFS1) | _BV(MUX5) | _BV(MUX1);
+  #elif defined (__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
+    ADMUX = _BV(REFS1) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1) | _BV(MUX0);
+  #else
+    ADMUX = _BV(REFS1) | _BV(REFS0) | _BV(MUX3);
+  #endif
+
+  delay(2); // Wait for ADMUX setting to settle
+  ADCSRA |= _BV(ADSC); // Start conversion
+  while (bit_is_set(ADCSRA,ADSC)); // measuring
+
+  uint8_t low = ADCL; // must read ADCL first - it then locks ADCH
+  uint8_t high = ADCH; // unlocks both
+  long result = (high << 8) | low; // combine the two
+
+  return result;
+}
+
+float normalizeTemperature(long rawData) { 
+  // replace these constants with your 2 data points
+  // these are sample values that will get you in the ballpark (in degrees C)
+  float temp1 = 0;
+  long data1 = 274;
+  float temp2 = 25.0;
+  long data2 = 304;
+ 
+  // calculate the scale factor
+  float scaleFactor = (temp2 - temp1) / (data2 - data1);
+
+  // now calculate the temperature
+  float temp = scaleFactor * (rawData - data1) + temp1;
+
+  return temp;
+}
+
 //temp readings
 //107 ~= 22.8c 73F
 
-//777,778 when unplugged
+//776,777,778 when unplugged
+
