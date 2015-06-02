@@ -32,8 +32,9 @@
 
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
-
+#define MAX_TEMP 750
 #define TIME_OUT 20000 //about sixty minutes
+//#define TIME_OUT 100 //about sixty minutes
 
 #define TEMP A3
 #define POT  A2
@@ -130,8 +131,9 @@ void loop()
     
 #ifdef SAFE_IRON
   if (tenth_seconds > TIME_OUT ) {
-    lcd.command(0x38); //two row mode
     digitalWrite(IRON, LOW);
+    lcd.clear();
+    lcd.command(0x38); //two row mode
     time_out(user_input);
     knob_movement = user_input;
     lcd.command(0x34); //one row mode
@@ -143,8 +145,10 @@ void loop()
       knob_movement = user_input;
       tenth_seconds = 0;
     }
-    if(user_input > 750)
-      user_input = 750;
+#ifdef SAFE_IRON
+    if(user_input > MAX_TEMP)
+      user_input = MAX_TEMP;
+#endif
     if(user_input < 50)
       user_input = 0;
 
@@ -180,30 +184,32 @@ void loop()
     lcd.setCursor(0, 0);
     if(!user_input) {
       lcd.print("OFF");
-    } else if(user_input == 750) {
+#ifdef SAFE_IRON
+    } else if(user_input == MAX_TEMP) {
       lcd.print("MAX");
+#endif
     } else {
-      //      lcd.print(user_input);
+      lcd.print(user_input);
       if(user_input < 100) {
 	lcd.print(" ");
       }
     }
     lcd.print("  ");
-    //    lcd.print(temperature);
-    //    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
+    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
     lcd.print(tenth_seconds);
     update_display = 0;
   }
 }
 
 void plug_in_iron(int16_t temperature) {
-  int16_t temp;
+  uint16_t temp;
   update_display = 60;
   do {
     temp = temperature - analogRead(TEMP);
     if(update_display == 60) {
       lcd.setCursor(0,0);
       lcd.print("--PLUG-~");
+      //      lcd.print(analogRead(TEMP));
       lcd.setCursor(0,1);
       lcd.print("IRON IN!");
     } else if (update_display == 120) {
@@ -220,10 +226,10 @@ void plug_in_iron(int16_t temperature) {
 
 
 void time_out(uint16_t last_input) {
-  int16_t temp;
+  uint16_t temp;
   update_display = 60;
   do {
-    temp = last_input - analogRead(POT);
+    temp = last_input - (1023 - analogRead(POT));
     if(update_display == 60) {
       lcd.setCursor(0,0);
       lcd.print("  Auto  ");
@@ -245,3 +251,8 @@ void time_out(uint16_t last_input) {
   }
   while (temp < 25);
 }
+
+//temp readings
+//107 ~= 22.8c 73F
+
+//777,778 when unplugged
