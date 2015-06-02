@@ -653,6 +653,8 @@ T 45000 46800 5 10 1 1 0 0 1
 value=10K
 T 45100 45800 5 10 0 1 0 0 1
 footprint=0805quad
+T 45100 46000 5 10 0 1 0 0 1
+manufacturer-part=CN2A4TTE103J
 }
 C 45200 43800 1 270 1 input-2.sym
 {
@@ -663,33 +665,6 @@ device=none
 T 45100 44600 5 10 1 1 180 1 1
 value=Vcc5
 }
-C 42800 46500 1 0 0 input-2.sym
-{
-T 42800 46700 5 10 0 0 0 0 1
-net=Reset:1
-T 43400 47200 5 10 0 0 0 0 1
-device=none
-T 43300 46600 5 10 1 1 0 7 1
-value=Reset
-}
-C 42800 46400 1 180 1 input-2.sym
-{
-T 42800 46200 5 10 0 0 180 6 1
-net=SDA:1
-T 43400 45700 5 10 0 0 180 6 1
-device=none
-T 42900 46300 5 10 1 1 0 1 1
-value=SDA
-}
-C 42800 46100 1 180 1 input-2.sym
-{
-T 42800 45900 5 10 0 0 180 6 1
-net=SCL:1
-T 43400 45400 5 10 0 0 180 6 1
-device=none
-T 42900 46000 5 10 1 1 0 1 1
-value=SCL
-}
 C 59600 46800 1 0 1 input-2.sym
 {
 T 59600 47000 5 10 0 0 0 6 1
@@ -699,12 +674,39 @@ device=none
 T 60500 46900 5 10 1 1 180 1 1
 value=Display_enabled
 }
-C 44200 45800 1 180 0 output-2.sym
+C 42800 45800 1 180 1 input-2.sym
 {
-T 43300 45600 5 10 0 0 180 0 1
-net=Display_enabled:1
-T 44000 45100 5 10 0 0 180 0 1
+T 42800 45600 5 10 0 0 180 6 1
+net=SDA:1
+T 43400 45100 5 10 0 0 180 6 1
 device=none
-T 41900 45700 5 10 1 1 0 1 1
+T 42900 45700 5 10 1 1 0 1 1
+value=SDA
+}
+C 42800 46200 1 0 0 input-2.sym
+{
+T 42800 46400 5 10 0 0 0 0 1
+net=Reset:1
+T 43400 46900 5 10 0 0 0 0 1
+device=none
+T 43300 46300 5 10 1 1 0 7 1
+value=Reset
+}
+C 44200 46100 1 180 0 output-2.sym
+{
+T 43300 45900 5 10 0 0 180 0 1
+net=Display_enabled:1
+T 44000 45400 5 10 0 0 180 0 1
+device=none
+T 41900 46000 5 10 1 1 0 1 1
 value=Display_enabled
+}
+C 42800 46700 1 180 1 input-2.sym
+{
+T 42800 46500 5 10 0 0 180 6 1
+net=SCL:1
+T 43400 46000 5 10 0 0 180 6 1
+device=none
+T 42900 46600 5 10 1 1 0 1 1
+value=SCL
 }
