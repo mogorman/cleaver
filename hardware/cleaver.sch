@@ -652,7 +652,7 @@ refdes=R13
 T 45000 46800 5 10 1 1 0 0 1
 value=10K
 T 45100 45800 5 10 0 1 0 0 1
-footprint=0402quad
+footprint=0805quad
 }
 C 45200 43800 1 270 1 input-2.sym
 {
