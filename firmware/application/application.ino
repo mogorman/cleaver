@@ -16,7 +16,7 @@
 //  A2    PB4 D4  |3    6| D1 PB1 PWM MISO 
 //        GND     |4    5| D0 PB0 PWM AREF MOSI SDA
 //                --------
-//
+//1134
 
 // attiny85
 // 1 led, iron is safe / reset
@@ -33,7 +33,7 @@
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
 
-#define TIME_OUT 4000 //about ten minutes
+#define TIME_OUT 20000 //about sixty minutes
 
 #define TEMP A3
 #define POT  A2
@@ -50,7 +50,7 @@
 //Define Variables we'll be connecting to
 uint8_t update_display;
 
-//uint8_t minutes;
+uint16_t knob_movement;
 uint16_t tenth_seconds;
 uint16_t ms;
 unsigned long start;
@@ -79,6 +79,7 @@ void setup()
   temperature = analogRead(TEMP);
   user_input = analogRead(POT);
   user_input = 1023 - user_input;
+  knob_movement = user_input;
   
   lcd.init();
   lcd.clear();
@@ -119,27 +120,36 @@ void loop()
     //    minutes++;
   //  }
   start = millis();
-#ifdef SAFE_IRON
-  if (tenth_seconds > TIME_OUT ) {
-    lcd.command(0x38); //two row mode
-    digitalWrite(IRON, LOW);
-    time_out(analogRead(POT));
-    lcd.command(0x34); //one row mode
-    tenth_seconds = 0;
-  }
-#endif
+
   if(update_display) {
     temperature = analogRead(TEMP);
 
     user_input = analogRead(POT);
     user_input = 1023 - user_input;
+
     
+#ifdef SAFE_IRON
+  if (tenth_seconds > TIME_OUT ) {
+    lcd.command(0x38); //two row mode
+    digitalWrite(IRON, LOW);
+    time_out(user_input);
+    knob_movement = user_input;
+    lcd.command(0x34); //one row mode
+    tenth_seconds = 0;
+  }
+#endif
+  
+    if((knob_movement - user_input) > 50) {
+      knob_movement = user_input;
+      tenth_seconds = 0;
+    }
     if(user_input > 750)
       user_input = 750;
     if(user_input < 50)
       user_input = 0;
 
-    readings[position] = temperature;
+
+  readings[position] = temperature;
     position++;
     if(position == BUFF_LENGTH)
       position = 0;
@@ -152,11 +162,10 @@ void loop()
     }
     if(i == BUFF_LENGTH) {
       lcd.clear();
-      //      lcd.command(0b0011 1000); //two row mode
       lcd.command(0x38); //two row mode
       digitalWrite(IRON, LOW);
       plug_in_iron(temperature);
-      //lcd.command(0b00110100);
+      lcd.clear();
       lcd.command(0x34); //one row mode
     }
     if((temperature - user_input) > 0) {
