@@ -9,6 +9,7 @@
 #define __AVR_ATtiny85__ 1
 
 #include <TinyWireM.h>
+#include <EEPROM.h>
 #include <LiquidCrystal_I2C_ST7032i.h>
 //                ________   http://highlowtech.org pinout
 //  Reset PB5     |1    8| Vcc+
@@ -16,7 +17,7 @@
 //  A2    PB4 D4  |3    6| D1 PB1 PWM MISO 
 //        GND     |4    5| D0 PB0 PWM AREF MOSI SDA
 //                --------
-//1134
+
 
 // attiny85
 // 1 led, iron is safe / reset
@@ -29,12 +30,13 @@
 // 8 Vcc, led to show its on
 //#define INTERNAL2V56_NO_CAP (6)
 #define BUFF_LENGTH 4
+#define EEPROM_LENGTH 512
 
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
 #define MAX_TEMP 750
 #define TIME_OUT 20000 //about sixty minutes
-//#define TIME_OUT 100 //about sixty minutes
+
 
 #define TEMP A3
 #define POT  A2
@@ -58,6 +60,12 @@ unsigned long start;
 unsigned long  stop;
 uint16_t readings[BUFF_LENGTH];
 uint8_t position;
+
+uint8_t room_temp;
+uint8_t iron_room_temp;
+uint8_t calibrated;
+uint16_t solder_melt_temp;
+
 //Specify the links and initial tuning parameters
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
@@ -76,18 +84,25 @@ void setup()
 
   update_display = 0;
   position = 0;
-
+  
+  calibrated = 0;   //default uncalibrated value 
+  room_temp = 22;   //default uncalibrated value
+  iron_room_temp = 110; //default uncalibrated value
+  solder_melt_temp = 300; //default uncalibrated value
+  
   temperature = analogRead(TEMP);
   user_input = analogRead(POT);
   user_input = 1023 - user_input;
   knob_movement = user_input;
-  
+  check_eeprom(); 
+
   lcd.init();
   lcd.clear();
   lcd.setContrast(29);
+  lcd.setCursor(0,0);
+
   //if the pot is at 0 and the iron is unplugged
   if(user_input < 50 && (temperature > 750 && temperature < 800 )) {
-    lcd.setCursor(0,0);
     lcd.print(GIT);
     lcd.setCursor(0,1);
     lcd.print(TIME);  
@@ -196,8 +211,13 @@ void loop()
 	lcd.print(" ");
       }
     }
-    lcd.print("  ");
-    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
+    if(calibrated) {
+      lcd.print("  ");
+    } else {
+      lcd.print("__");
+    }
+    lcd.print(normalize_temp(readings[0])); // dont update every time i get a reading just every 4 times
+    lcd.print(" ");
     lcd.print(tenth_seconds);
     update_display = 0;
   }
@@ -258,7 +278,7 @@ void time_out(uint16_t last_input) {
 void initialize()
 {
   lcd.setCursor(0,0);
-  lcd.print(" Zeroing");
+  lcd.print("Gauging");
   lcd.setCursor(0,1);
   lcd.print("the iron");
   delay(1000);
@@ -280,6 +300,37 @@ void initialize()
   while(1);
 }
 
+void check_eeprom()
+{
+  int i;
+  for(i =0; i < EEPROM_LENGTH - 4; i++)
+  {
+    if(EEPROM.read(i) != 42) {
+      break;
+    }
+  }
+
+  if(i == (EEPROM_LENGTH -4)) {
+    calibrated = 1;
+    iron_room_temp = EEPROM.read((EEPROM_LENGTH - 4));
+    room_temp = EEPROM.read((EEPROM_LENGTH - 3));
+    solder_melt_temp = ((EEPROM.read((EEPROM_LENGTH - 2)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 1)) << 8) & 0xFFFF);
+  }
+}
+
+void write_eeprom()
+{
+  int i;
+  for(i =0; i < EEPROM_LENGTH - 4; i++)
+    {
+      EEPROM.write(i,42);
+    }
+  EEPROM.write((EEPROM_LENGTH - 4), iron_room_temp);
+  EEPROM.write((EEPROM_LENGTH - 3), room_temp);
+  EEPROM.write((EEPROM_LENGTH - 2), (solder_melt_temp & 0xFF));
+  EEPROM.write((EEPROM_LENGTH - 1), ((solder_melt_temp >> 8) & 0xFF));
+}
+
 // i don't think this is very useful after all
 // long read_temp() { 
 //   // Read temperature sensor against 1.1V reference
@@ -297,25 +348,27 @@ void initialize()
 //   return result;
 // }
 
-// float normalizeTemperature(long rawData) { 
-//   // replace these constants with your 2 data points
-//   // these are sample values that will get you in the ballpark (in degrees C)
-//   float temp1 = 0;
-//   long data1 = 274;
-//   float temp2 = 25.0;
-//   long data2 = 304;
+uint16_t normalize_temp(uint16_t raw_data) { 
+  // replace these constants with your 2 data points
+  // these are sample values that will get you in the ballpark (in degrees C)
+  float temp1 = room_temp;
+  long data1 = iron_room_temp;
+  
+  float temp2 = 183;
+  long data2 = solder_melt_temp;
  
-//   // calculate the scale factor
-//   float scaleFactor = (temp2 - temp1) / (data2 - data1);
+  // calculate the scale factor
+  float scaleFactor = (temp2 - temp1) / (data2 - data1);
 
-//   // now calculate the temperature
-//   float temp = scaleFactor * (rawData - data1) + temp1;
+  // now calculate the temperature
+  float temp = scaleFactor * (raw_data - data1) + temp1;
 
-//   return temp;
-// }
+  return (uint16_t)temp;
+}
 
-// //temp readings
-// //107 ~= 22.8c 73F
+//temp readings
+//107 ~= 22.8c 73F
 
 // //776,777,778 when unplugged
 
+//temp reange -22f to 158f -30c to 70c
