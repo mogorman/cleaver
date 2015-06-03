@@ -67,6 +67,7 @@ uint8_t iron_room_temp;
 uint8_t calibrated;
 uint16_t solder_melt_temp;
 
+float scale_factor;
 //Specify the links and initial tuning parameters
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
@@ -85,11 +86,13 @@ void setup()
 
   update_display = 0;
   position = 0;
-  
+
   calibrated = 0;   //default uncalibrated value 
   room_temp = 22;   //default uncalibrated value
   iron_room_temp = 110; //default uncalibrated value
   solder_melt_temp = 300; //default uncalibrated value
+  
+  scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
   
   temperature = analogRead(TEMP);
   user_input = analogRead(POT);
@@ -127,6 +130,7 @@ void loop()
   uint8_t i;
   int16_t user_input;
   int16_t temperature;
+  
   stop = millis();
   ms += stop - start;
   if( ms > 100) {
@@ -134,10 +138,6 @@ void loop()
     ms = ms % 100;
     update_display = 1;
   } 
-  //  if(tenth_seconds == 600) {
-  //    tenth_seconds = 0;
-    //    minutes++;
-  //  }
   start = millis();
 
   if(update_display) {
@@ -163,10 +163,7 @@ void loop()
       knob_movement = user_input;
       tenth_seconds = 0;
     }
-#ifdef SAFE_IRON
-    if(user_input > MAX_TEMP)
-      user_input = MAX_TEMP;
-#endif
+
     if(user_input < 50)
       user_input = 0;
 
@@ -200,7 +197,12 @@ void loop()
     
     
     lcd.setCursor(0, 0);
-    if(!user_input) {
+    user_input =  ((user_input - 50) * scale_factor) + 20;
+#ifdef SAFE_IRON
+    if(user_input > MAX_TEMP)
+      user_input = MAX_TEMP;
+#endif
+    if(user_input < 20) {
       lcd.print("OFF");
 #ifdef SAFE_IRON
     } else if(user_input == MAX_TEMP) {
@@ -217,10 +219,14 @@ void loop()
     } else {
       lcd.print("__");
     }
-    lcd.print(normalize_temp()); // dont update every time i get a reading just every 4 times
+    user_input = normalize_temp();
+    if(user_input < 100) {
+      lcd.print(" ");
+    }
+    lcd.print(user_input); // dont update every time i get a reading just every 4 times
     //    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
     lcd.print(" ");
-    lcd.print(tenth_seconds);
+    //    lcd.print(tenth_seconds);
     update_display = 0;
   }
 }
@@ -279,27 +285,145 @@ void time_out(uint16_t last_input) {
 
 void initialize()
 {
+  int16_t temp;
+  int16_t last_input;
+  int16_t heat = 200;
+  lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Gauging");
   lcd.setCursor(0,1);
   lcd.print("the iron");
-  delay(1000);
+  delay(3000);
+  
   lcd.clear();
-  plug_in_iron(770);
-
   lcd.setCursor(0,0);
-  lcd.print(analogRead(TEMP));
+  lcd.print("set room");
   lcd.setCursor(0,1);
-  delay(1000);
-  while(1) {
-    lcd.clear();
-    lcd.setCursor(0,0);
-    lcd.print(analogRead(TEMP));
-    lcd.setCursor(0,1);
-    //    lcd.print(read_temp());
-    delay(200);
+  lcd.print("temp and");
+  delay(3000);
+  
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("thenPLUG");
+  lcd.setCursor(0,1);
+  lcd.print("iron in");
+  delay(3000);
+
+  do {
+
+    temp = (1023 - analogRead(POT))/10 - 30;
+    if(update_display == 60) {
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("ROOMtemp");
+      lcd.setCursor(0,1);
+      lcd.print(temp);
+      lcd.print("C");
+      if(temp > 0) {
+	lcd.print(" ");
+      }
+      lcd.print(((int16_t)(temp * 1.8) + 32) );
+      lcd.print("F");
+      update_display =0;
+    }
+    delay(10);
+    update_display++;
   }
-  while(1);
+  while (analogRead(TEMP) > 750);
+  room_temp = temp;
+  delay(500);
+  iron_room_temp = analogRead(TEMP);
+  
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("set");
+  lcd.setCursor(0,1);
+  lcd.print("solder");
+  delay(3000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("on tip");
+  lcd.setCursor(0,1);
+  lcd.print("of iron");
+  delay(3000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("MOVEknob");
+  lcd.setCursor(0,1);
+  lcd.print("when");
+  delay(3000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("the iron");
+  lcd.setCursor(0,1);
+  lcd.print("melts");
+  delay(3000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("the");
+  lcd.setCursor(0,1);
+  lcd.print("solder");
+  delay(3000);
+
+  lcd.clear();
+  last_input = 1023 - analogRead(POT);
+  update_display = 12;
+  do {
+    temp = last_input - (1023 - analogRead(POT));
+    if(update_display == 12) {
+      //      lcd.clear();
+      update_display = 0;
+      lcd.setCursor(0,0);
+      lcd.print(" Temp at");
+      lcd.setCursor(0,1);
+      lcd.print(analogRead(TEMP));
+      lcd.print(" ");
+      lcd.print(heat);
+      heat+=1;
+
+    }
+    if((heat - analogRead(TEMP)) > 0) {
+      digitalWrite(IRON, HIGH);
+    } else {
+      digitalWrite(IRON, LOW);
+    }
+    stop = millis();
+    ms += stop - start;
+    if( ms > 100) {
+      tenth_seconds += (ms/100);
+      ms = ms % 100;
+      update_display++;
+    } 
+    start = millis();
+    
+    //    delay(10);
+  }
+  while (temp < 25);
+  
+  solder_melt_temp = heat;
+
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("iron");
+  lcd.setCursor(0,1);
+  lcd.print("gauged");
+  delay(3000);
+
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(room_temp);
+  lcd.setCursor(0,1);
+  lcd.print(iron_room_temp);
+  delay(3000);
+
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(183);
+  lcd.setCursor(0,1);
+  lcd.print(solder_melt_temp);
+  delay(3000);
+
+  write_eeprom();
 }
 
 void check_eeprom()
@@ -331,6 +455,8 @@ void write_eeprom()
   EEPROM.write((EEPROM_LENGTH - 3), room_temp);
   EEPROM.write((EEPROM_LENGTH - 2), (solder_melt_temp & 0xFF));
   EEPROM.write((EEPROM_LENGTH - 1), ((solder_melt_temp >> 8) & 0xFF));
+  calibrated = 1;
+  scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
 }
 
 // i don't think this is very useful after all
@@ -353,7 +479,6 @@ void write_eeprom()
 uint16_t normalize_temp() { 
   // replace these constants with your 2 data points
   // these are sample values that will get you in the ballpark (in degrees C)
-  float scale_factor;
   float temp;
   int i;
   uint16_t average = 0;
@@ -361,11 +486,9 @@ uint16_t normalize_temp() {
     average = average + readings[i];
   }
   average = average/4;
-  
-  scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
 
   // now calculate the temperature
-  temp = scale_factor * (int16_t)(readings[0] - iron_room_temp) + room_temp;
+  temp = scale_factor * (int16_t)(average - iron_room_temp) + room_temp;
 
   return (uint16_t)temp;
 }
@@ -376,3 +499,4 @@ uint16_t normalize_temp() {
 // //776,777,778 when unplugged
 
 //temp reange -22f to 158f -30c to 70c
+//4:37
