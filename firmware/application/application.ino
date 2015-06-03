@@ -31,6 +31,7 @@
 //#define INTERNAL2V56_NO_CAP (6)
 #define BUFF_LENGTH 4
 #define EEPROM_LENGTH 512
+#define SOLDER_MELT_TEMP 183 // temperature 60/40 solder melts at
 
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
@@ -200,7 +201,8 @@ void loop()
     
     lcd.setCursor(0, 0);
     if(!user_input) {
-      lcd.print("OFF");
+      //      lcd.print("OFF");
+      lcd.print(readings[0]);
 #ifdef SAFE_IRON
     } else if(user_input == MAX_TEMP) {
       lcd.print("MAX");
@@ -216,7 +218,8 @@ void loop()
     } else {
       lcd.print("__");
     }
-    lcd.print(normalize_temp(readings[0])); // dont update every time i get a reading just every 4 times
+    lcd.print(normalize_temp()); // dont update every time i get a reading just every 4 times
+    //    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
     lcd.print(" ");
     lcd.print(tenth_seconds);
     update_display = 0;
@@ -348,20 +351,22 @@ void write_eeprom()
 //   return result;
 // }
 
-uint16_t normalize_temp(uint16_t raw_data) { 
+uint16_t normalize_temp() { 
   // replace these constants with your 2 data points
   // these are sample values that will get you in the ballpark (in degrees C)
-  float temp1 = room_temp;
-  long data1 = iron_room_temp;
+  float scale_factor;
+  float temp;
+  int i;
+  uint16_t average = 0;
+  for (i = 0; i < BUFF_LENGTH; i++) {
+    average = average + readings[i];
+  }
+  average = average/4;
   
-  float temp2 = 183;
-  long data2 = solder_melt_temp;
- 
-  // calculate the scale factor
-  float scaleFactor = (temp2 - temp1) / (data2 - data1);
+  scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
 
   // now calculate the temperature
-  float temp = scaleFactor * (raw_data - data1) + temp1;
+  temp = scale_factor * (readings[0] - iron_room_temp) + room_temp;
 
   return (uint16_t)temp;
 }
