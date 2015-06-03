@@ -201,8 +201,7 @@ void loop()
     
     lcd.setCursor(0, 0);
     if(!user_input) {
-      //      lcd.print("OFF");
-      lcd.print(readings[0]);
+      lcd.print("OFF");
 #ifdef SAFE_IRON
     } else if(user_input == MAX_TEMP) {
       lcd.print("MAX");
@@ -366,7 +365,7 @@ uint16_t normalize_temp() {
   scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
 
   // now calculate the temperature
-  temp = scale_factor * (readings[0] - iron_room_temp) + room_temp;
+  temp = scale_factor * (int16_t)(readings[0] - iron_room_temp) + room_temp;
 
   return (uint16_t)temp;
 }
