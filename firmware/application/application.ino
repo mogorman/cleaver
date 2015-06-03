@@ -35,7 +35,7 @@
 
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
-#define MAX_TEMP 750
+#define MAX_TEMP 475
 #define TIME_OUT 20000 //about sixty minutes
 
 
@@ -66,7 +66,8 @@ uint8_t room_temp;
 uint8_t iron_room_temp;
 uint8_t calibrated;
 uint16_t solder_melt_temp;
-
+int16_t user_input;
+int16_t temperature;
 float scale_factor;
 //Specify the links and initial tuning parameters
 
@@ -76,8 +77,7 @@ LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8
 void setup()
 {
   int temp;
-  int16_t user_input;
-  int16_t temperature;
+  //  int16_t temperature;
   //  delay(2000);
   pinMode(IRON,OUTPUT);
   pinMode(POT,INPUT);
@@ -95,8 +95,11 @@ void setup()
   scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
   
   temperature = analogRead(TEMP);
-  user_input = analogRead(POT);
-  user_input = 1023 - user_input;
+#ifdef SAFE_IRON
+  user_input =  (((1023 - analogRead(POT)) - 50) * (float)( ( MAX_TEMP-room_temp)/(1023.0-100))) + room_temp;
+#else
+  user_input =  (((1023 - analogRead(POT)) - 50) * 1) + room_temp;
+#endif
   knob_movement = user_input;
   check_eeprom(); 
 
@@ -111,7 +114,7 @@ void setup()
     lcd.setCursor(0,1);
     lcd.print(TIME);  
     delay(5000);
-  } else if(user_input > 1000 && (temperature > 750 && temperature < 800 )) {
+  } else if(user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
     initialize();
   }
   if (temperature > 750 && temperature < 800 ) {
@@ -128,8 +131,6 @@ void loop()
 {
  
   uint8_t i;
-  int16_t user_input;
-  int16_t temperature;
   
   stop = millis();
   ms += stop - start;
@@ -139,13 +140,13 @@ void loop()
     update_display = 1;
   } 
   start = millis();
-
   if(update_display) {
     temperature = analogRead(TEMP);
-
-    user_input = analogRead(POT);
-    user_input = 1023 - user_input;
-
+#ifdef SAFE_IRON
+    user_input =  (((1023 - analogRead(POT)) - 50) *  (float)( ( MAX_TEMP-room_temp)/(1023.0-100))) + 20;
+#else
+    user_input =  (((1023 - analogRead(POT)) - 50) * 1) + 20;    
+#endif
     
 #ifdef SAFE_IRON
   if (tenth_seconds > TIME_OUT ) {
@@ -158,16 +159,10 @@ void loop()
     tenth_seconds = 0;
   }
 #endif
-  
     if((knob_movement - user_input) > 50) {
       knob_movement = user_input;
       tenth_seconds = 0;
     }
-
-    if(user_input < 50)
-      user_input = 0;
-
-
   readings[position] = temperature;
     position++;
     if(position == BUFF_LENGTH)
@@ -187,28 +182,22 @@ void loop()
       lcd.clear();
       lcd.command(0x34); //one row mode
     }
-    if((temperature - user_input) > 0) {
-      update_display = 4;
-      digitalWrite(IRON, LOW);
-    } else {
-      update_display = 5;
-      digitalWrite(IRON, HIGH);
-    }
+
     
     
     lcd.setCursor(0, 0);
-    user_input =  ((user_input - 50) * scale_factor) + 20;
-#ifdef SAFE_IRON
-    if(user_input > MAX_TEMP)
-      user_input = MAX_TEMP;
-#endif
+
     if(user_input < 20) {
+      user_input = 0;
       lcd.print("OFF");
+    }
 #ifdef SAFE_IRON
-    } else if(user_input == MAX_TEMP) {
+    else if(user_input > MAX_TEMP) {
+      user_input = MAX_TEMP;
       lcd.print("MAX");
+    }
 #endif
-    } else {
+    else {
       lcd.print(user_input);
       if(user_input < 100) {
 	lcd.print(" ");
@@ -219,16 +208,22 @@ void loop()
     } else {
       lcd.print("__");
     }
-    user_input = normalize_temp();
-    if(user_input < 100) {
+    temperature = normalize_temp();
+    if(temperature < 100) {
       lcd.print(" ");
     }
-    lcd.print(user_input); // dont update every time i get a reading just every 4 times
+    lcd.print(temperature); // dont update every time i get a reading just every 4 times
     //    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
     lcd.print(" ");
     //    lcd.print(tenth_seconds);
     update_display = 0;
+    if((temperature - user_input) > 0) {
+      digitalWrite(IRON, LOW);
+    } else {
+      digitalWrite(IRON, HIGH);
+    }
   }
+
 }
 
 void plug_in_iron(int16_t temperature) {
@@ -287,7 +282,7 @@ void initialize()
 {
   int16_t temp;
   int16_t last_input;
-  int16_t heat = 200;
+  int16_t heat = 250;
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Gauging");
