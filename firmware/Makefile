@@ -73,8 +73,7 @@ ifeq (buspirate,$(PROGRAMMER))
 endif
 
 fuses:
-	echo $(GIT)
-#	$(AVRDUDE) -pt85 -c $(PROGRAMMER) -P $(PROGRAMMER_PORT) -U lfuse:w:0xe2:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m 
+	$(AVRDUDE) -pt85 -c $(PROGRAMMER) -P $(PROGRAMMER_PORT) -U lfuse:w:0xe2:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m 
 
 clean:
 	@rm -rf build

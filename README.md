@@ -60,6 +60,13 @@ red	4 V+ of thermal
 green	5 V- of thermal
 
 arduino http://highlowtech.org/?p=1695 end
-pid library https://github.com/br3ttb/Arduino-PID-Library/ 
+// dont use didnt need. pid library https://github.com/br3ttb/Arduino-PID-Library/ 
 display library http://hmario.home.xs4all.nl/arduino/LiquidCrystal_I2C_ST7032i/
 tinywirem https://github.com/adafruit/TinyWireM
+
+
+todo
+cut case better
+print last prototype
+adjust backlight on display  resistor value
+code refactor.  reduce globals.
