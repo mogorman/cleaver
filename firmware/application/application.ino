@@ -31,13 +31,17 @@
 //#define INTERNAL2V56_NO_CAP (6)
 #define BUFF_LENGTH 4
 #define EEPROM_LENGTH 512
-#define SOLDER_MELT_TEMP 183 // temperature 60/40 solder melts at
+
 
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
-#define MAX_TEMP 475
 #define TIME_OUT 20000 //about sixty minutes
+#define C 1 //celcius
 
+#define SOLDER_MELT_TEMP 183 // temperature 60/40 solder melts at
+#ifdef SAFE_IRON
+#define MAX_TEMP 475
+#endif
 
 #define TEMP A3
 #define POT  A2
@@ -87,7 +91,7 @@ void setup()
   update_display = 0;
   position = 0;
 
-  calibrated = 0;   //default uncalibrated value 
+  calibrated = 0;   //default uncalibrated value
   room_temp = 22;   //default uncalibrated value
   iron_room_temp = 110; //default uncalibrated value
   solder_melt_temp = 300; //default uncalibrated value
@@ -203,12 +207,9 @@ void loop()
 	lcd.print(" ");
       }
     }
-    if(calibrated) {
-      lcd.print("  ");
-    } else {
-      lcd.print("__");
-    }
+    lcd.print("  ");
     temperature = normalize_temp();
+
     if(temperature < 100) {
       lcd.print(" ");
     }
@@ -487,11 +488,3 @@ uint16_t normalize_temp() {
 
   return (uint16_t)temp;
 }
-
-//temp readings
-//107 ~= 22.8c 73F
-
-// //776,777,778 when unplugged
-
-//temp reange -22f to 158f -30c to 70c
-//4:37
