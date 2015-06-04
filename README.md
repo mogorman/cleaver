@@ -69,4 +69,4 @@ todo
 cut case better
 print last prototype
 adjust backlight on display  resistor value
-code refactor.  reduce globals.
+code refactor.  reduce globals. loop in the loop
