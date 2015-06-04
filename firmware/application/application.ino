@@ -36,7 +36,7 @@
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
 #define TIME_OUT 20000 //about sixty minutes
-#define C 1 //celcius
+
 
 #define SOLDER_MELT_TEMP 183 // temperature 60/40 solder melts at
 #ifdef SAFE_IRON
@@ -95,7 +95,7 @@ void setup()
   room_temp = 22;   //default uncalibrated value
   iron_room_temp = 110; //default uncalibrated value
   solder_melt_temp = 300; //default uncalibrated value
-  
+  check_eeprom();   
   scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
   
   temperature = analogRead(TEMP);
@@ -105,7 +105,7 @@ void setup()
   user_input =  (((1023 - analogRead(POT)) - 50) * 1) + room_temp;
 #endif
   knob_movement = user_input;
-  check_eeprom(); 
+
 
   lcd.init();
   lcd.clear();
