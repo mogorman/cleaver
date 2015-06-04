@@ -7,6 +7,10 @@ T 40600 38400 5 10 1 1 0 0 1
 refdes=ICO1
 T 41300 38200 5 10 1 1 0 0 1
 footprint=oshw
+T 41100 38200 5 10 0 1 0 0 1
+bom=0
+T 40800 38100 5 10 0 1 0 0 1
+manufacturer-part=dnp
 }
 C 40300 37800 0 0 0 title-A2.sym
 T 56600 38500 14 10 1 0 0 0 1
@@ -162,6 +166,10 @@ T 57200 53200 5 10 1 1 0 0 1
 footprint=icsp
 T 58400 53200 5 10 1 1 0 0 1
 refdes=CONN4
+T 58200 52500 5 10 0 1 0 0 1
+manufacturer-part=dnp
+T 58200 53100 5 10 0 1 0 0 1
+bom=0
 }
 C 59000 52300 1 0 0 ground.sym
 C 60600 52900 1 0 1 input-2.sym
@@ -238,6 +246,8 @@ T 58100 50600 5 10 0 1 0 0 1
 footprint=0805
 T 58000 50000 5 10 0 1 0 0 1
 manufactuerer-part=71-CRCW0805-100K-E3
+T 57900 50100 5 10 0 1 0 0 1
+manufacturer-part=71-CRCW0805-100K-E3
 }
 N 58700 49700 58000 49700 4
 N 58000 50600 58000 51100 4
@@ -408,6 +418,8 @@ T 54000 45400 5 10 0 0 0 0 1
 symversion=0.1
 T 53700 44800 5 10 0 1 0 0 1
 footprint=LED3
+T 53600 44900 5 10 0 1 0 0 1
+manufacturer-part=dnp
 }
 C 52300 44700 1 0 0 resistor-1.sym
 {
@@ -464,6 +476,8 @@ T 54000 44400 5 10 0 0 0 0 1
 symversion=0.1
 T 53800 43700 5 10 0 1 0 0 1
 footprint=LED3
+T 53700 44000 5 10 0 1 0 0 1
+manufacturer-part=5mm_led
 }
 C 54400 43600 1 90 0 ground.sym
 C 42800 38600 1 0 1 connector10-2.sym
@@ -582,6 +596,10 @@ T 41700 50800 5 10 1 1 0 0 1
 refdes=CONN5
 T 43000 51600 5 10 0 1 0 0 1
 footprint=JUMPER2
+T 42000 50600 5 10 0 1 0 0 1
+manufacturer-part=dnp
+T 42100 50200 5 10 0 1 0 0 1
+bom=0
 }
 C 43200 49900 1 0 0 ground.sym
 C 43400 50400 1 0 0 output-2.sym
