@@ -72,7 +72,7 @@ uint8_t calibrated;
 uint16_t solder_melt_temp;
 int16_t user_input;
 int16_t temperature;
-float scale_factor;
+double scale_factor;
 //Specify the links and initial tuning parameters
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
@@ -91,16 +91,16 @@ void setup()
   update_display = 0;
   position = 0;
 
-  calibrated = 0;   //default uncalibrated value
+  calibrated = 2;   //default uncalibrated value
   room_temp = 22;   //default uncalibrated value
   iron_room_temp = 110; //default uncalibrated value
   solder_melt_temp = 300; //default uncalibrated value
   check_eeprom();   
-  scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
+  scale_factor = (double)(SOLDER_MELT_TEMP - room_temp) / (double)(solder_melt_temp - iron_room_temp);
   
   temperature = analogRead(TEMP);
 #ifdef SAFE_IRON
-  user_input =  (((1023 - analogRead(POT)) - 50) * (float)( ( MAX_TEMP-room_temp)/(1023.0-100))) + room_temp;
+  user_input =  (((1023 - analogRead(POT)) - 50) * (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + room_temp;
 #else
   user_input =  (((1023 - analogRead(POT)) - 50) * 1) + room_temp;
 #endif
@@ -117,6 +117,18 @@ void setup()
     lcd.print(GIT);
     lcd.setCursor(0,1);
     lcd.print(TIME);  
+    delay(5000);
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print(calibrated);
+    lcd.print(" ");
+    lcd.print(room_temp);
+    lcd.print(" ");
+    lcd.print(iron_room_temp);
+    lcd.setCursor(0,1);
+    lcd.print(solder_melt_temp);
+    lcd.print(" ");
+    lcd.print(SOLDER_MELT_TEMP);
     delay(5000);
   } else if(user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
     initialize();
@@ -135,7 +147,7 @@ void loop()
 {
  
   uint8_t i;
-  
+  int16_t temp_in_f;
   stop = millis();
   ms += stop - start;
   if( ms > 100) {
@@ -147,7 +159,7 @@ void loop()
   if(update_display) {
     temperature = analogRead(TEMP);
 #ifdef SAFE_IRON
-    user_input =  (((1023 - analogRead(POT)) - 50) *  (float)( ( MAX_TEMP-room_temp)/(1023.0-100))) + 20;
+    user_input =  (((1023 - analogRead(POT)) - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + 20;
 #else
     user_input =  (((1023 - analogRead(POT)) - 50) * 1) + 20;    
 #endif
@@ -202,18 +214,34 @@ void loop()
     }
 #endif
     else {
-      lcd.print(user_input);
-      if(user_input < 100) {
-	lcd.print(" ");
+      if(calibrated == 2) { // display in f..
+	temp_in_f = ( (int16_t) (user_input * 1.8) + 32);
+	lcd.print(temp_in_f);
+	if(temp_in_f < 100) {
+  	  lcd.print(" ");
+	}
+      } else {
+        lcd.print(user_input);
+        if(user_input < 100) {
+  	  lcd.print(" ");
+        }
       }
     }
     lcd.print("  ");
     temperature = normalize_temp();
-
-    if(temperature < 100) {
-      lcd.print(" ");
+    if(calibrated == 2) {
+      temp_in_f = ( (int16_t) (temperature * 1.8) + 32);
+      if(temp_in_f < 100) {
+	lcd.print(" ");
+      }
+      lcd.print(temp_in_f); // dont update every time i get a reading just every 4 times
+    } else {
+      if(temperature < 100) {
+	lcd.print(" ");
+      }
+      lcd.print(temperature); // dont update every time i get a reading just every 4 times
     }
-    lcd.print(temperature); // dont update every time i get a reading just every 4 times
+
     //    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
     lcd.print(" ");
     //    lcd.print(tenth_seconds);
@@ -221,7 +249,7 @@ void loop()
     if((temperature - user_input) > 0) {
       digitalWrite(IRON, LOW);
     } else {
-      digitalWrite(IRON, HIGH);
+      //      digitalWrite(IRON, HIGH);
     }
   }
 
@@ -418,7 +446,7 @@ void initialize()
   lcd.setCursor(0,1);
   lcd.print(solder_melt_temp);
   delay(3000);
-
+  calibrated = 2;
   write_eeprom();
 }
 
@@ -432,8 +460,8 @@ void check_eeprom()
     }
   }
 
-  if(i == (EEPROM_LENGTH -4)) {
-    calibrated = 1;
+  if(i == (EEPROM_LENGTH -5)) {
+    calibrated = EEPROM.read((EEPROM_LENGTH -5));;
     iron_room_temp = EEPROM.read((EEPROM_LENGTH - 4));
     room_temp = EEPROM.read((EEPROM_LENGTH - 3));
     solder_melt_temp = ((EEPROM.read((EEPROM_LENGTH - 2)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 1)) << 8) & 0xFFFF);
@@ -443,16 +471,16 @@ void check_eeprom()
 void write_eeprom()
 {
   int i;
-  for(i =0; i < EEPROM_LENGTH - 4; i++)
+  for(i =0; i < EEPROM_LENGTH - 5; i++)
     {
       EEPROM.write(i,42);
     }
+  EEPROM.write((EEPROM_LENGTH - 4), calibrated);
   EEPROM.write((EEPROM_LENGTH - 4), iron_room_temp);
   EEPROM.write((EEPROM_LENGTH - 3), room_temp);
   EEPROM.write((EEPROM_LENGTH - 2), (solder_melt_temp & 0xFF));
   EEPROM.write((EEPROM_LENGTH - 1), ((solder_melt_temp >> 8) & 0xFF));
-  calibrated = 1;
-  scale_factor = (float)(SOLDER_MELT_TEMP - room_temp) / (float)(solder_melt_temp - iron_room_temp);
+  scale_factor = (double)(SOLDER_MELT_TEMP - room_temp) / (double)(solder_melt_temp - iron_room_temp);
 }
 
 // i don't think this is very useful after all
@@ -475,7 +503,7 @@ void write_eeprom()
 uint16_t normalize_temp() { 
   // replace these constants with your 2 data points
   // these are sample values that will get you in the ballpark (in degrees C)
-  float temp;
+  double temp;
   int i;
   uint16_t average = 0;
   for (i = 0; i < BUFF_LENGTH; i++) {
