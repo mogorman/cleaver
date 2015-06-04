@@ -73,6 +73,7 @@ uint16_t solder_melt_temp;
 int16_t user_input;
 int16_t temperature;
 double scale_factor;
+uint8_t iron_state;
 //Specify the links and initial tuning parameters
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
@@ -97,6 +98,7 @@ void setup()
   solder_melt_temp = 300; //default uncalibrated value
   check_eeprom();   
   scale_factor = (double)(SOLDER_MELT_TEMP - room_temp) / (double)(solder_melt_temp - iron_room_temp);
+  iron_state = 0;
   
   temperature = analogRead(TEMP);
 #ifdef SAFE_IRON
@@ -246,10 +248,12 @@ void loop()
   position++;
   if(position == BUFF_LENGTH)
     position = 0;
-  if((temperature - user_input) > 0) {
+  if((temperature - user_input) > 0 && iron_state) {
     digitalWrite(IRON, LOW);
-  } else {
+    iron_state = 0;
+  } else if (iron_state == 0 && (temperature - user_input) < 0 ) {
     digitalWrite(IRON, HIGH);
+    iron_state = 1;
   }
 }
 
