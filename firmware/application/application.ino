@@ -91,7 +91,7 @@ void setup()
   update_display = 0;
   position = 0;
 
-  calibrated = 2;   //default uncalibrated value
+  calibrated = 0;   //default uncalibrated value
   room_temp = 22;   //default uncalibrated value
   iron_room_temp = 110; //default uncalibrated value
   solder_melt_temp = 300; //default uncalibrated value
@@ -228,6 +228,7 @@ void loop()
       }
     }
     lcd.print("  ");
+    //    lcd.write(0x7F);
     temperature = normalize_temp();
     if(calibrated == 2) {
       temp_in_f = ( (int16_t) (temperature * 1.8) + 32);
@@ -423,9 +424,9 @@ void initialize()
     //    delay(10);
   }
   while (temp < 25);
-  
+  digitalWrite(IRON,LOW);
   solder_melt_temp = heat;
-
+  
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("iron");
@@ -435,9 +436,27 @@ void initialize()
 
   lcd.clear();
   lcd.setCursor(0,0);
+  lcd.print("turn ~ F");
+  lcd.setCursor(0,1);
+  lcd.print("Turn ");
+  lcd.write(0x7F);
+  lcd.print(" C");
+  do {
+       temp = 1023 - analogRead(POT);
+     }
+ while (temp < 50 || temp > 950);
+if (temp > 950) {
+  calibrated = 1;
+ } else {
+  calibrated = 2;
+ }
+  lcd.clear();
+  lcd.setCursor(0,0);
   lcd.print(room_temp);
   lcd.setCursor(0,1);
   lcd.print(iron_room_temp);
+  lcd.print(" ");
+  lcd.print(calibrated);
   delay(3000);
 
   lcd.clear();
@@ -446,7 +465,6 @@ void initialize()
   lcd.setCursor(0,1);
   lcd.print(solder_melt_temp);
   delay(3000);
-  calibrated = 2;
   write_eeprom();
 }
 
