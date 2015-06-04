@@ -18,7 +18,7 @@
 //        GND     |4    5| D0 PB0 PWM AREF MOSI SDA
 //                --------
 
-
+// 16 minute cool down from max to room temp
 // attiny85
 // 1 led, iron is safe / reset
 // 2 Temperature probe from iron
@@ -139,7 +139,6 @@ void setup()
   lcd.command(0x34); //one column mode
   start = 0;
   ms = 0;
-  //  minutes = 0;
   tenth_seconds = 0;
 }
 
@@ -153,36 +152,14 @@ void loop()
   if( ms > 100) {
     tenth_seconds += (ms/100);
     ms = ms % 100;
-    update_display = 1;
+    update_display++;
   } 
   start = millis();
-  if(update_display) {
-    temperature = analogRead(TEMP);
-#ifdef SAFE_IRON
-    user_input =  (((1023 - analogRead(POT)) - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + 20;
-#else
-    user_input =  (((1023 - analogRead(POT)) - 50) * 1) + 20;    
-#endif
-    
-#ifdef SAFE_IRON
-  if (tenth_seconds > TIME_OUT ) {
-    digitalWrite(IRON, LOW);
-    lcd.clear();
-    lcd.command(0x38); //two row mode
-    time_out(user_input);
-    knob_movement = user_input;
-    lcd.command(0x34); //one row mode
-    tenth_seconds = 0;
-  }
-#endif
+  if(update_display == 2) {
     if((knob_movement - user_input) > 50) {
       knob_movement = user_input;
       tenth_seconds = 0;
     }
-  readings[position] = temperature;
-    position++;
-    if(position == BUFF_LENGTH)
-      position = 0;
     for(i = 0; i < BUFF_LENGTH; i++) {
       if (readings[i] > 750 && readings[i] < 800) {
 	continue;
@@ -230,9 +207,7 @@ void loop()
       }
     }
 
-    //    lcd.print("  ");
-    //    lcd.write(0x7F);
-    temperature = normalize_temp();
+
     if(calibrated == 2) {
       temp_in_f = ( (int16_t) (temperature * 1.8) + 32);
       if(temp_in_f < 100) {
@@ -245,18 +220,37 @@ void loop()
       }
       lcd.print(temperature); // dont update every time i get a reading just every 4 times
     }
-
-    //    lcd.print(readings[0]); // dont update every time i get a reading just every 4 times
     lcd.print(" ");
-    //    lcd.print(tenth_seconds);
     update_display = 0;
-    if((temperature - user_input) > 0) {
-      digitalWrite(IRON, LOW);
-    } else {
-      digitalWrite(IRON, HIGH);
-    }
   }
-
+  temperature = analogRead(TEMP);
+#ifdef SAFE_IRON
+  user_input =  (((1023 - analogRead(POT)) - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + 20;
+#else
+  user_input =  (((1023 - analogRead(POT)) - 50) * 1) + 20;    
+#endif
+    
+#ifdef SAFE_IRON
+  if (tenth_seconds > TIME_OUT ) {
+    digitalWrite(IRON, LOW);
+    lcd.clear();
+    lcd.command(0x38); //two row mode
+    time_out(user_input);
+    knob_movement = user_input;
+    lcd.command(0x34); //one row mode
+    tenth_seconds = 0;
+  }
+#endif
+  readings[position] = temperature;
+  temperature = normalize_temp();
+  position++;
+  if(position == BUFF_LENGTH)
+    position = 0;
+  if((temperature - user_input) > 0) {
+    digitalWrite(IRON, LOW);
+  } else {
+    digitalWrite(IRON, HIGH);
+  }
 }
 
 void plug_in_iron(int16_t temperature) {
@@ -267,8 +261,6 @@ void plug_in_iron(int16_t temperature) {
     if(update_display == 60) {
       lcd.setCursor(0,0);
       lcd.print("--PLUG-~");
-      //lcd.print(temp);
-      //delay(2000);
       lcd.setCursor(0,1);
       lcd.print("IRON IN!");
     } else if (update_display == 120) {
@@ -430,8 +422,6 @@ void initialize()
       update_display++;
     } 
     start = millis();
-    
-    //    delay(10);
   }
   while (temp < 25 && temp > -25);
   digitalWrite(IRON,LOW);
