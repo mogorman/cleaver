@@ -184,12 +184,12 @@ void loop()
 
     if(user_input < 20) {
       user_input = 0;
-      lcd.print("OFF  ");
+      lcd.print("OFF ");
     }
 #ifdef SAFE_IRON
     else if(user_input > MAX_TEMP) {
       user_input = MAX_TEMP;
-      lcd.print("MAX  ");
+      lcd.print("MAX ");
     }
 #endif
     else {
@@ -203,24 +203,34 @@ void loop()
       } else {
         lcd.print(user_input);
 	lcd.print("c ");
-        if(user_input < 100) {
-  	  lcd.print(" ");
-        }
+
       }
     }
 
-
+    
     if(calibrated == 2) {
+
       temp_in_f = ( (int16_t) (temperature * 1.8) + 32);
       if(temp_in_f < 100) {
 	lcd.print(" ");
+      } else {
+	if((user_input < 100 && user_input != 0)) {
+	  lcd.print(" ");
+	}
       }
+
       lcd.print(temp_in_f); // dont update every time i get a reading just every 4 times
+      lcd.print("f");
     } else {
       if(temperature < 100) {
 	lcd.print(" ");
+      } else {
+	if(user_input < 100 && user_input != 0) {
+	  lcd.print(" ");
+	}
       }
       lcd.print(temperature); // dont update every time i get a reading just every 4 times
+      lcd.print("c");
     }
     lcd.print(" ");
     update_display = 0;
@@ -276,6 +286,7 @@ void plug_in_iron(int16_t temperature) {
   }
   while (temp < 25);
   //  minutes = 0;
+  update_display = 0;
   tenth_seconds = 0;
 }
 
@@ -305,6 +316,7 @@ void time_out(uint16_t last_input) {
     update_display++;
   }
   while (temp < 25);
+  update_display = 0;
 }
 
 void initialize()
@@ -360,7 +372,7 @@ void initialize()
   lcd.print("waiting");
   lcd.setCursor(0,1);
   lcd.print("on iron");
-  delay(2000);
+  delay(3000);
   iron_room_temp = analogRead(TEMP);
   lcd.clear();
   lcd.setCursor(0,0);
