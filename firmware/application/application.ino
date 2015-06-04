@@ -117,7 +117,7 @@ void setup()
     lcd.print(GIT);
     lcd.setCursor(0,1);
     lcd.print(TIME);  
-    delay(5000);
+    delay(2500);
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print(calibrated);
@@ -129,7 +129,7 @@ void setup()
     lcd.print(solder_melt_temp);
     lcd.print(" ");
     lcd.print(SOLDER_MELT_TEMP);
-    delay(5000);
+    delay(2500);
   } else if(user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
     initialize();
   }
@@ -205,29 +205,32 @@ void loop()
 
     if(user_input < 20) {
       user_input = 0;
-      lcd.print("OFF");
+      lcd.print("OFF  ");
     }
 #ifdef SAFE_IRON
     else if(user_input > MAX_TEMP) {
       user_input = MAX_TEMP;
-      lcd.print("MAX");
+      lcd.print("MAX  ");
     }
 #endif
     else {
       if(calibrated == 2) { // display in f..
 	temp_in_f = ( (int16_t) (user_input * 1.8) + 32);
 	lcd.print(temp_in_f);
+	lcd.print("f ");
 	if(temp_in_f < 100) {
   	  lcd.print(" ");
 	}
       } else {
         lcd.print(user_input);
+	lcd.print("c ");
         if(user_input < 100) {
   	  lcd.print(" ");
         }
       }
     }
-    lcd.print("  ");
+
+    //    lcd.print("  ");
     //    lcd.write(0x7F);
     temperature = normalize_temp();
     if(calibrated == 2) {
@@ -250,7 +253,7 @@ void loop()
     if((temperature - user_input) > 0) {
       digitalWrite(IRON, LOW);
     } else {
-      //      digitalWrite(IRON, HIGH);
+      digitalWrite(IRON, HIGH);
     }
   }
 
@@ -412,6 +415,9 @@ void initialize()
     } else {
       digitalWrite(IRON, LOW);
     }
+    if(heat > 500) {
+      heat = 100;
+    }
     stop = millis();
     ms += stop - start;
     if( ms > 100) {
@@ -423,7 +429,7 @@ void initialize()
     
     //    delay(10);
   }
-  while (temp < 25);
+  while (temp < 25 && temp > -25);
   digitalWrite(IRON,LOW);
   solder_melt_temp = heat;
   
@@ -441,15 +447,29 @@ void initialize()
   lcd.print("Turn ");
   lcd.write(0x7F);
   lcd.print(" C");
+  delay(5000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("then");
+  lcd.setCursor(0,1);
+  lcd.print("unplug");
+  delay(3000);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("iron to");
+  lcd.setCursor(0,1);
+  lcd.print("select");
+  delay(3000);
   do {
-       temp = 1023 - analogRead(POT);
+       temp = analogRead(TEMP);
      }
- while (temp < 50 || temp > 950);
-if (temp > 950) {
-  calibrated = 1;
- } else {
-  calibrated = 2;
- }
+  while (!(temp > 750 && temp < 800));
+  temp = analogRead(POT);
+  if (temp > 950) {
+    calibrated = 1;
+  } else if(temp < 50) {
+    calibrated = 2;
+  }
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print(room_temp);
@@ -493,7 +513,7 @@ void write_eeprom()
     {
       EEPROM.write(i,42);
     }
-  EEPROM.write((EEPROM_LENGTH - 4), calibrated);
+  EEPROM.write((EEPROM_LENGTH - 5), calibrated);
   EEPROM.write((EEPROM_LENGTH - 4), iron_room_temp);
   EEPROM.write((EEPROM_LENGTH - 3), room_temp);
   EEPROM.write((EEPROM_LENGTH - 2), (solder_melt_temp & 0xFF));
