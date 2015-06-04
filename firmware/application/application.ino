@@ -67,7 +67,7 @@ uint16_t readings[BUFF_LENGTH];
 uint8_t position;
 
 uint8_t room_temp;
-uint8_t iron_room_temp;
+uint16_t iron_room_temp;
 uint8_t calibrated;
 uint16_t solder_melt_temp;
 int16_t user_input;
@@ -359,9 +359,13 @@ void initialize()
   }
   while (analogRead(TEMP) > 750);
   room_temp = temp;
-  delay(500);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("waiting");
+  lcd.setCursor(0,1);
+  lcd.print("on iron");
+  delay(2000);
   iron_room_temp = analogRead(TEMP);
-  
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("set");
@@ -499,8 +503,8 @@ void check_eeprom()
   }
 
   if(i == (EEPROM_LENGTH -5)) {
-    calibrated = EEPROM.read((EEPROM_LENGTH -5));;
-    iron_room_temp = EEPROM.read((EEPROM_LENGTH - 4));
+    calibrated = EEPROM.read((EEPROM_LENGTH -6));;
+    iron_room_temp =  ((EEPROM.read((EEPROM_LENGTH - 5)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 4)) << 8) & 0xFFFF);
     room_temp = EEPROM.read((EEPROM_LENGTH - 3));
     solder_melt_temp = ((EEPROM.read((EEPROM_LENGTH - 2)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 1)) << 8) & 0xFFFF);
   }
@@ -513,8 +517,9 @@ void write_eeprom()
     {
       EEPROM.write(i,42);
     }
-  EEPROM.write((EEPROM_LENGTH - 5), calibrated);
-  EEPROM.write((EEPROM_LENGTH - 4), iron_room_temp);
+  EEPROM.write((EEPROM_LENGTH - 6), calibrated);
+  EEPROM.write((EEPROM_LENGTH - 5), (iron_room_temp & 0xFF));
+  EEPROM.write((EEPROM_LENGTH - 4), ((iron_room_temp >> 8) & 0xFF));
   EEPROM.write((EEPROM_LENGTH - 3), room_temp);
   EEPROM.write((EEPROM_LENGTH - 2), (solder_melt_temp & 0xFF));
   EEPROM.write((EEPROM_LENGTH - 1), ((solder_melt_temp >> 8) & 0xFF));
