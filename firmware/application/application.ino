@@ -118,7 +118,7 @@ void setup()
   if(user_input < 50 && (temperature > 750 && temperature < 800 )) {
     lcd.print(GIT);
     lcd.setCursor(0,1);
-    lcd.print(TIME);  
+    lcd.print(TIME);
     delay(2500);
     lcd.clear();
     lcd.setCursor(0,0);
@@ -471,8 +471,8 @@ void initialize()
   lcd.print("select");
   delay(3000);
   do {
-       temp = analogRead(TEMP);
-     }
+    temp = analogRead(TEMP);
+  }
   while (!(temp > 750 && temp < 800));
   temp = analogRead(POT);
   if (temp > 950) {
@@ -502,11 +502,11 @@ void check_eeprom()
 {
   int i;
   for(i =0; i < EEPROM_LENGTH - 4; i++)
-  {
-    if(EEPROM.read(i) != 42) {
-      break;
+    {
+      if(EEPROM.read(i) != 42) {
+	break;
+      }
     }
-  }
 
   if(i == (EEPROM_LENGTH -5)) {
     calibrated = EEPROM.read((EEPROM_LENGTH -6));;
