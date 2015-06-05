@@ -1288,7 +1288,7 @@ Element["" "0805" "R4" "1K" 72.7206mm 67.5613mm 1.3651mm -0.5831mm 0 100 ""]
 
 	)
 
-Element["" "SO8M" "U1" "unknown" 77.8540mm 61.7032mm -4.1590mm -1.8855mm 1 100 ""]
+Element["" "SO8M" "U1" "unknown" 77.8540mm 61.7032mm -4.4090mm 3.3645mm 1 100 ""]
 (
 	Pad[-75.00mil 95.00mil -75.00mil 160.00mil 20.00mil 32.00mil 30.00mil "1" "1" "square,edge2"]
 	Pad[-25.00mil 95.00mil -25.00mil 160.00mil 20.00mil 32.00mil 30.00mil "2" "2" "square,edge2"]
@@ -2180,10 +2180,6 @@ Layer(1 "component")
 	Line[68.3621mm 69.5613mm 69.5016mm 69.5613mm 20.00mil 28.00mil "clearline"]
 	Line[72.5040mm 74.4532mm 67.7540mm 74.4532mm 10.00mil 28.00mil "clearline"]
 	Line[84.3621mm 72.5613mm 94.4706mm 72.5613mm 10.00mil 28.00mil "clearline"]
-	Line[72.8920mm 64.3922mm 73.2690mm 64.0152mm 10.00mil 28.00mil "clearline"]
-	Line[73.2690mm 64.0152mm 73.2690mm 64.7693mm 10.00mil 28.00mil "clearline"]
-	Line[73.2690mm 64.7693mm 72.8920mm 64.3922mm 10.00mil 28.00mil "clearline"]
-	Line[72.8920mm 64.3922mm 74.0230mm 64.3922mm 10.00mil 28.00mil "clearline"]
 	Line[68.3705mm 47.8113mm 68.3705mm 47.8113mm 10.00mil 28.00mil "clearline"]
 	Line[69.5229mm 68.2700mm 67.9293mm 68.2700mm 20.00mil 28.00mil ""]
 	Line[67.9293mm 68.2700mm 71.1793mm 68.2700mm 20.00mil 28.00mil ""]
@@ -2258,6 +2254,10 @@ Layer(1 "component")
 	Line[66.4706mm 58.8114mm 66.4706mm 1915.80mil 10.00mil 28.00mil "clearline"]
 	Line[66.4706mm 1915.80mil 66.5707mm 48.5613mm 10.00mil 28.00mil "clearline"]
 	Line[69.2206mm 64.5612mm 69.2206mm 66.3113mm 0.4540mm 28.00mil ""]
+	Line[73.6420mm 57.8922mm 74.0190mm 57.5152mm 10.00mil 28.00mil "clearline"]
+	Line[74.0190mm 57.5152mm 74.0190mm 58.2693mm 10.00mil 28.00mil "clearline"]
+	Line[74.0190mm 58.2693mm 73.6420mm 57.8922mm 10.00mil 28.00mil "clearline"]
+	Line[73.6420mm 57.8922mm 74.7730mm 57.8922mm 10.00mil 28.00mil "clearline"]
 	Arc[74.3940mm 64.2582mm 1.5550mm 1.5550mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[77.5040mm 59.9532mm 1.0000mm 1.0000mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[85.2540mm 2508.00mil 2.5000mm 2.5000mm 10.00mil 28.00mil -180 90 "clearline"]
