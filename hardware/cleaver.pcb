@@ -2163,10 +2163,6 @@ Layer(1 "component")
 	Line[68.1204mm 72.2032mm 69.3997mm 72.2032mm 10.00mil 28.00mil "clearline"]
 	Line[69.5229mm 70.8100mm 72.6472mm 70.8100mm 10.00mil 28.00mil "clearline"]
 	Line[72.7540mm 68.7530mm 72.7540mm 71.3033mm 10.00mil 28.00mil "clearline"]
-	Line[64.1060mm 74.5792mm 63.7290mm 74.2022mm 10.00mil 28.00mil "clearline"]
-	Line[63.7290mm 74.2022mm 64.4830mm 74.2022mm 10.00mil 28.00mil "clearline"]
-	Line[64.4830mm 74.2022mm 64.1060mm 74.5792mm 10.00mil 28.00mil "clearline"]
-	Line[64.1060mm 73.4482mm 64.1060mm 74.5792mm 10.00mil 28.00mil "clearline"]
 	Line[68.2540mm 72.2032mm 68.0040mm 72.2032mm 10.00mil 28.00mil "clearline"]
 	Line[66.0040mm 2763.90mil 66.0040mm 70.0868mm 10.00mil 28.00mil "clearline"]
 	Line[63.0459mm 68.2700mm 64.3208mm 68.2700mm 10.00mil 28.00mil "clearline"]
@@ -2258,6 +2254,10 @@ Layer(1 "component")
 	Line[74.0190mm 57.5152mm 74.0190mm 58.2693mm 10.00mil 28.00mil "clearline"]
 	Line[74.0190mm 58.2693mm 73.6420mm 57.8922mm 10.00mil 28.00mil "clearline"]
 	Line[73.6420mm 57.8922mm 74.7730mm 57.8922mm 10.00mil 28.00mil "clearline"]
+	Line[62.6115mm 2920.80mil 62.2345mm 73.8113mm 10.00mil 28.00mil "clearline"]
+	Line[62.2345mm 73.8113mm 62.9885mm 73.8113mm 10.00mil 28.00mil "clearline"]
+	Line[62.9885mm 73.8113mm 62.6115mm 2920.80mil 10.00mil 28.00mil "clearline"]
+	Line[62.6115mm 73.0573mm 62.6115mm 2920.80mil 10.00mil 28.00mil "clearline"]
 	Arc[74.3940mm 64.2582mm 1.5550mm 1.5550mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[77.5040mm 59.9532mm 1.0000mm 1.0000mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[85.2540mm 2508.00mil 2.5000mm 2.5000mm 10.00mil 28.00mil -180 90 "clearline"]
@@ -2508,6 +2508,18 @@ Layer(10 "silk")
 	Line[115.0660mm 73.3952mm 115.0660mm 70.3952mm 40.00mil 28.00mil "clearline,lock"]
 	Line[115.0660mm 70.3952mm 112.0660mm 70.3952mm 40.00mil 28.00mil "clearline,lock"]
 	Line[55.3758mm 73.5047mm 55.3774mm 73.5029mm 0.39mil 2.00mil "clearline,auto"]
+	Line[68.4706mm 62.8113mm 69.9706mm 62.8113mm 20.00mil 28.00mil "clearline"]
+	Line[69.2206mm 62.8113mm 69.2206mm 63.3113mm 20.00mil 28.00mil "clearline"]
+	Line[74.7730mm 57.8922mm 2899.20mil 57.8922mm 10.00mil 28.00mil "clearline"]
+	Line[73.6420mm 57.8922mm 74.0190mm 57.5152mm 10.00mil 28.00mil "clearline"]
+	Line[74.0190mm 57.5152mm 74.0190mm 58.2693mm 10.00mil 28.00mil "clearline"]
+	Line[74.0190mm 58.2693mm 74.0168mm 58.2693mm 10.00mil 28.00mil "clearline"]
+	Line[74.0168mm 58.2693mm 2899.20mil 57.8922mm 10.00mil 28.00mil "clearline"]
+	Line[62.6115mm 73.0573mm 62.6115mm 2920.80mil 10.00mil 28.00mil "clearline"]
+	Line[62.6115mm 2920.80mil 62.2345mm 73.8113mm 10.00mil 28.00mil "clearline"]
+	Line[62.2345mm 73.8113mm 62.9885mm 73.8113mm 10.00mil 28.00mil "clearline"]
+	Line[62.9885mm 73.8113mm 62.9706mm 73.8113mm 10.00mil 28.00mil "clearline"]
+	Line[62.9885mm 73.8113mm 62.6115mm 2920.80mil 10.00mil 28.00mil "clearline"]
 	Arc[50.0660mm 38.3952mm 3.0000mm 3.0000mm 40.00mil 20.00mil 0 -90 "clearline,lock"]
 	Arc[50.0660mm 38.3952mm 3.0000mm 3.0000mm 40.00mil 20.00mil -90 -90 "clearline,lock"]
 	Arc[50.0660mm 38.3952mm 3.0000mm 3.0000mm 40.00mil 20.00mil 180 -90 "clearline,lock"]
@@ -2674,139 +2686,139 @@ Layer(10 "silk")
 )
 NetList()
 (
-	Net("unnamed_net7" "(unknown)")
-	(
-		Connect("R12-1")
-		Connect("CONN1-10")
-		Connect("CONN1-9")
-	)
-	Net("unnamed_net6" "(unknown)")
-	(
-		Connect("R3-1")
-		Connect("R2-2")
-		Connect("CONN1-5")
-	)
-	Net("unnamed_net5" "(unknown)")
-	(
-		Connect("LED2-1")
-		Connect("R8-2")
-	)
-	Net("unnamed_net4" "(unknown)")
-	(
-		Connect("R7-2")
-		Connect("LED1-1")
-	)
 	Net("Display_enabled" "(unknown)")
 	(
-		Connect("R13-4")
 		Connect("D1-1")
+		Connect("R13-4")
 	)
-	Net("unnamed_net3" "(unknown)")
+	Net("GND" "(unknown)")
 	(
-		Connect("R6-2")
-		Connect("Q1-G")
+		Connect("C1-1")
+		Connect("C2-1")
+		Connect("CONN1-8")
+		Connect("CONN2-2")
+		Connect("CONN2-3")
+		Connect("CONN4-6")
+		Connect("CONN5-2")
+		Connect("D1-4")
+		Connect("LED1-2")
+		Connect("LED2-2")
+		Connect("Q1-S")
+		Connect("R1-1")
+		Connect("R3-2")
+		Connect("R4-1")
+		Connect("R12-2")
+		Connect("U1-4")
+		Connect("U2-4")
+		Connect("U3-2")
 	)
 	Net("Iron" "(unknown)")
 	(
 		Connect("CONN1-4")
 		Connect("Q1-D")
 	)
-	Net("unnamed_net2" "(unknown)")
+	Net("Iron_control" "(unknown)")
 	(
-		Connect("U2-1")
-		Connect("R5-1")
-		Connect("U2-5")
+		Connect("R1-2")
+		Connect("U1-3")
+	)
+	Net("Iron_EN" "(unknown)")
+	(
+		Connect("CONN4-1")
+		Connect("R6-1")
+		Connect("R8-1")
+		Connect("U1-6")
+	)
+	Net("Reset" "(unknown)")
+	(
+		Connect("CONN4-5")
+		Connect("R13-3")
+		Connect("U1-1")
+	)
+	Net("SCL" "(unknown)")
+	(
+		Connect("CONN4-3")
+		Connect("D1-2")
+		Connect("R13-2")
+		Connect("U1-7")
+	)
+	Net("SDA" "(unknown)")
+	(
+		Connect("CONN4-4")
+		Connect("D1-3")
+		Connect("R13-5")
+		Connect("U1-5")
 	)
 	Net("Temp" "(unknown)")
 	(
 		Connect("CONN1-7")
 		Connect("U2-3")
 	)
+	Net("Temp_amped" "(unknown)")
+	(
+		Connect("U1-2")
+		Connect("U2-6")
+		Connect("U2-7")
+	)
 	Net("unnamed_net1" "(unknown)")
 	(
-		Connect("R5-2")
 		Connect("R4-2")
+		Connect("R5-2")
 		Connect("U2-2")
 	)
-	Net("Vcc24" "(unknown)")
+	Net("unnamed_net2" "(unknown)")
 	(
-		Connect("CONN2-1")
-		Connect("CONN5-1")
-		Connect("U3-1")
-		Connect("CONN1-6")
-		Connect("C1-2")
+		Connect("R5-1")
+		Connect("U2-1")
+		Connect("U2-5")
 	)
-	Net("SCL" "(unknown)")
+	Net("unnamed_net3" "(unknown)")
 	(
-		Connect("R13-2")
-		Connect("D1-2")
-		Connect("CONN4-3")
-		Connect("U1-7")
+		Connect("Q1-G")
+		Connect("R6-2")
+	)
+	Net("unnamed_net4" "(unknown)")
+	(
+		Connect("LED1-1")
+		Connect("R7-2")
+	)
+	Net("unnamed_net5" "(unknown)")
+	(
+		Connect("LED2-1")
+		Connect("R8-2")
+	)
+	Net("unnamed_net6" "(unknown)")
+	(
+		Connect("CONN1-5")
+		Connect("R2-2")
+		Connect("R3-1")
+	)
+	Net("unnamed_net7" "(unknown)")
+	(
+		Connect("CONN1-9")
+		Connect("CONN1-10")
+		Connect("R12-1")
 	)
 	Net("Vcc5" "(unknown)")
 	(
-		Connect("R13-1")
-		Connect("U3-3")
+		Connect("C2-2")
+		Connect("CONN4-2")
+		Connect("D1-5")
+		Connect("D1-8")
+		Connect("R1-3")
 		Connect("R2-1")
 		Connect("R7-1")
-		Connect("D1-8")
-		Connect("D1-5")
-		Connect("CONN4-2")
-		Connect("U2-8")
-		Connect("R1-3")
-		Connect("C2-2")
+		Connect("R13-1")
 		Connect("U1-8")
+		Connect("U2-8")
+		Connect("U3-3")
 	)
-	Net("Iron_EN" "(unknown)")
+	Net("Vcc24" "(unknown)")
 	(
-		Connect("R8-1")
-		Connect("R6-1")
-		Connect("CONN4-1")
-		Connect("U1-6")
-	)
-	Net("SDA" "(unknown)")
-	(
-		Connect("R13-5")
-		Connect("D1-3")
-		Connect("CONN4-4")
-		Connect("U1-5")
-	)
-	Net("GND" "(unknown)")
-	(
-		Connect("R12-2")
-		Connect("CONN2-3")
-		Connect("CONN2-2")
-		Connect("CONN5-2")
-		Connect("U3-2")
-		Connect("R3-2")
-		Connect("CONN1-8")
-		Connect("LED2-2")
-		Connect("LED1-2")
-		Connect("D1-4")
-		Connect("R4-1")
-		Connect("Q1-S")
-		Connect("CONN4-6")
-		Connect("U2-4")
-		Connect("R1-1")
-		Connect("C2-1")
-		Connect("C1-1")
-		Connect("U1-4")
-	)
-	Net("Iron_control" "(unknown)")
-	(
-		Connect("R1-2")
-		Connect("U1-3")
-	)
-	Net("Temp_amped" "(unknown)")
-	(
-		Connect("U2-7")
-		Connect("U2-6")
-		Connect("U1-2")
-	)
-	Net("Reset" "(unknown)")
-	(
-		Connect("R13-3")
-		Connect("CONN4-5")
-		Connect("U1-1")
+		Connect("C1-2")
+		Connect("CONN1-6")
+		Connect("CONN2-1")
+		Connect("CONN5-1")
+		Connect("U3-1")
 	)
 )
