@@ -1283,7 +1283,7 @@ Element["" "DPAK_STD" "U3" "7805" 105.9218mm 45.1853mm 1.6612mm -8.9710mm 3 100 
 
 	)
 
-Element["" "0805" "C2" "0.1uF" 107.4706mm 43.7112mm -1.1538mm -3.5382mm 0 100 ""]
+Element["" "0805" "C2" "0.1uF" 94.7206mm 51.0613mm -0.6538mm 1.9618mm 0 100 ""]
 (
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 28.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 28.00mil 57.18mil "2" "2" "square"]
@@ -1990,7 +1990,7 @@ Element["hidename,onsolder" "oshw" "ICO1" "unknown" 112.1956mm 45.5362mm 7.87mil
 
 	)
 
-Element["" "0805" "R7" "220" 3601.20mil 50.9612mm -2.9452mm 1.8024mm 0 100 ""]
+Element["" "0805" "R7" "220" 3601.20mil 51.0613mm -0.9452mm 2.0524mm 0 100 ""]
 (
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 30.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 30.00mil 57.18mil "2" "2" "square"]
@@ -2220,10 +2220,7 @@ Layer(1 "component")
 	Line[96.9706mm 40.3113mm 96.9706mm 45.0613mm 40.00mil 28.00mil ""]
 	Line[78.4890mm 64.9417mm 78.4890mm 69.2929mm 10.00mil 28.00mil "clearline"]
 	Line[3218.80mil 72.5613mm 85.2206mm 72.5613mm 10.00mil 28.00mil "clearline"]
-	Line[107.4706mm 42.8113mm 107.4706mm 40.3113mm 10.00mil 28.00mil "clearline"]
-	Line[105.2206mm 38.0613mm 103.5708mm 38.0613mm 10.00mil 28.00mil "clearline"]
 	Line[103.5708mm 38.0613mm 103.5209mm 38.0114mm 10.00mil 28.00mil "clearline"]
-	Line[107.4706mm 44.6111mm 107.4706mm 46.3113mm 20.00mil 28.00mil ""]
 	Line[101.2206mm 49.5613mm 101.2206mm 45.8113mm 20.00mil 28.00mil ""]
 	Line[98.2517mm 75.5613mm 98.4372mm 75.3758mm 10.00mil 28.00mil "clearline"]
 	Line[56.4706mm 60.3113mm 2376.80mil 60.3113mm 20.00mil 28.00mil "clearline"]
@@ -2266,6 +2263,8 @@ Layer(1 "component")
 	Line[73.7206mm 45.5613mm 73.7206mm 38.3113mm 10.00mil 28.00mil "clearline"]
 	Line[75.7206mm 36.3113mm 80.4706mm 36.3113mm 10.00mil 28.00mil "clearline"]
 	Line[71.9426mm 49.3113mm 71.9426mm 53.1213mm 10.00mil 28.00mil "clearline"]
+	Line[94.7206mm 51.9612mm 94.7206mm 53.3113mm 0.4540mm 28.00mil ""]
+	Line[94.7206mm 50.1614mm 3601.20mil 50.1614mm 10.00mil 28.00mil "clearline"]
 	Arc[74.3940mm 64.2582mm 1.5550mm 1.5550mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[77.5040mm 59.9532mm 1.0000mm 1.0000mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[85.2540mm 2508.00mil 2.5000mm 2.5000mm 10.00mil 28.00mil -180 90 "clearline"]
@@ -2299,7 +2298,6 @@ Layer(1 "component")
 	Arc[2095.30mil 51.5613mm 1.2500mm 1.2500mm 10.00mil 28.00mil 90 90 "clearline"]
 	Arc[2095.30mil 54.3113mm 1.5000mm 1.5000mm 10.00mil 28.00mil -90 90 "clearline"]
 	Arc[3218.80mil 69.2929mm 3.2684mm 3.2684mm 10.00mil 28.00mil 0 90 "clearline"]
-	Arc[105.2206mm 40.3113mm 2.2500mm 2.2500mm 10.00mil 28.00mil 180 90 "clearline"]
 	Arc[56.4706mm 62.8113mm 2.5000mm 2.5000mm 20.00mil 28.00mil -90 90 "clearline"]
 	Arc[57.2206mm 62.8113mm 3.2500mm 3.2500mm 20.00mil 28.00mil 0 90 "clearline"]
 	Arc[56.9706mm 68.8113mm 2.7500mm 2.7500mm 20.00mil 28.00mil -180 90 "clearline"]
@@ -2456,7 +2454,7 @@ Layer(9 "silk")
 	Arc[112.0660mm 73.3952mm 2.0000mm 2.0000mm 40.00mil 20.00mil -90 -90 "clearline,auto,lock"]
 	Arc[112.0660mm 73.3952mm 2.0000mm 2.0000mm 40.00mil 20.00mil 180 -90 "clearline,auto,lock"]
 	Arc[112.0660mm 73.3952mm 2.0000mm 2.0000mm 40.00mil 20.00mil 90 -90 "clearline,auto,lock"]
-	Text[68.7900mm 75.7342mm 2 100 "@v@" "clearline,onsolder"]
+	Text[67.7900mm 75.4842mm 2 100 "@v@" "clearline,onsolder"]
 	Text[65.0620mm 36.6962mm 2 100 "Matt O'Gorman" "clearline,onsolder"]
 	Text[65.0620mm 38.3272mm 2 100 "Tim Heath" "clearline,onsolder"]
 	Text[65.0620mm 35.0652mm 2 100 "Copyright 2015" "clearline,onsolder"]
