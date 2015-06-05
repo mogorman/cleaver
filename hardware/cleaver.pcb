@@ -2470,7 +2470,7 @@ Layer(9 "silk")
 	Text[101.7766mm 53.6863mm 2 100 "2. If iron was recently used, it will need to cool" "clearline,onsolder"]
 	Text[101.7606mm 58.2023mm 2 100 "4. Turn knob to max heat." "clearline,onsolder"]
 	Text[101.7606mm 2350.80mil 2 100 "5. Plug power back in." "clearline,onsolder"]
-	Text[98.0106mm 46.7934mm 2 100 "Iron is precalibrated.  " "clearline,onsolder"]
+	Text[98.0106mm 46.7934mm 2 100 "Iron is precalibrated, and should not need recalibration" "clearline,onsolder"]
 	Text[101.7606mm 56.6943mm 2 100 "3. Twist a small bit of 60/40 solder on the iron tip." "clearline,onsolder"]
 	Text[101.7606mm 61.4683mm 2 100 "6. Follow instructions on screen." "clearline,onsolder"]
 	Text[99.9706mm 55.0613mm 2 100 "you must wait 15 minutes before continuing" "clearline,onsolder"]
