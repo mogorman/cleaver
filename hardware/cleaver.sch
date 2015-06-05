@@ -9,8 +9,6 @@ T 41300 38200 5 10 1 1 0 0 1
 footprint=oshw
 T 41100 38200 5 10 0 1 0 0 1
 bom=0
-T 40800 38100 5 10 0 1 0 0 1
-manufacturer-part=dnp
 }
 C 40300 37800 0 0 0 title-A2.sym
 T 56600 38500 14 10 1 0 0 0 1
@@ -166,8 +164,6 @@ T 57200 53200 5 10 1 1 0 0 1
 footprint=icsp
 T 58400 53200 5 10 1 1 0 0 1
 refdes=CONN4
-T 58200 52500 5 10 0 1 0 0 1
-manufacturer-part=dnp
 T 58200 53100 5 10 0 1 0 0 1
 bom=0
 }
@@ -418,8 +414,8 @@ T 54000 45400 5 10 0 0 0 0 1
 symversion=0.1
 T 53700 44800 5 10 0 1 0 0 1
 footprint=LED3
-T 53600 44900 5 10 0 1 0 0 1
-manufacturer-part=dnp
+T 55700 42600 5 10 0 1 0 0 1
+bom=0
 }
 C 52300 44700 1 0 0 resistor-1.sym
 {
@@ -596,8 +592,6 @@ T 41700 50800 5 10 1 1 0 0 1
 refdes=CONN5
 T 43000 51600 5 10 0 1 0 0 1
 footprint=JUMPER2
-T 42000 50600 5 10 0 1 0 0 1
-manufacturer-part=dnp
 T 42100 50200 5 10 0 1 0 0 1
 bom=0
 }
