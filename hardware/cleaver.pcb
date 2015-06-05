@@ -1270,7 +1270,7 @@ Element["hidename,onsolder" "icsp" "CONN4" "unknown" 82.7540mm 69.7032mm -50.00m
 
 	)
 
-Element["" "0805" "C2" "0.1uF" 94.7206mm 51.0613mm -0.6538mm 1.9618mm 0 100 ""]
+Element["" "0805" "C2" "0.1uF" 94.7206mm 51.0613mm -0.9038mm 1.9618mm 0 100 ""]
 (
 	Pad[-3.93mil 35.43mil 3.93mil 35.43mil 51.18mil 28.00mil 57.18mil "1" "1" "square"]
 	Pad[-3.93mil -35.43mil 3.93mil -35.43mil 51.18mil 28.00mil 57.18mil "2" "2" "square"]
@@ -1945,7 +1945,7 @@ Element["" "0805" "R7" "220" 3601.20mil 51.0613mm -0.9452mm 2.0524mm 0 100 ""]
 
 	)
 
-Element["hidename" "LED3" "LED1" "unknown" 82.4706mm 51.8113mm -6.2700mm -1.0000mm 0 100 ""]
+Element["" "LED3" "LED1" "unknown" 82.4706mm 51.8113mm -50.00mil -4.2500mm 0 100 ""]
 (
 	Pin[50.00mil 0.0000 75.00mil 30.00mil 81.00mil 43.00mil "1" "1" "square,edge2"]
 	Pin[-50.00mil 0.0000 75.00mil 30.00mil 81.00mil 43.00mil "2" "2" "edge2,thermal(0X,1X)"]
@@ -2055,7 +2055,7 @@ Element["" "DPAK" "Q1" "unknown" 69.6718mm 45.4353mm 0.5000mm -9.0000mm 0 100 ""
 
 	)
 
-Element["" "0805quad" "R13" "10K" 73.7206mm 49.3113mm -1.7500mm 5.2500mm 0 100 ""]
+Element["" "0805quad" "R13" "10K" 73.7206mm 49.3113mm -2.0000mm 5.0000mm 0 100 ""]
 (
 	Pad[0.0000 -4.00mil 0.0000 4.00mil 22.00mil 20.00mil 32.00mil "5" "5" "square"]
 	Pad[-70.00mil -4.00mil -70.00mil 4.00mil 22.00mil 20.00mil 32.00mil "1" "1" "square"]
@@ -2563,7 +2563,7 @@ Layer(10 "silk")
 	Text[85.0850mm 55.4653mm 0 165 "Cleaver" "clearline"]
 	Text[95.4040mm 56.3272mm 0 100 "@v@" "clearline"]
 	Text[92.6380mm 58.4461mm 0 100 "@git@" "clearline"]
-	Text[66.9206mm 65.5113mm 0 117 "HOT!!" "clearline"]
+	Text[66.1706mm 65.7613mm 0 117 "HOT!!" "clearline"]
 	Text[70.2206mm 59.5613mm 0 100 "+" "clearline"]
 	Text[84.7206mm 49.3113mm 0 100 "+" "clearline"]
 	Polygon("clearpoly,auto")
