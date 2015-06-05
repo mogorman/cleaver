@@ -106,7 +106,7 @@ value=10K
 T 42000 48400 5 10 0 1 0 0 1
 footprint=POT__CTS_296U-Series
 T 42100 48200 5 10 0 1 0 0 1
-manufacturer-part=688-RK09K1130A8G
+manufacturer-part=688-RK09K1130A5R
 }
 C 41900 47400 1 0 0 ground.sym
 C 42200 50000 1 90 1 input-2.sym
@@ -240,8 +240,6 @@ T 57400 50000 5 10 1 1 0 0 1
 value=100K
 T 58100 50600 5 10 0 1 0 0 1
 footprint=0805
-T 58000 50000 5 10 0 1 0 0 1
-manufactuerer-part=71-CRCW0805-100K-E3
 T 57900 50100 5 10 0 1 0 0 1
 manufacturer-part=71-CRCW0805-100K-E3
 }
@@ -647,7 +645,7 @@ refdes=R12
 T 43700 39300 5 10 1 1 180 0 1
 value=1M
 T 43700 39200 5 10 0 1 90 0 1
-manufacturer-part=71-CRCW0805-100-E3
+manufacturer-part=71-CRCW0805-1.0M-E3
 }
 C 44300 38800 1 90 0 ground.sym
 N 43100 39000 42800 39000 4
