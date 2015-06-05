@@ -471,9 +471,9 @@ refdes=LED2
 T 54000 44400 5 10 0 0 0 0 1
 symversion=0.1
 T 53800 43700 5 10 0 1 0 0 1
-footprint=LED3
+footprint=1206
 T 53700 44000 5 10 0 1 0 0 1
-manufacturer-part=5mm_led
+manufacturer-part=859-LTST-C230CKT
 }
 C 54400 43600 1 90 0 ground.sym
 C 42800 38600 1 0 1 connector10-2.sym
