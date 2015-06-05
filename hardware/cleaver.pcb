@@ -2563,7 +2563,7 @@ Layer(10 "silk")
 	Text[85.0850mm 55.4653mm 0 165 "Cleaver" "clearline"]
 	Text[95.4040mm 56.3272mm 0 100 "@v@" "clearline"]
 	Text[92.6380mm 58.4461mm 0 100 "@git@" "clearline"]
-	Text[67.4206mm 65.5113mm 0 117 "HOT!!" "clearline"]
+	Text[66.9206mm 65.5113mm 0 117 "HOT!!" "clearline"]
 	Polygon("clearpoly,auto")
 	(
 		[55.5739mm 76.2654mm] [55.8309mm 76.3332mm] [56.0587mm 76.3769mm] [56.2845mm 76.4000mm] [56.5357mm 76.4059mm] 
