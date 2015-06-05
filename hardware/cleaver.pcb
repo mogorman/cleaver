@@ -2547,7 +2547,7 @@ Layer(10 "silk")
 	Text[65.5040mm 71.2032mm 1 100 "wha" "clearline"]
 	Text[88.4250mm 61.5122mm 0 100 "This board is licensed" "clearline"]
 	Text[110.1060mm 66.3432mm 0 100 "-" "clearline"]
-	Text[76.1540mm 72.8532mm 0 100 "http://meatstand.com/cleaver" "clearline"]
+	Text[64.6540mm 75.1032mm 0 100 "http://meatstand.com/cleaver" "clearline"]
 	Text[77.2206mm 41.5613mm 0 100 "Hurry go now!!" "clearline"]
 	Text[46.2626mm 66.7453mm 0 100 "Soldering iron" "clearline"]
 	Text[90.5440mm 63.0121mm 0 100 "CC-BY-SA 4.0" "clearline"]
