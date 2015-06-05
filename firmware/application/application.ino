@@ -323,7 +323,7 @@ void initialize()
 {
   int16_t temp;
   int16_t last_input;
-  int16_t heat = 250;
+  int16_t heat = 200;
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Gauging");
@@ -475,9 +475,9 @@ void initialize()
   }
   while (!(temp > 750 && temp < 800));
   temp = analogRead(POT);
-  if (temp > 950) {
+  if (temp > 500) {
     calibrated = 1;
-  } else if(temp < 50) {
+  } else if(temp < 500) {
     calibrated = 2;
   }
   lcd.clear();
