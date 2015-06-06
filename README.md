@@ -70,3 +70,7 @@ cut case better
 print last prototype
 adjust backlight on display  resistor value
 code refactor.  reduce globals. loop in the loop
+
+
+10k to ground for mosfet for safety.
+move led to gate path so that i am good

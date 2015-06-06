@@ -106,7 +106,7 @@ value=10K
 T 42000 48400 5 10 0 1 0 0 1
 footprint=POT__CTS_296U-Series
 T 42100 48200 5 10 0 1 0 0 1
-manufacturer-part=688-RK09K1130A5R
+manufacturer-part=652-PTV09A-4020FB103
 }
 C 41900 47400 1 0 0 ground.sym
 C 42200 50000 1 90 1 input-2.sym
