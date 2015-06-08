@@ -218,6 +218,12 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
   if(tenth_seconds % 2) {
     main_readout(calibrated, user_input, temperature, room_temp);
   }
+#ifdef SAFE_IRON
+  user_input =  ((user_input - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + room_temp;
+#else
+  user_input =  ((user_input - 50) * 1) + room_temp;    
+#endif
+
   if((temperature - user_input) > 0 && iron_state) {
     digitalWrite(IRON, LOW);
     return 0;
@@ -543,7 +549,9 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
   int16_t temp_in_f;
   uint8_t i;
   i = 5;
-  lcd.clear();
+  //  lcd.clear();
+  //  lcd.setCursor(3,0);
+  //  lcd.print("   ");
   lcd.setCursor(0,0);
   //  lcd.print("        ");
 #ifdef SAFE_IRON
