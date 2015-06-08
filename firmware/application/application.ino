@@ -41,6 +41,7 @@
 #define SOLDER_MELT_TEMP 183 // temperature 60/40 solder melts at
 #ifdef SAFE_IRON
 #define MAX_TEMP 475
+#define MAX_RES 725
 #endif
 
 #define TEMP A3
@@ -258,13 +259,15 @@ void loop()
   position++;
   if(position == BUFF_LENGTH)
     position = 0;
+
   if((temperature - user_input) > 0 && iron_state) {
     digitalWrite(IRON, LOW);
     iron_state = 0;
-  } else if (iron_state == 0 && (temperature - user_input) < 0 ) {
+  } else if (iron_state == 0 && (temperature - user_input) < 0 && temperature < MAX_RES ) {
     digitalWrite(IRON, HIGH);
     iron_state = 1;
   }
+
 }
 
 void plug_in_iron(int16_t temperature) {
