@@ -29,14 +29,19 @@
 // 7 SCL for display
 // 8 Vcc, led to show its on
 //#define INTERNAL2V56_NO_CAP (6)
+#define FARENHEIT 2
+#define CELCIUS 1
+#define UNDEFINED 0
+
 #define BUFF_LENGTH 4
 #define EEPROM_LENGTH 512
 
 
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
-#define TIME_OUT 20000 //about sixty minutes
-
+//#define TIME_OUT 20000 //about sixty minutes
+//#define TIME_OUT 36000 //about sixty minutes
+#define  TIME_OUT 100
 
 #define SOLDER_MELT_TEMP 183 // temperature 60/40 solder melts at
 #ifdef SAFE_IRON
@@ -57,24 +62,13 @@
 #endif
 
 //Define Variables we'll be connecting to
-uint8_t update_display;
 
-uint16_t knob_movement;
+
+
+
+int16_t knob_movement;
 uint16_t tenth_seconds;
-uint16_t ms;
-unsigned long start;
-unsigned long  stop;
-uint16_t readings[BUFF_LENGTH];
-uint8_t position;
 
-uint8_t room_temp;
-uint16_t iron_room_temp;
-uint8_t calibrated;
-uint16_t solder_melt_temp;
-int16_t user_input;
-int16_t temperature;
-double scale_factor;
-uint8_t iron_state;
 //Specify the links and initial tuning parameters
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
@@ -82,7 +76,24 @@ LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8
 /* // the setup routine runs once when you press reset: */
 void setup()
 {
-  int temp;
+
+
+  uint16_t ms;
+  unsigned long start;
+  unsigned long  stop;
+
+  uint16_t readings[BUFF_LENGTH];
+  uint8_t position;
+
+  uint8_t room_temp;
+  uint16_t iron_room_temp;
+  uint8_t calibrated;
+  uint16_t solder_melt_temp;
+  int16_t user_input;
+  int16_t temperature;
+  double scale_factor;
+  uint8_t iron_state;
+  uint8_t i;
   //  int16_t temperature;
   //  delay(2000);
   pinMode(IRON,OUTPUT);
@@ -90,14 +101,18 @@ void setup()
   pinMode(TEMP,INPUT);
   digitalWrite(IRON,LOW);
 
-  update_display = 0;
   position = 0;
-
+  i = 0;
   calibrated = 0;   //default uncalibrated value
   room_temp = 22;   //default uncalibrated value
   iron_room_temp = 110; //default uncalibrated value
   solder_melt_temp = 300; //default uncalibrated value
-  check_eeprom();   
+  if (check_eeprom()) {
+    calibrated = EEPROM.read((EEPROM_LENGTH -6));;
+    iron_room_temp =  ((EEPROM.read((EEPROM_LENGTH - 5)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 4)) << 8) & 0xFFFF);
+    room_temp = EEPROM.read((EEPROM_LENGTH - 3));
+    solder_melt_temp = ((EEPROM.read((EEPROM_LENGTH - 2)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 1)) << 8) & 0xFFFF);
+  }
   scale_factor = (double)(SOLDER_MELT_TEMP - room_temp) / (double)(solder_melt_temp - iron_room_temp);
   iron_state = 0;
   
@@ -135,115 +150,52 @@ void setup()
     delay(2500);
   } else if(user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
     initialize();
+    if (check_eeprom()) {
+      calibrated = EEPROM.read((EEPROM_LENGTH -6));;
+      iron_room_temp =  ((EEPROM.read((EEPROM_LENGTH - 5)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 4)) << 8) & 0xFFFF);
+      room_temp = EEPROM.read((EEPROM_LENGTH - 3));
+      solder_melt_temp = ((EEPROM.read((EEPROM_LENGTH - 2)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 1)) << 8) & 0xFFFF);
+    }
   }
   if (temperature > 750 && temperature < 800 ) {
     plug_in_iron(temperature);
   }
+  scale_factor = (double)(SOLDER_MELT_TEMP - room_temp) / (double)(solder_melt_temp - iron_room_temp);
   lcd.command(0x34); //one column mode
   start = 0;
   ms = 0;
   tenth_seconds = 0;
+
+  while(1) {
+    stop = millis();
+    ms += stop - start;
+    if( ms > 100) {
+      tenth_seconds += (ms/100);
+      ms = ms % 100;
+    }
+    start = millis();
+    temperature = analogRead(TEMP);      
+  
+    readings[position] = temperature;
+    temperature = normalize_temp(readings, iron_room_temp, room_temp, scale_factor);
+    position++;
+    iron_state = main_loop(iron_state, calibrated, room_temp, temperature);
+    if(position == BUFF_LENGTH)
+      position = 0;
+  }
 }
 
-void loop()
+uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uint8_t room_temp, int16_t temperature)
 {
- 
-  uint8_t i;
-  int16_t temp_in_f;
-  stop = millis();
-  ms += stop - start;
-  if( ms > 100) {
-    tenth_seconds += (ms/100);
-    ms = ms % 100;
-    update_display++;
-  } 
-  start = millis();
-  if(update_display == 2) {
-    if((knob_movement - user_input) > 50) {
-      knob_movement = user_input;
-      tenth_seconds = 0;
-    }
-    for(i = 0; i < BUFF_LENGTH; i++) {
-      if (readings[i] > 750 && readings[i] < 800) {
-	continue;
-      } else {
-	break;
-      }
-    }
-    if(i == BUFF_LENGTH) {
-      lcd.clear();
-      lcd.command(0x38); //two row mode
-      digitalWrite(IRON, LOW);
-      plug_in_iron(temperature);
-      lcd.clear();
-      lcd.command(0x34); //one row mode
-    }
+  int16_t user_input;
+  
+  user_input = 1023 - analogRead(POT);
 
-    
-    
-    lcd.setCursor(0, 0);
-
-    if(user_input < 20) {
-      user_input = 0;
-      lcd.print("OFF ");
-    }
 #ifdef SAFE_IRON
-    else if(user_input > MAX_TEMP) {
-      user_input = MAX_TEMP;
-      lcd.print("MAX ");
-    }
-#endif
-    else {
-      if(calibrated == 2) { // display in f..
-	temp_in_f = ( (int16_t) (user_input * 1.8) + 32);
-	lcd.print(temp_in_f);
-	lcd.print("f ");
-	if(temp_in_f < 100) {
-  	  lcd.print(" ");
-	}
-      } else {
-        lcd.print(user_input);
-	lcd.print("c ");
-
-      }
-    }
-
-    
-    if(calibrated == 2) {
-
-      temp_in_f = ( (int16_t) (temperature * 1.8) + 32);
-      if(temp_in_f < 100) {
-	lcd.print(" ");
-      } else {
-	if((user_input < 100 && user_input != 0)) {
-	  lcd.print(" ");
-	}
-      }
-
-      lcd.print(temp_in_f); // dont update every time i get a reading just every 4 times
-      lcd.print("f");
-    } else {
-      if(temperature < 100) {
-	lcd.print(" ");
-      } else {
-	if(user_input < 100 && user_input != 0) {
-	  lcd.print(" ");
-	}
-      }
-      lcd.print(temperature); // dont update every time i get a reading just every 4 times
-      lcd.print("c");
-    }
-    lcd.print(" ");
-    update_display = 0;
+  if((knob_movement - user_input) > 25 || (knob_movement - user_input) < -25  ) {
+    knob_movement = user_input;
+    tenth_seconds = 0;
   }
-  temperature = analogRead(TEMP);
-#ifdef SAFE_IRON
-  user_input =  (((1023 - analogRead(POT)) - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + 20;
-#else
-  user_input =  (((1023 - analogRead(POT)) - 50) * 1) + 20;    
-#endif
-    
-#ifdef SAFE_IRON
   if (tenth_seconds > TIME_OUT ) {
     digitalWrite(IRON, LOW);
     lcd.clear();
@@ -254,24 +206,34 @@ void loop()
     tenth_seconds = 0;
   }
 #endif
-  readings[position] = temperature;
-  temperature = normalize_temp();
-  position++;
-  if(position == BUFF_LENGTH)
-    position = 0;
-
+  if(temperature > 750 && temperature < 800) {
+    lcd.clear();
+    lcd.command(0x38); //two row mode
+    digitalWrite(IRON, LOW);
+    plug_in_iron(temperature);
+    lcd.clear();
+    lcd.command(0x34); //one row mode
+  }
+  
+  if(tenth_seconds % 2) {
+    main_readout(calibrated, user_input, temperature, room_temp);
+  }
   if((temperature - user_input) > 0 && iron_state) {
     digitalWrite(IRON, LOW);
-    iron_state = 0;
+    return 0;
   } else if (iron_state == 0 && (temperature - user_input) < 0 && temperature < MAX_RES ) {
     digitalWrite(IRON, HIGH);
-    iron_state = 1;
+    return 1;
   }
-
 }
+void loop()
+{
+  //never reach here.
+} 
 
 void plug_in_iron(int16_t temperature) {
   int16_t temp;
+  uint8_t update_display;
   update_display = 60;
   do {
     temp = temperature - analogRead(TEMP);
@@ -288,14 +250,13 @@ void plug_in_iron(int16_t temperature) {
     update_display++;
   }
   while (temp < 25);
-  //  minutes = 0;
-  update_display = 0;
-  tenth_seconds = 0;
 }
 
 
-void time_out(uint16_t last_input) {
-  uint16_t temp;
+void time_out(int16_t last_input) {
+  int16_t temp;
+  uint8_t update_display;
+  
   update_display = 60;
   do {
     temp = last_input - (1023 - analogRead(POT));
@@ -318,8 +279,7 @@ void time_out(uint16_t last_input) {
     delay(10);
     update_display++;
   }
-  while (temp < 25);
-  update_display = 0;
+  while (temp < 25 && temp > -25);
 }
 
 void initialize()
@@ -327,6 +287,17 @@ void initialize()
   int16_t temp;
   int16_t last_input;
   int16_t heat = 200;
+  uint8_t update_display;
+  uint16_t tenth_seconds;
+  uint16_t ms;
+  unsigned long start;
+  unsigned long  stop;
+  uint8_t room_temp;
+  uint16_t iron_room_temp;
+  uint8_t calibrated;
+  uint16_t solder_melt_temp;
+  tenth_seconds = 0;
+  ms = 0;
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Gauging");
@@ -339,15 +310,14 @@ void initialize()
   lcd.print("set room");
   lcd.setCursor(0,1);
   lcd.print("temp and");
-  delay(3000);
-  
+  delay(3000);  
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("thenPLUG");
   lcd.setCursor(0,1);
   lcd.print("iron in");
   delay(3000);
-
+  update_display = 60;
   do {
 
     temp = (1023 - analogRead(POT))/10 - 30;
@@ -479,9 +449,9 @@ void initialize()
   while (!(temp > 750 && temp < 800));
   temp = analogRead(POT);
   if (temp > 500) {
-    calibrated = 1;
+    calibrated = CELCIUS;
   } else if(temp < 500) {
-    calibrated = 2;
+    calibrated = FARENHEIT;
   }
   lcd.clear();
   lcd.setCursor(0,0);
@@ -494,14 +464,14 @@ void initialize()
 
   lcd.clear();
   lcd.setCursor(0,0);
-  lcd.print(183);
+  lcd.print(SOLDER_MELT_TEMP);
   lcd.setCursor(0,1);
   lcd.print(solder_melt_temp);
   delay(3000);
-  write_eeprom();
+  write_eeprom(calibrated, iron_room_temp, room_temp, solder_melt_temp);
 }
 
-void check_eeprom()
+uint8_t check_eeprom()
 {
   int i;
   for(i =0; i < EEPROM_LENGTH - 4; i++)
@@ -512,14 +482,12 @@ void check_eeprom()
     }
 
   if(i == (EEPROM_LENGTH -5)) {
-    calibrated = EEPROM.read((EEPROM_LENGTH -6));;
-    iron_room_temp =  ((EEPROM.read((EEPROM_LENGTH - 5)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 4)) << 8) & 0xFFFF);
-    room_temp = EEPROM.read((EEPROM_LENGTH - 3));
-    solder_melt_temp = ((EEPROM.read((EEPROM_LENGTH - 2)) << 0) & 0xFF) + ((EEPROM.read((EEPROM_LENGTH - 1)) << 8) & 0xFFFF);
+    return 1;
   }
+  return 0;
 }
 
-void write_eeprom()
+void write_eeprom(const uint8_t calibrated, const uint16_t iron_room_temp, const uint8_t room_temp, const uint16_t solder_melt_temp)
 {
   int i;
   for(i =0; i < EEPROM_LENGTH - 5; i++)
@@ -532,7 +500,6 @@ void write_eeprom()
   EEPROM.write((EEPROM_LENGTH - 3), room_temp);
   EEPROM.write((EEPROM_LENGTH - 2), (solder_melt_temp & 0xFF));
   EEPROM.write((EEPROM_LENGTH - 1), ((solder_melt_temp >> 8) & 0xFF));
-  scale_factor = (double)(SOLDER_MELT_TEMP - room_temp) / (double)(solder_melt_temp - iron_room_temp);
 }
 
 // i don't think this is very useful after all
@@ -552,7 +519,7 @@ void write_eeprom()
 //   return result;
 // }
 
-uint16_t normalize_temp() { 
+uint16_t normalize_temp(uint16_t *readings, const uint16_t iron_room_temp, const uint8_t room_temp, const double scale_factor) { 
   // replace these constants with your 2 data points
   // these are sample values that will get you in the ballpark (in degrees C)
   double temp;
@@ -567,4 +534,78 @@ uint16_t normalize_temp() {
   temp = scale_factor * (int16_t)(average - iron_room_temp) + room_temp;
 
   return (uint16_t)temp;
+}
+
+
+
+void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t current_temp, const uint8_t room_temp)
+{
+  int16_t temp_in_f;
+  uint8_t i;
+  i = 5;
+  lcd.clear();
+  lcd.setCursor(0,0);
+  //  lcd.print("        ");
+#ifdef SAFE_IRON
+  goal =  ((goal - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + room_temp;
+#else
+  goal =  ((goal - 50) * 1) + room_temp;    
+#endif
+
+  if(goal < room_temp) {
+    lcd.print("OFF");
+    i--;
+    goal = 0;
+  }
+#ifdef SAFE_IRON
+  else if(goal > MAX_TEMP) {
+    lcd.print("MAX");
+    i--;
+    goal = MAX_TEMP;
+  }
+#endif
+  else {
+    if(type_of_degree ==  FARENHEIT) { // display in f..
+      temp_in_f = ( (int16_t) (goal * 1.8) + 32);
+      lcd.print(temp_in_f);
+      lcd.print("f");
+      if(temp_in_f < 100) {
+	i--;
+      } 
+    } else {
+      lcd.print(goal);
+      lcd.print("c");
+      if(goal < 100) {
+	i--;
+      } 
+    }
+  }
+  
+  if(type_of_degree ==  FARENHEIT) {
+    temp_in_f = ( (int16_t) (current_temp * 1.8) + 32);
+    if(temp_in_f < 100 && i < 5) {
+      i++;
+      if(temp_in_f < 10) {
+	i++;
+      }
+    } else if (temp_in_f < 10) {
+      i++;
+    }
+    lcd.setCursor(i,0);
+    lcd.print(temp_in_f);
+    lcd.print("f");
+  } else {
+    if(current_temp < 100 && i < 5) {
+      i++;
+      if (current_temp <10) {
+	i++;
+      }
+    } else if (current_temp < 10) {
+      i++;
+    }
+    lcd.setCursor(i,0);
+    lcd.print(current_temp);
+    lcd.print("c");
+  }
+  return;
 }
