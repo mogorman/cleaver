@@ -71,7 +71,7 @@
 int16_t knob_movement;
 uint16_t tenth_seconds;
 int16_t my_update_display;
-
+uint16_t user_input;
 //uint16_t on_time;
 //Specify the links and initial tuning parameters
 
@@ -94,8 +94,8 @@ void setup()
   uint16_t iron_room_temp;
   uint8_t calibrated;
   uint16_t solder_melt_temp;
-  uint16_t user_input;
-  int16_t temperature;
+  uint16_t local_user_input;
+  int32_t temperature;
   int16_t scale_factor;
   uint8_t iron_state;
   uint8_t i;
@@ -126,18 +126,19 @@ void setup()
   
   temperature = analogRead(TEMP);
   user_input = 1023 - analogRead(POT);
-  knob_movement = user_input;
-  if(user_input < 50) {
-    user_input = 0;
+  local_user_input = user_input;
+  knob_movement = local_user_input;
+  if(local_user_input < 50) {
+    local_user_input = 0;
   } else {
-    user_input = user_input - 50;
+    local_user_input = local_user_input - 50;
   }
 #ifdef SAFE_IRON
   //  user_input =  ((user_input - 50) * ( (( MAX_TEMP-room_temp) * 100)/(1023-100) ))/100 + room_temp;
 
-  user_input =  (user_input * INPUT_SCALE)/100 + room_temp;
+  local_user_input =  (local_user_input * INPUT_SCALE)/100 + room_temp;
 #else
-  user_input = user_input + room_temp;
+  local_user_input = local_user_input + room_temp;
 #endif
 
   lcd.init();
@@ -152,7 +153,7 @@ void setup()
   // //  lcd.print((1023 - analogRead(POT)) -50);
   // while(1);
   //if the pot is at 0 and the iron is unplugged
-  if(user_input < 50 && (temperature > 750 && temperature < 800 )) {
+  if(local_user_input < 50 && (temperature > 750 && temperature < 800 )) {
     lcd.print(GIT);
     lcd.setCursor(0,1);
     lcd.print(TIME);
@@ -169,7 +170,7 @@ void setup()
     lcd.print(" ");
     lcd.print(SOLDER_MELT_TEMP);
     delay(2500);
-  } else if(user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
+  } else if(local_user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
     initialize();
     if (check_eeprom()) {
       calibrated = EEPROM.read((EEPROM_LENGTH -6));;
@@ -205,22 +206,30 @@ void setup()
 
 uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uint8_t room_temp, const int16_t raw_reading, const int16_t scale_factor, const uint16_t iron_room_temp)
 {
-  uint16_t user_input;
-  int16_t temperature;
-  user_input = 1023 - analogRead(POT);
+  int32_t temperature;
+  uint16_t local_user_input;
+  
   my_update_display++;
   
+  if(my_update_display == 700) {
+    user_input = 1023 - analogRead(POT);
+
+  }
+
+  local_user_input = user_input;
+  
 #ifdef SAFE_IRON
-  if((knob_movement - user_input) > 25 || (knob_movement - user_input) < -25  ) {
-    knob_movement = user_input;
+  if((knob_movement - local_user_input) > 25 || (knob_movement - (int16_t)local_user_input) < -25  ) {
+    knob_movement = local_user_input;
     tenth_seconds = 0;
   }
+
   if (tenth_seconds > TIME_OUT ) {
     digitalWrite(IRON, LOW);
     lcd.clear();
     lcd.command(0x38); //two row mode
-    time_out(user_input);
-    knob_movement = user_input;
+    time_out(local_user_input);
+    knob_movement = local_user_input;
     lcd.command(0x34); //one row mode
     tenth_seconds = 0;
     return 0;
@@ -228,30 +237,31 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
 #endif
   
   temperature = normalize_temp(raw_reading, iron_room_temp, room_temp, scale_factor);
-  if (user_input < 50) {
-    user_input = 0;
+  if (local_user_input < 50) {
+    local_user_input = 0;
   } else {
-    user_input = user_input - 50;
+    local_user_input = local_user_input - 50;
   }
 #ifdef SAFE_IRON
 
-  user_input =  (user_input * INPUT_SCALE)/100 + room_temp;
-  //  lcd.print(user_input);
-  //while(1);
-  if(user_input > MAX_TEMP) {
-    user_input = MAX_TEMP;
-  } else if (user_input < room_temp) {
-    user_input = 0;
-    tenth_seconds = 0;  // no point in time out increasing...
+  local_user_input =  (local_user_input * INPUT_SCALE)/100;
+  if(local_user_input > MAX_TEMP) {
+    local_user_input = MAX_TEMP;
+  } else if (local_user_input <= room_temp) {
+    local_user_input = 0;
+  } else {
+    local_user_input = local_user_input + room_temp;
   }
 #else
-  user_input = user_input + room_temp;
-  if(user_input < room_temp) {
-    user_input = 0;
+  local_user_input = local_user_input;
+  if(local_user_input <= room_temp) {
+    local_user_input = 0;
+  } else {
+    local_user_unput = local_user_input + room_temp;
   }
 #endif
-  if(my_update_display == 1000) {
-    main_readout(calibrated, user_input, temperature, room_temp);
+  if(my_update_display == 700) {
+    main_readout(calibrated, local_user_input, temperature, room_temp);
     my_update_display = 0;
   }
 
@@ -265,12 +275,12 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
     lcd.command(0x34); //one row mode
     return 0;
   }
-
-  if(((temperature >  user_input) && iron_state) || raw_reading > MAX_RES) {
+  
+  if(((temperature >  local_user_input) && iron_state) || raw_reading > MAX_RES) {
     digitalWrite(IRON, LOW);
     return 0;
-  } else if (iron_state == 0 && (user_input > temperature) && raw_reading < MAX_RES ) {
-    //    digitalWrite(IRON, HIGH);
+  } else if (iron_state == 0 && (local_user_input > temperature) && raw_reading < MAX_RES ) {
+    digitalWrite(IRON, HIGH);
     return 1;
   }
   return iron_state;
@@ -281,7 +291,7 @@ void loop()
   //never reach here.
 } 
 
-void plug_in_iron(int16_t temperature) {
+void plug_in_iron(int32_t temperature) {
   int16_t temp;
   uint8_t update_display;
   update_display = 60;
@@ -568,10 +578,10 @@ void write_eeprom(const uint8_t calibrated, const uint16_t iron_room_temp, const
 //   return result;
 // }
 
-uint16_t normalize_temp(uint16_t average, const uint16_t iron_room_temp, const uint8_t room_temp, const int16_t scale_factor) { 
+uint32_t normalize_temp(uint32_t average, const uint16_t iron_room_temp, const uint8_t room_temp, const int16_t scale_factor) { 
   // replace these constants with your 2 data points
   // these are sample values that will get you in the ballpark (in degrees C)
-  uint16_t temp;
+  uint32_t temp;
   int i;
 
   // now calculate the temperature
@@ -592,12 +602,14 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
   //  lcd.print(tenth_seconds);
   if(goal <= room_temp) {
     lcd.print("OFF ");
+    tenth_seconds = 0;
     i--;
     goal = 0;
   }
 #ifdef SAFE_IRON
   else if(goal >= MAX_TEMP) {
     lcd.print("MAX ");
+    //    lcd.print(tenth_seconds);
     i--;
     goal = MAX_TEMP;
   }
