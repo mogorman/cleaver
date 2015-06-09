@@ -585,7 +585,7 @@ uint32_t normalize_temp(uint32_t average, const uint16_t iron_room_temp, const u
   int i;
 
   // now calculate the temperature
-  temp = (scale_factor * (int16_t)(average - iron_room_temp) / 100) + room_temp;
+  temp = (scale_factor * (int32_t)(average - iron_room_temp) / 100) + room_temp;
 
   return temp;
 }
