@@ -95,6 +95,8 @@ void setup()
   uint8_t iron_state;
   uint8_t i;
   int16_t raw_reading;
+  uint16_t average;
+
   pinMode(IRON,OUTPUT);
   pinMode(POT,INPUT);
   pinMode(TEMP,INPUT);
@@ -176,18 +178,24 @@ void setup()
     temperature = analogRead(TEMP);
     raw_reading = temperature;
     readings[position] = temperature;
-    temperature = normalize_temp(readings, iron_room_temp, room_temp, scale_factor);
+    
+    for (i = 0; i < BUFF_LENGTH; i++) {
+      average = average + readings[i];
+    }
+    average = average/4;
+    
+    temperature = normalize_temp(average, iron_room_temp, room_temp, scale_factor);
     position++;
-    iron_state = main_loop(iron_state, calibrated, room_temp, temperature,raw_reading);
+    iron_state = main_loop(iron_state, calibrated, room_temp, raw_reading, scale_factor, iron_room_temp);
     if(position == BUFF_LENGTH)
       position = 0;
   }
 }
 
-uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uint8_t room_temp, const int16_t temperature, const int16_t raw_reading)
+uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uint8_t room_temp, const int16_t raw_reading, const double scale_factor, const uint16_t iron_room_temp)
 {
   int16_t user_input;
-  
+  int16_t temperature;
   user_input = 1023 - analogRead(POT);
 
 #ifdef SAFE_IRON
@@ -214,7 +222,7 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
     lcd.command(0x34); //one row mode
   }
   
-
+  temperature = normalize_temp(raw_reading, iron_room_temp, room_temp, scale_factor);
 #ifdef SAFE_IRON
   user_input =  ((user_input - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + room_temp;
   if(user_input > MAX_TEMP) {
@@ -226,17 +234,12 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
   if(tenth_seconds % 5 == 0) {
     main_readout(calibrated, user_input, temperature, room_temp);
   }
-  // lcd.clear();
-  // lcd.setCursor(0,0);
-  // lcd.print(user_input);
-  // lcd.print(" ");
-  // lcd.print(temperature);
-  // delay(1000);
+
   
   if((temperature - user_input) > 0 && iron_state) {
     digitalWrite(IRON, LOW);
     return 0;
-  } else if (iron_state == 0 && (temperature - user_input) < 0 && raw_reading < MAX_RES ) {
+  } else if (iron_state == 0 && (temperature - user_input) < 0 && temperature < MAX_RES ) {
     digitalWrite(IRON, HIGH);
     return 1;
   }
@@ -489,14 +492,14 @@ void initialize()
 uint8_t check_eeprom()
 {
   int i;
-  for(i =0; i < EEPROM_LENGTH - 4; i++)
+  for(i =0; i < EEPROM_LENGTH - 5; i++)
     {
       if(EEPROM.read(i) != 42) {
 	break;
       }
     }
 
-  if(i == (EEPROM_LENGTH -5)) {
+  if(i == (EEPROM_LENGTH -4)) {
     return 1;
   }
   return 0;
@@ -534,16 +537,11 @@ void write_eeprom(const uint8_t calibrated, const uint16_t iron_room_temp, const
 //   return result;
 // }
 
-uint16_t normalize_temp(uint16_t *readings, const uint16_t iron_room_temp, const uint8_t room_temp, const double scale_factor) { 
+uint16_t normalize_temp(uint16_t average, const uint16_t iron_room_temp, const uint8_t room_temp, const double scale_factor) { 
   // replace these constants with your 2 data points
   // these are sample values that will get you in the ballpark (in degrees C)
   double temp;
   int i;
-  uint16_t average = 0;
-  for (i = 0; i < BUFF_LENGTH; i++) {
-    average = average + readings[i];
-  }
-  average = average/4;
 
   // now calculate the temperature
   temp = scale_factor * (int16_t)(average - iron_room_temp) + room_temp;
@@ -558,13 +556,11 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
   int16_t temp_in_f;
   uint8_t i;
   i = 5;
-    lcd.clear();
-  //  lcd.setCursor(3,0);
-  //  lcd.print("   ");
+
   lcd.setCursor(0,0);
-  //  lcd.print("        ");
+
   if(goal < room_temp) {
-    lcd.print("OFF");
+    lcd.print("OFF ");
     //    lcd.setCursor(i,0);
     //    lcd.print(" ");
     i--;
@@ -572,7 +568,7 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
   }
 #ifdef SAFE_IRON
   else if(goal >= MAX_TEMP) {
-    lcd.print("MAX");
+    lcd.print("MAX ");
     //    lcd.setCursor(i,0);
     //    lcd.print(" ");
     i--;
@@ -583,7 +579,7 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
     if(type_of_degree ==  FARENHEIT) { // display in f..
       temp_in_f = ( (int16_t) (goal * 1.8) + 32);
       lcd.print(temp_in_f);
-      lcd.print("f");
+      lcd.print("f ");
       if(temp_in_f < 100) {
 	//	lcd.setCursor(i,0);
 	//	lcd.print(" ");
@@ -591,7 +587,7 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
       } 
     } else {
       lcd.print(goal);
-      lcd.print("c");
+      lcd.print("c ");
       if(goal < 100) {
 	//	lcd.setCursor(i,0);
 	//	lcd.print(" ");
@@ -616,7 +612,8 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
       //      lcd.print(" ");
       i++;
     }
-    lcd.setCursor(i,0);
+    lcd.setCursor(i-1,0);
+    lcd.print(" ");
     lcd.print(temp_in_f);
     lcd.print("f");
   } else {
@@ -634,7 +631,8 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
       //      lcd.print(" ");
       i++;
     }
-    lcd.setCursor(i,0);
+    lcd.setCursor(i-1,0);
+    lcd.print(" ");
     lcd.print(current_temp);
     lcd.print("c");
   }
