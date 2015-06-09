@@ -58,7 +58,9 @@ endif
 on:
 ifeq (buspirate,$(PROGRAMMER))
 	@echo "m2" > $(PROGRAMMER_PORT)
-	@echo "W" > $(PROGRAMMER_PORT)
+#	@echo "W" > $(PROGRAMMER_PORT)
+	@echo "C" > $(PROGRAMMER_PORT)
+	@echo "A" > $(PROGRAMMER_PORT)
 endif
 
 off:
