@@ -247,7 +247,7 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
   local_user_input =  (local_user_input * INPUT_SCALE)/100;
   if(local_user_input > MAX_TEMP) {
     local_user_input = MAX_TEMP;
-  } else if (local_user_input <= room_temp) {
+  } else if (local_user_input <= room_temp && user_input < 50) {
     local_user_input = 0;
   } else {
     local_user_input = local_user_input + room_temp;
@@ -257,7 +257,7 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
   if(local_user_input <= room_temp) {
     local_user_input = 0;
   } else {
-    local_user_unput = local_user_input + room_temp;
+    local_user_input = local_user_input + room_temp;
   }
 #endif
   if(my_update_display == 700) {
