@@ -157,7 +157,7 @@ void setup()
     lcd.print(GIT);
     lcd.setCursor(0,1);
     lcd.print(TIME);
-    delay(2500);
+    mog_delay(2500);
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print(calibrated);
@@ -169,7 +169,7 @@ void setup()
     lcd.print(solder_melt_temp);
     lcd.print(" ");
     lcd.print(SOLDER_MELT_TEMP);
-    delay(2500);
+    mog_delay(2500);
   } else if(local_user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
     initialize();
     if (check_eeprom()) {
@@ -306,7 +306,7 @@ void plug_in_iron(int32_t temperature) {
       lcd.clear();
       update_display = 0;
     }
-    delay(10);
+    mog_delay(10);
     update_display++;
   }
   while (temp < 25);
@@ -336,7 +336,7 @@ void time_out(int16_t last_input) {
       lcd.clear();
       update_display = 0;
     }
-    delay(10);
+    mog_delay(10);
     update_display++;
   }
   while (temp < 25 && temp > -25);
@@ -362,20 +362,20 @@ void initialize()
   lcd.print("Gauging");
   lcd.setCursor(0,1);
   lcd.print("the iron");
-  delay(3000);
+  mog_delay(3000);
   
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("set room");
   lcd.setCursor(0,1);
   lcd.print("temp and");
-  delay(3000);  
+  mog_delay(3000);  
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("thenPLUG");
   lcd.setCursor(0,1);
   lcd.print("iron in");
-  delay(3000);
+  mog_delay(3000);
   update_display = 60;
   do {
 
@@ -394,7 +394,7 @@ void initialize()
       lcd.print("F");
       update_display =0;
     }
-    delay(10);
+    mog_delay(10);
     update_display++;
   }
   while (analogRead(TEMP) > 750);
@@ -404,38 +404,38 @@ void initialize()
   lcd.print("waiting");
   lcd.setCursor(0,1);
   lcd.print("on iron");
-  delay(3000);
+  mog_delay(3000);
   iron_room_temp = analogRead(TEMP);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("set");
   lcd.setCursor(0,1);
   lcd.print("solder");
-  delay(3000);
+  mog_delay(3000);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("on tip");
   lcd.setCursor(0,1);
   lcd.print("of iron");
-  delay(3000);
+  mog_delay(3000);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("MOVEknob");
   lcd.setCursor(0,1);
   lcd.print("when");
-  delay(3000);
+  mog_delay(3000);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("the iron");
   lcd.setCursor(0,1);
   lcd.print("melts");
-  delay(3000);
+  mog_delay(3000);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("the");
   lcd.setCursor(0,1);
   lcd.print("solder");
-  delay(3000);
+  mog_delay(3000);
 
   lcd.clear();
   last_input = 1023 - analogRead(POT);
@@ -480,7 +480,7 @@ void initialize()
   lcd.print("iron");
   lcd.setCursor(0,1);
   lcd.print("gauged");
-  delay(3000);
+  mog_delay(3000);
 
   lcd.clear();
   lcd.setCursor(0,0);
@@ -489,19 +489,19 @@ void initialize()
   lcd.print("Turn ");
   lcd.write(0x7F);
   lcd.print(" C");
-  delay(5000);
+  mog_delay(5000);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("then");
   lcd.setCursor(0,1);
   lcd.print("unplug");
-  delay(3000);
+  mog_delay(3000);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("iron to");
   lcd.setCursor(0,1);
   lcd.print("select");
-  delay(3000);
+  mog_delay(3000);
   do {
     temp = analogRead(TEMP);
   }
@@ -519,14 +519,14 @@ void initialize()
   lcd.print(iron_room_temp);
   lcd.print(" ");
   lcd.print(calibrated);
-  delay(3000);
+  mog_delay(3000);
 
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print(SOLDER_MELT_TEMP);
   lcd.setCursor(0,1);
   lcd.print(solder_melt_temp);
-  delay(3000);
+  mog_delay(3000);
   write_eeprom(calibrated, iron_room_temp, room_temp, solder_melt_temp);
 }
 
@@ -660,4 +660,22 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
     lcd.print("c");
   }
   return;
+}
+
+
+void mog_delay(const uint16_t ms_to_delay)
+{
+  uint16_t ms;
+  unsigned long start;
+  unsigned long  stop;
+  ms = 0;
+  stop = millis();
+  while(1) {
+    start = millis();
+    ms += start - stop;
+    if( ms > ms_to_delay) {
+      return;
+    }
+    stop = millis();
+  }
 }
