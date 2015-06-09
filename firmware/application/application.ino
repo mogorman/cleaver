@@ -41,7 +41,7 @@
 #define SAFE_IRON 1
 //#define TIME_OUT 20000 //about sixty minutes
 //#define TIME_OUT 36000 //about sixty minutes
-#define  TIME_OUT 100
+#define  TIME_OUT 8000
 
 #define SOLDER_MELT_TEMP 183 // temperature 60/40 solder melts at
 #ifdef SAFE_IRON
@@ -94,8 +94,7 @@ void setup()
   double scale_factor;
   uint8_t iron_state;
   uint8_t i;
-  //  int16_t temperature;
-  //  delay(2000);
+  int16_t raw_reading;
   pinMode(IRON,OUTPUT);
   pinMode(POT,INPUT);
   pinMode(TEMP,INPUT);
@@ -174,18 +173,18 @@ void setup()
       ms = ms % 100;
     }
     start = millis();
-    temperature = analogRead(TEMP);      
-  
+    temperature = analogRead(TEMP);
+    raw_reading = temperature;
     readings[position] = temperature;
     temperature = normalize_temp(readings, iron_room_temp, room_temp, scale_factor);
     position++;
-    iron_state = main_loop(iron_state, calibrated, room_temp, temperature);
+    iron_state = main_loop(iron_state, calibrated, room_temp, temperature,raw_reading);
     if(position == BUFF_LENGTH)
       position = 0;
   }
 }
 
-uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uint8_t room_temp, int16_t temperature)
+uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uint8_t room_temp, const int16_t temperature, const int16_t raw_reading)
 {
   int16_t user_input;
   
@@ -206,28 +205,38 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
     tenth_seconds = 0;
   }
 #endif
-  if(temperature > 750 && temperature < 800) {
+  if(raw_reading > 750 && raw_reading < 800) {
     lcd.clear();
     lcd.command(0x38); //two row mode
     digitalWrite(IRON, LOW);
-    plug_in_iron(temperature);
+    plug_in_iron(raw_reading);
     lcd.clear();
     lcd.command(0x34); //one row mode
   }
   
-  if(tenth_seconds % 2) {
-    main_readout(calibrated, user_input, temperature, room_temp);
-  }
+
 #ifdef SAFE_IRON
   user_input =  ((user_input - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + room_temp;
+  if(user_input > MAX_TEMP) {
+    user_input = MAX_TEMP;
+  }
 #else
   user_input =  ((user_input - 50) * 1) + room_temp;    
 #endif
-
+  if(tenth_seconds % 5 == 0) {
+    main_readout(calibrated, user_input, temperature, room_temp);
+  }
+  // lcd.clear();
+  // lcd.setCursor(0,0);
+  // lcd.print(user_input);
+  // lcd.print(" ");
+  // lcd.print(temperature);
+  // delay(1000);
+  
   if((temperature - user_input) > 0 && iron_state) {
     digitalWrite(IRON, LOW);
     return 0;
-  } else if (iron_state == 0 && (temperature - user_input) < 0 && temperature < MAX_RES ) {
+  } else if (iron_state == 0 && (temperature - user_input) < 0 && raw_reading < MAX_RES ) {
     digitalWrite(IRON, HIGH);
     return 1;
   }
@@ -549,25 +558,23 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
   int16_t temp_in_f;
   uint8_t i;
   i = 5;
-  //  lcd.clear();
+    lcd.clear();
   //  lcd.setCursor(3,0);
   //  lcd.print("   ");
   lcd.setCursor(0,0);
   //  lcd.print("        ");
-#ifdef SAFE_IRON
-  goal =  ((goal - 50) *  (double)( ( MAX_TEMP-room_temp)/(1023.0-100))) + room_temp;
-#else
-  goal =  ((goal - 50) * 1) + room_temp;    
-#endif
-
   if(goal < room_temp) {
     lcd.print("OFF");
+    //    lcd.setCursor(i,0);
+    //    lcd.print(" ");
     i--;
     goal = 0;
   }
 #ifdef SAFE_IRON
-  else if(goal > MAX_TEMP) {
+  else if(goal >= MAX_TEMP) {
     lcd.print("MAX");
+    //    lcd.setCursor(i,0);
+    //    lcd.print(" ");
     i--;
     goal = MAX_TEMP;
   }
@@ -578,12 +585,16 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
       lcd.print(temp_in_f);
       lcd.print("f");
       if(temp_in_f < 100) {
+	//	lcd.setCursor(i,0);
+	//	lcd.print(" ");
 	i--;
       } 
     } else {
       lcd.print(goal);
       lcd.print("c");
       if(goal < 100) {
+	//	lcd.setCursor(i,0);
+	//	lcd.print(" ");
 	i--;
       } 
     }
@@ -592,11 +603,17 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
   if(type_of_degree ==  FARENHEIT) {
     temp_in_f = ( (int16_t) (current_temp * 1.8) + 32);
     if(temp_in_f < 100 && i < 5) {
+      //      lcd.setCursor(i,0);
+      //      lcd.print(" ");
       i++;
       if(temp_in_f < 10) {
+	//	lcd.setCursor(i,0);
+	//	lcd.print(" ");
 	i++;
       }
     } else if (temp_in_f < 10) {
+      //      lcd.setCursor(i,0);
+      //      lcd.print(" ");
       i++;
     }
     lcd.setCursor(i,0);
@@ -604,11 +621,17 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
     lcd.print("f");
   } else {
     if(current_temp < 100 && i < 5) {
+      //      lcd.setCursor(i,0);
+      //      lcd.print(" ");
       i++;
       if (current_temp <10) {
+	//	lcd.setCursor(i,0);
+	//	lcd.print(" ");
 	i++;
       }
     } else if (current_temp < 10) {
+      //      lcd.setCursor(i,0);
+      //      lcd.print(" ");
       i++;
     }
     lcd.setCursor(i,0);
