@@ -2571,7 +2571,7 @@ Layer(10 "silk")
 	Text[110.1060mm 66.3432mm 0 100 "-" "clearline"]
 	Text[64.6540mm 75.1032mm 0 100 "http://meatstand.com/cleaver" "clearline"]
 	Text[77.2206mm 41.5613mm 0 100 "Hurry go now!!" "clearline"]
-	Text[46.2626mm 66.7453mm 0 100 "Soldering iron" "clearline"]
+	Text[1831.20mil 66.7453mm 0 100 "Soldering iron" "clearline"]
 	Text[90.5440mm 63.0121mm 0 100 "CC-BY-SA 4.0" "clearline"]
 	Text[85.0850mm 55.4653mm 0 165 "Cleaver" "clearline"]
 	Text[95.4040mm 56.3272mm 0 100 "@v@" "clearline"]
