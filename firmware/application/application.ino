@@ -39,7 +39,6 @@
 
 //UNDEFINE IF YOU WANT TO DISABLE AUTO SHUTOFF
 #define SAFE_IRON 1
-//#define TIME_OUT 20000 //about sixty minutes
 //#define TIME_OUT 36000 //about sixty minutes
 #define  TIME_OUT 8000
 
@@ -72,8 +71,6 @@ int16_t knob_movement;
 uint16_t tenth_seconds;
 int16_t my_update_display;
 uint16_t user_input;
-//uint16_t on_time;
-//Specify the links and initial tuning parameters
 
 LiquidCrystal_I2C_ST7032i lcd(0x3E,8,2);  // set the LCD address to 0x3E for a 8 chars and 2 line display
 
