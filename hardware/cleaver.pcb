@@ -2023,8 +2023,8 @@ Element["" "POT__CTS_296U-Series" "R1" "10K" 98.4372mm 68.3758mm 4.4499mm 6.0096
 	Pin[2.5000mm 7.0000mm 70.00mil 36.00mil 76.00mil 38.00mil "" "1" "edge2,thermal(0X,1X)"]
 	Pin[0.0000 7.0000mm 70.00mil 36.00mil 76.00mil 38.00mil "" "2" "edge2"]
 	Pin[-2.5000mm 7.0000mm 70.00mil 36.00mil 76.00mil 38.00mil "" "3" "edge2"]
-	Pin[-5.3000mm 0.0000 150.00mil 34.00mil 3.5000mm 2.1000mm "" "4" "edge2"]
-	Pin[5.3000mm 0.0000 150.00mil 34.00mil 3.5000mm 2.1000mm "" "5" "edge2"]
+	Pin[-5.3000mm 0.0000 150.00mil 38.00mil 3.5000mm 2.1000mm "" "4" "edge2"]
+	Pin[5.3000mm 0.0000 150.00mil 38.00mil 3.5000mm 2.1000mm "" "5" "edge2"]
 
 	)
 
