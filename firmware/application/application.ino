@@ -91,7 +91,6 @@ void setup()
   uint16_t iron_room_temp;
   uint8_t calibrated;
   uint16_t solder_melt_temp;
-  uint16_t local_user_input;
   int32_t temperature;
   int16_t scale_factor;
   uint8_t iron_state;
@@ -123,20 +122,7 @@ void setup()
   
   temperature = analogRead(TEMP);
   user_input = 1023 - analogRead(POT);
-  local_user_input = user_input;
-  knob_movement = local_user_input;
-  if(local_user_input < 50) {
-    local_user_input = 0;
-  } else {
-    local_user_input = local_user_input - 50;
-  }
-#ifdef SAFE_IRON
-  //  user_input =  ((user_input - 50) * ( (( MAX_TEMP-room_temp) * 100)/(1023-100) ))/100 + room_temp;
-
-  local_user_input =  (local_user_input * INPUT_SCALE)/100 + room_temp;
-#else
-  local_user_input = local_user_input + room_temp;
-#endif
+  knob_movement = user_input;
 
   lcd.init();
   lcd.clear();
@@ -150,7 +136,7 @@ void setup()
   // //  lcd.print((1023 - analogRead(POT)) -50);
   // while(1);
   //if the pot is at 0 and the iron is unplugged
-  if(local_user_input < 50 && (temperature > 750 && temperature < 800 )) {
+  if(user_input < 50 && (temperature > 750 && temperature < 800 )) {
     lcd.print(GIT);
     lcd.setCursor(0,1);
     lcd.print(TIME);
@@ -167,7 +153,7 @@ void setup()
     lcd.print(" ");
     lcd.print(SOLDER_MELT_TEMP);
     blocking_delay(2500);
-  } else if(local_user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
+  } else if(user_input > MAX_TEMP && (temperature > 750 && temperature < 800 )) {
     initialize();
     if (check_eeprom()) {
       calibrated = EEPROM.read((EEPROM_LENGTH -6));;
