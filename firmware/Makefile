@@ -36,7 +36,9 @@ endif
 	  ls build; \
 	  cp ./preferences.txt build/; \
 	  echo "sketchbook.path="`pwd`"/" >> build/preferences.txt; \
-	  echo "#define GIT \""$(GIT)"\"\n#define TIME \""$(HEXTIME)"\"" | cat -  application/application.ino > build/application/application.ino; \
+	  echo "#define GIT \""$(GIT)"\"" > build/application/application.ino; \
+          echo "#define TIME \""$(HEXTIME)"\"" >> build/application/application.ino; \
+	  cat application/application.ino >> build/application/application.ino; \
 	  xvfb-run $(ARDUINO) \
 	   --verbose-build \
 	   --preferences-file ./build/preferences.txt \
