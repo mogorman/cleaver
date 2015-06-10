@@ -4,6 +4,9 @@ Dependencies for cleaver
 
 sudo apt-get install geda-utils coreutils sed grep bash geda-gschem ghostscript poppler-utils pcb imagemagick zip bc make git srecord geda-gnetlist gerbv xvfb
 
+[firmware](http://artifacts.meatstand.com/cleaver/application.hex)
+
+
 [gerbers](http://artifacts.meatstand.com/cleaver/gerbers.zip)
 
 [schematic](http://artifacts.meatstand.com/cleaver/schematic.png)
