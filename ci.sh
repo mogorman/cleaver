@@ -56,6 +56,8 @@ fi
 make clean
 cd ../firmware
 make  ARDUINO_DIR=~/arduino-1.6.4
-copy_files bin/application.hex ~/artifacts/${Project}/application.hex
+cd bin
+copy_files application.hex ~/artifacts/${Project}/application.hex
+cd ..
 make clean
 echo "built everything so you should see this message"
