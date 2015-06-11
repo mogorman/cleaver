@@ -4,12 +4,8 @@ Dependencies for cleaver
 
 sudo apt-get install geda-utils coreutils sed grep bash geda-gschem ghostscript poppler-utils pcb imagemagick zip bc make git srecord geda-gnetlist gerbv xvfb
 
-[firmware](http://artifacts.meatstand.com/cleaver/application.hex)
+[firmware](http://artifacts.meatstand.com/cleaver/application.hex) [schematic](http://artifacts.meatstand.com/cleaver/schematic.png) [gerbers](http://artifacts.meatstand.com/cleaver/gerbers.zip)
 
-
-[gerbers](http://artifacts.meatstand.com/cleaver/gerbers.zip)
-
-[schematic](http://artifacts.meatstand.com/cleaver/schematic.png)
 
 [![the board](http://artifacts.meatstand.com/cleaver/board.png)](http://artifacts.meatstand.com/cleaver/board.png)
 
@@ -32,13 +28,21 @@ internal temperature sensor for thermal compensation
 
 
 attiny85
+
 1 RED led, iron is safe / reset
+
 2 Temperature probe from iron
+
 3 pot for control of the iron
+
 4 BLACK Gnd
+
 5 ORANGE SDA for display
+
 6 BROWN pwm for iron, led to alert user its heating
+
 7 YELLOW SCL for display
+
 8 WHITE Vcc, led to show its on
 
 
@@ -55,11 +59,17 @@ lm38l05
 
 
 MALE end 
+
 CW 1,2,3,4,5
+
 blue	1, GROUND OF 20v
+
 white	2, postive of 20v
+
 black	3 EARTH GROUND
+
 red	4 V+ of thermal
+
 green	5 V- of thermal
 
 arduino http://highlowtech.org/?p=1695 end
@@ -69,11 +79,16 @@ tinywirem https://github.com/adafruit/TinyWireM
 
 
 todo
+
 cut case better
+
 print last prototype
+
 adjust backlight on display  resistor value
+
 code refactor.  reduce globals. loop in the loop
 
 
 10k to ground for mosfet for safety.
+
 move led to gate path so that i am good
