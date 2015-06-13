@@ -362,7 +362,7 @@ void initialize()
   update_display = 60;
   do {
 
-    temp = (1023 - analogRead(POT))/10 - 30;
+    temp = (1023 - analogRead(POT))/10 - 50;
     if(update_display == 60) {
       lcd.clear();
       lcd.setCursor(0,0);
