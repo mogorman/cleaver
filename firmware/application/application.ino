@@ -368,13 +368,13 @@ void initialize()
       lcd.setCursor(0,0);
       lcd.print("ROOMtemp");
       lcd.setCursor(0,1);
-      lcd.print(temp);
-      lcd.print("C");
+      lcd.print(((int16_t)(temp * 1.8) + 32) );
+      lcd.print("F");
       if(temp > 0) {
 	lcd.print(" ");
       }
-      lcd.print(((int16_t)(temp * 1.8) + 32) );
-      lcd.print("F");
+      lcd.print(temp);
+      lcd.print("C");
       update_display =0;
     }
     blocking_delay(10);
