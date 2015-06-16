@@ -92,3 +92,5 @@ code refactor.  reduce globals. loop in the loop
 10k to ground for mosfet for safety.
 
 move led to gate path so that i am good
+
+have to see why resistance is being all over the map
