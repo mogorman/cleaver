@@ -93,4 +93,4 @@ code refactor.  reduce globals. loop in the loop
 
 move led to gate path so that i am good
 
-have to see why resistance is being all over the map
+have to see why resistance is being all over the map. no luck yet
