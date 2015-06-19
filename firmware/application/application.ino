@@ -184,8 +184,10 @@ void setup()
     start = millis();
     temperature = analogRead(TEMP);
     raw_reading = temperature;
-
+#if DEBUG
+#else
     iron_state = main_loop(iron_state, calibrated, room_temp, raw_reading, scale_factor, iron_room_temp);
+#endif
   }
 }
 
