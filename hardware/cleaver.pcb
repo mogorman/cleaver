@@ -2366,6 +2366,8 @@ Layer(9 "silk")
 	Text[101.7766mm 53.1823mm 2 100 "2. If iron was recently used, it will need to cool" "clearline,onsolder"]
 	Text[101.9726mm 2344.30mil 2 94 "6. Turn over controller," "clearline,onsolder"]
 	Text[100.1906mm 65.8773mm 1 100 "Iron CTL" "clearline,onsolder"]
+	Text[49.9706mm 55.3113mm 2 100 "ESD" "clearline,onsolder"]
+	Text[64.4706mm 52.8113mm 2 100 "GND" "clearline,onsolder"]
 	Polygon("clearpoly")
 	(
 		[99.7540mm 34.2032mm] [72.7540mm 34.2032mm] [72.7540mm 40.7032mm] [99.7540mm 40.7032mm] 
