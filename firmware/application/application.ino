@@ -185,12 +185,18 @@ void setup()
     temperature = analogRead(TEMP);
     raw_reading = temperature;
 #if DEBUG
+    iron_state = debug_loop(iron_state, raw_reading);
 #else
     iron_state = main_loop(iron_state, calibrated, room_temp, raw_reading, scale_factor, iron_room_temp);
 #endif
   }
 }
-
+#if DEBUG
+uint8_t debug_loop(const uint8_t iron_state, const int16_t raw_reading)
+{
+  return 0;
+}
+#endif
 uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uint8_t room_temp, const int16_t raw_reading, const int16_t scale_factor, const uint16_t iron_room_temp)
 {
   int32_t temperature;
