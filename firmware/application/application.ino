@@ -197,6 +197,7 @@ uint8_t debug_loop(const uint8_t iron_state, const int16_t raw_reading)
   return 0;
 }
 #endif
+#if !DEBUG
 uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uint8_t room_temp, const int16_t raw_reading, const int16_t scale_factor, const uint16_t iron_room_temp)
 {
   int32_t temperature;
@@ -278,6 +279,7 @@ uint8_t  main_loop(const uint8_t iron_state, const uint8_t calibrated, const uin
   }
   return iron_state;
 }
+#endif
 
 void loop()
 {
