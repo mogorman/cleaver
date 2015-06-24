@@ -29,7 +29,7 @@
 // 7 SCL for display
 // 8 Vcc, led to show its on
 //#define INTERNAL2V56_NO_CAP (6)
-#define DEBUG 1
+#define DEBUG 0
 
 #define FARENHEIT 2
 #define CELCIUS 1
