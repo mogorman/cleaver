@@ -130,9 +130,6 @@ void setup()
   lcd.clear();
   lcd.setContrast(29);
   lcd.setCursor(0,0);
-  digitalWrite(IRON,HIGH);
-  while (1) {
-  }
   //  lcd.print( ((MAX_TEMP - room_temp) *100) / (1023-100));
   // lcd.print(scale_factor);
   // lcd.setCursor(0,1);
