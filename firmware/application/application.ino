@@ -438,7 +438,6 @@ void initialize()
   do {
     temp = last_input - (1023 - analogRead(POT));
     if(update_display == 12) {
-      //      lcd.clear();
       update_display = 0;
       lcd.setCursor(0,0);
       lcd.print(" Temp at");
@@ -556,23 +555,6 @@ void write_eeprom(const uint8_t calibrated, const uint16_t iron_room_temp, const
   EEPROM.write((EEPROM_LENGTH - 1), ((solder_melt_temp >> 8) & 0xFF));
 }
 
-// i don't think this is very useful after all
-// long read_temp() { 
-//   // Read temperature sensor against 1.1V reference
-//   byte ADMUX_copy;
-//   ADMUX_copy = ADMUX;
-//   ADMUX = _BV(REFS1) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1) | _BV(MUX0);
-//   delay(2); // Wait for ADMUX setting to settle
-//   ADCSRA |= _BV(ADSC); // Start conversion
-//   while (bit_is_set(ADCSRA,ADSC)); // measuring
-
-//   uint8_t low = ADCL; // must read ADCL first - it then locks ADCH
-//   uint8_t high = ADCH; // unlocks both
-//   long result = (high << 8) | low; // combine the two
-//   ADMUX = ADMUX_copy;
-//   return result;
-// }
-
 uint32_t normalize_temp(uint32_t average, const uint16_t iron_room_temp, const uint8_t room_temp, const int16_t scale_factor) { 
   // replace these constants with your 2 data points
   // these are sample values that will get you in the ballpark (in degrees C)
@@ -594,7 +576,6 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
   i = 5;
 
   lcd.setCursor(0,0);
-  //  lcd.print(tenth_seconds);
   if(goal <= room_temp) {
     lcd.print("OFF ");
     tenth_seconds = 0;
@@ -604,7 +585,6 @@ void main_readout(const int8_t type_of_degree, int16_t goal, const int16_t curre
 #ifdef SAFE_IRON
   else if(goal >= MAX_TEMP) {
     lcd.print("MAX ");
-    //    lcd.print(tenth_seconds);
     i--;
     goal = MAX_TEMP;
   }
